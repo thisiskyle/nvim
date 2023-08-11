@@ -63,11 +63,15 @@ require("lazy").setup(
                 })
             end
         },
-        { "rose-pine/neovim" },
+        { 
+            "rose-pine/neovim",
+            config = function()
+                require('rose-pine').setup({
+                    disable_italics = true
+                })
+            end
+        },
         { "eandrju/cellular-automaton.nvim" }
     },
     { performance = { reset_packpath = false } }
 )
-
-
-vim.cmd.packadd("elyk")

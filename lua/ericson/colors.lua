@@ -1,7 +1,7 @@
 
 
 function ColorTheThings(color, transparent)
-    color = color or "elyk"
+    color = color or "rose-pine-dawn"
     transparent = transparent or false
 
     vim.cmd.colorscheme(color)
@@ -17,3 +17,6 @@ function ColorTheThings(color, transparent)
     end
 
 end
+
+
+ColorTheThings()
