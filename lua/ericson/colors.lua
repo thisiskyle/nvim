@@ -1,8 +1,10 @@
 
 
-function ColorTheThings(color, transparent)
-    color = color or "rose-pine-dawn"
-    transparent = transparent or false
+function ColorTheThings(opts)
+
+    options = opts or {}
+    color = options.color or "rose-pine-dawn"
+    transparent = options.tp or false
 
     vim.cmd.colorscheme(color)
 
