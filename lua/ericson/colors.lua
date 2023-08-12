@@ -3,7 +3,7 @@
 function ColorTheThings(opts)
 
     options = opts or {}
-    color = options.color or "rose-pine-dawn"
+    color = options.color or "catppuccin-latte"
     transparent = options.tp or false
 
     vim.cmd.colorscheme(color)

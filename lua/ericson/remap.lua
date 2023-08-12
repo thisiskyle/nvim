@@ -36,3 +36,16 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- get next search item and put in the center of the screen
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- color presets
+vim.keymap.set('n', '<leader>1', '<cmd>lua ColorTheThings({ color = "drab", tp = false })<CR>')
+vim.keymap.set('n', '<leader>2', '<cmd>lua ColorTheThings({ color = "drab-night", tp = false })<CR>')
+vim.keymap.set('n', '<leader>3', '<cmd>lua ColorTheThings({ color = "drab-night", tp = true })<CR>')
+
+vim.keymap.set('n', '<leader>4', '<cmd>lua ColorTheThings({ color = "rose-pine-dawn", tp = false })<CR>')
+vim.keymap.set('n', '<leader>5', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = false })<CR>')
+vim.keymap.set('n', '<leader>6', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = true })<CR>')
+
+vim.keymap.set('n', '<leader>7', '<cmd>lua ColorTheThings({ color = "catppuccin-latte", tp = false })<CR>')
+vim.keymap.set('n', '<leader>8', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = false })<CR>')
+vim.keymap.set('n', '<leader>9', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = true })<CR>')

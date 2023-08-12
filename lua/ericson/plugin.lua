@@ -1,4 +1,6 @@
 
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim/"
 
 
@@ -30,16 +32,11 @@ require("lazy").setup(
                         "c",
                         "lua", 
                         "sql",
-                        "rust" 
+                        "html",
+                        "json"
                     },
 
-                    sync_install = false,
                     auto_install = false,
-
-                    highlight = {
-                        enable = true,
-                        additional_vim_regex_highlighting = false,
-                    },
                 })
 
                 vim.cmd([[ TSUpdate ]])
@@ -75,3 +72,6 @@ require("lazy").setup(
     },
     { performance = { reset_packpath = false } }
 )
+
+
+vim.cmd.packadd("drab")
