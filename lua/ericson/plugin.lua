@@ -19,6 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         { 
+
+            "nvim-telescope/telescope.nvim",
+            dependencies = { 'nvim-lua/plenary.nvim' }
+        },
+        {
+
             "nvim-treesitter/nvim-treesitter",
             config = function() 
                 require('nvim-treesitter.configs').setup({

@@ -12,6 +12,17 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set('n', '<leader>rain', '<cmd>CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>')
 
+-- telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>pf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
+-- vimgrep
+vim.keymap.set('n', '<leader>vg', function()
+    vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/* | cw")
+end)
+
 -- window navigation
 vim.keymap.set('n', '<c-h>', '<c-w>h', {silent = true})
 vim.keymap.set('n', '<c-j>', '<c-w>j', {silent = true})
