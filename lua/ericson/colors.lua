@@ -2,8 +2,9 @@
 
 function ColorTheThings(opts)
 
+    vim.opt.background = "light"
     options = opts or {}
-    color = options.color or "drab"
+    color = options.color or "catppuccin-latte"
     transparent = options.tp or false
 
     vim.cmd.colorscheme(color)
