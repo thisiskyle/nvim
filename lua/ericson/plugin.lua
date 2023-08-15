@@ -54,31 +54,31 @@ require("lazy").setup(
         {
             'VonHeikemen/lsp-zero.nvim',
             dependencies = {
-                { 'neovim/nvim-lspconfig' },
-                { 'williamboman/mason.nvim' },
-                { 'williamboman/mason-lspconfig.nvim' },
-                { 'hrsh7th/nvim-cmp' },
-                { 'hrsh7th/cmp-buffer' },
-                { 'hrsh7th/cmp-path' },
-                { 'saadparwaiz1/cmp_luasnip' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/cmp-nvim-lua' }
+                {'neovim/nvim-lspconfig'},
+                {'williamboman/mason.nvim'},
+                {'williamboman/mason-lspconfig.nvim'},
+                {'hrsh7th/nvim-cmp'},
+                {'hrsh7th/cmp-buffer'},
+                {'hrsh7th/cmp-path'},
+                {'saadparwaiz1/cmp_luasnip'},
+                {'hrsh7th/cmp-nvim-lsp'},
+                {'hrsh7th/cmp-nvim-lua'},
+                {'L3MON4D3/LuaSnip'},
+                {'rafamadriz/friendly-snippets'},
             },
             config = function()
+
                 require('mason').setup()
                 local lsp = require("lsp-zero")
-
                 lsp.preset("recommended")
-
                 lsp.ensure_installed({})
-
                 -- Fix Undefined global 'vim'
                 lsp.nvim_workspace()
-
 
                 local cmp = require('cmp')
                 local cmp_select = {behavior = cmp.SelectBehavior.Select}
                 local cmp_mappings = lsp.defaults.cmp_mappings({
+
                   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -100,7 +100,26 @@ require("lazy").setup(
                     }
                 })
 
+                lsp.on_attach(function(client, bufnr)
+                  local opts = {buffer = bufnr, remap = false}
+
+                  vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
+                  vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, opts)
+                  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+                  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+                  vim.keymap.set("n", "<leader>nd", function() vim.diagnostic.goto_next() end, opts)
+                  vim.keymap.set("n", "<leader>pd", function() vim.diagnostic.goto_prev() end, opts)
+                  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+                  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+                  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+                  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+                end)
+
                 lsp.setup()
+
+                vim.diagnostic.config({
+                    virtual_text = true
+                })
 
             end
         },
@@ -131,7 +150,15 @@ require("lazy").setup(
                 require('lualine').setup({
                     options = {
                         icons_enabled = false,
-                    }
+                    },
+                    sections = {
+                        lualine_a = {'mode'},
+                        lualine_b = {'branch'},
+                        lualine_c = {'filename'},
+                        lualine_x = {'diagnostics', 'diff'},
+                        lualine_y = {'progress'},
+                        lualine_z = {'location'}
+                    },
             })
             end
 

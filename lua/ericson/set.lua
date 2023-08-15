@@ -29,10 +29,4 @@ vim.opt.belloff = 'all'
 
 vim.opt.tags = './tags,tags;'
 vim.opt.guifont = 'agave:h11'
-
---vim.cmd([[
---    set rulerformat=%60(%=%m\ \ %t\ \ %l:%c%)
---    set fillchars=stl:\ ,stlnc:\ ,vert:\|,fold:-,diff:-
---    set statusline=%=\ %m\ \ %t\ \ %l:%c\ 
---]])
-
+vim.opt.signcolumn = "no"
