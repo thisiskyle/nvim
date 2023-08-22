@@ -32,9 +32,9 @@ vim.keymap.set('n', '<leader>td',
     function()
         diag_active = not diag_active
         if(diag_active) then
-            vim.diagnostic.show()
+            vim.diagnostic.enable()
         else
-            vim.diagnostic.hide()
+            vim.diagnostic.disable()
             vim.opt.signcolumn = "no"
         end
     end,
