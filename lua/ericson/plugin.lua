@@ -24,7 +24,8 @@ require("lazy").setup(
         {
             "nvim-telescope/telescope.nvim",
             dependencies = {
-                'nvim-lua/plenary.nvim'
+                'nvim-lua/plenary.nvim',
+                'debugloop/telescope-undo.nvim'
             },
             config = function()
                 local select_one_or_multi = function(prompt_bufnr)
@@ -51,6 +52,7 @@ require("lazy").setup(
                     }
                   }
                 }
+                require('telescope').load_extension('undo');
             end
         },
         {
@@ -168,9 +170,6 @@ require("lazy").setup(
             end
         },
         {
-            "eandrju/cellular-automaton.nvim"
-        },
-        {
             "nvim-lualine/lualine.nvim",
             config = function()
                 require('lualine').setup({
@@ -188,9 +187,12 @@ require("lazy").setup(
             })
             end
 
-        }
+        },
+        { "eandrju/cellular-automaton.nvim" },
     },
-    { performance = { reset_packpath = false } }
+    {
+        performance = { reset_packpath = false }
+    }
 )
 
 
