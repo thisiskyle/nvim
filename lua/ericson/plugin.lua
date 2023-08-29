@@ -1,5 +1,4 @@
 
-vim.cmd.packadd("drab")
 
 -- install lazy.nvim if its not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim/"
@@ -160,3 +159,4 @@ require("lazy").setup({
     performance = { reset_packpath = false }
 })
 
+vim.cmd.packadd("drab")
