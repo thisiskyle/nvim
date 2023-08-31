@@ -49,6 +49,17 @@ require("lazy").setup({
                             ["<CR>"] = select_one_or_multi,
                         }
                     }
+                },
+                extensions = {
+                    undo = {
+                        mappings = {
+                            i = {
+                                ["<cr>"] = require("telescope-undo.actions").restore,
+                                ["<S-cr>"] = require("telescope-undo.actions").yank_additions,
+                                ["<C-cr>"] = require("telescope-undo.actions").yank_deletions
+                            }
+                        }
+                    }
                 }
             }
             require('telescope').load_extension('undo');
@@ -61,10 +72,16 @@ require("lazy").setup({
                 ensure_installed = {
                     "vimdoc", "javascript", "typescript", "c",
                     "lua", "sql", "html", "c_sharp",
-                    "scss", "css", "bash", "json"
+                    "scss", "css", "bash", "json",
+                    "markdown", "markdown_inline"
                 },
 
-                auto_install = false,
+                auto_install = true,
+
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
             })
 
             vim.cmd([[ TSUpdate ]])
@@ -131,6 +148,9 @@ require("lazy").setup({
                 no_underline = false,
                 integrations = {
                     treesitter = true,
+                    markdown = true,
+                    cmp = true,
+                    which_key = true,
                 },
             })
         end

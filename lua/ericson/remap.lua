@@ -14,8 +14,8 @@ vim.keymap.set('n', '<leader>vh', tscope.help_tags, { desc = "Vim help" })
 vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<CR>', { desc = "Open undo tree" })
 
 vim.keymap.set('n', '<leader>fe', '<cmd>Ex<CR>', { desc = "Open file explorer" })
-vim.keymap.set('n', ']b', "<cmd>bn<CR>", { desc = "Next Buffer" })
-vim.keymap.set('n', '[b', "<cmd>bp<CR>", { desc = "Previous Buffer" })
+vim.keymap.set('n', ']b', "<cmd>bn<CR>", { desc = "Next buffer" })
+vim.keymap.set('n', '[b', "<cmd>bp<CR>", { desc = "Previous buffer" })
 
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>", { desc = "Run ctags" })
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>", { desc = "Toggle line numbers" })
@@ -40,9 +40,9 @@ vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>', {
 
 
 
-vim.keymap.set('n', '<leader>fs', function() 
-    vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/* | cw") 
-end, 
+vim.keymap.set('n', '<leader>fs', function()
+    vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/* | cw")
+end,
 { desc = "Search in files" })
 
 
@@ -80,23 +80,56 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({ mapping = cmp_mappings })
-
 lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
 
-    opts.desc = 'Hover info'
-    vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, opts)
-    opts.desc = 'View diagnostic'
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    opts.desc = 'Next diagnostic'
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-    opts.desc = 'Prev diagnostic'
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-    opts.desc = 'Go to definition'
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Hover info"
+    })
+    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "View diagnostic"
+    })
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Next diagnostic"
+    })
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Previous diagnostic"
+    })
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
+    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
+    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
+    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
+    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {
+        buffer = bufnr,
+        remap = false,
+        desc = "Go to definition"
+    })
 end)
