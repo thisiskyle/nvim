@@ -170,15 +170,15 @@ require("lazy").setup({
                 options = {
                     icons_enabled = false,
                     theme = 'auto',
-                    component_separators = { left = '\\', right = '/'},
+                    component_separators = { left = '', right = ''},
                     section_separators = { left = '', right = '' },
                 },
                 sections = {
                     lualine_a = {
-                        {'mode', separator = { left = '███ █', right = '' }}
+                        {'mode', separator = { left = '███ █', right = '█' }}
                     },
                     lualine_b = {
-                        {'branch', draw_empty = true}
+                        {'branch', separator = { right = '█' }, draw_empty = true}
                     },
                     lualine_c = {
                         {'filename'}
@@ -187,10 +187,11 @@ require("lazy").setup({
                         {'diff'}
                     },
                     lualine_y = {
-                        {'diagnostics', draw_empty = true}
+                        {'diagnostics', separator = { left = '█'}, draw_empty = true}
                     },
                     lualine_z = {
-                        {'location', separator = { left = '', right = '█ ███' }}
+                        {'location', separator = { left = '█'}},
+                        {'progress', separator = { right = '█ ███' }}
                     }
                 },
             })
@@ -199,6 +200,7 @@ require("lazy").setup({
 
     },
     { "eandrju/cellular-automaton.nvim" },
+    { "rose-pine/neovim" },
 },
 {
     performance = { reset_packpath = false }
