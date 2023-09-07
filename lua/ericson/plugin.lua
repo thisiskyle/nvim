@@ -175,10 +175,10 @@ require("lazy").setup({
                 },
                 sections = {
                     lualine_a = {
-                        {'mode', separator = { left = '███ █', right = '█' }}
+                        {'mode', separator = { left = '██  █', right = '█' }}
                     },
                     lualine_b = {
-                        {'branch', separator = { right = '█' }, draw_empty = true}
+                        {'branch', separator = { right = '█' }, draw_empty = true}
                     },
                     lualine_c = {
                         {'filename'}
@@ -187,11 +187,11 @@ require("lazy").setup({
                         {'diff'}
                     },
                     lualine_y = {
-                        {'diagnostics', separator = { left = '█'}, draw_empty = true}
+                        {'diagnostics', separator = { left = '█'}, draw_empty = true}
                     },
                     lualine_z = {
-                        {'location', separator = { left = '█'}},
-                        {'progress', separator = { right = '█ ███' }}
+                        {'location', separator = { left = ''}},
+                        {'progress', separator = { right = '█  ' }}
                     }
                 },
             })
