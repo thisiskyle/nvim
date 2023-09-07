@@ -28,5 +28,5 @@ vim.opt.syntax = 'on'
 vim.opt.belloff = 'all'
 
 vim.opt.tags = './tags,tags;'
-vim.opt.guifont = 'agave:h11'
+vim.opt.guifont = 'agave nerd font mono:h11'
 vim.opt.signcolumn = "no"
