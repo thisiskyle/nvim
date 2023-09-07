@@ -27,6 +27,8 @@ require("lazy").setup({
             'debugloop/telescope-undo.nvim'
         },
         config = function()
+
+            -- this function is for opening multiple files at once
             local select_one_or_multi = function(prompt_bufnr)
                 local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
                 local multi = picker:get_multi_selection()
@@ -68,6 +70,8 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
+            require('nvim-treesitter.install').compilers = { "zig", "clang", "gcc" }
+
             require('nvim-treesitter.configs').setup({
                 ensure_installed = {
                     "vimdoc", "javascript", "typescript", "c",
@@ -130,6 +134,7 @@ require("lazy").setup({
             vim.diagnostic.config({
                 virtual_text = true,
                 signs = false
+
             })
 
         end
