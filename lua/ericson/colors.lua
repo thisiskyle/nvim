@@ -3,13 +3,13 @@
 function ColorTheThings(opts)
 
     vim.opt.background = "light"
-    options = opts or {}
-    color = options.color or "catppuccin-latte"
-    transparent = options.tp or false
+    local options = opts or {}
+    local color = options.color or "rose-pine-dawn"
+    local transparent = options.tp or false
 
     vim.cmd.colorscheme(color)
 
-    if(transparent) 
+    if(transparent)
     then
         vim.opt.background = "dark"
         vim.api.nvim_set_hl(0, "Normal", { bg = 'none' })
