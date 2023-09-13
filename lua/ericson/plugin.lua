@@ -1,5 +1,4 @@
 
-
 -- install lazy.nvim if its not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim/"
 
@@ -56,14 +55,20 @@ require("lazy").setup({
                     undo = {
                         mappings = {
                             i = {
+                                ["<C-a>"] = require("telescope-undo.actions").yank_additions,
+                                ["<C-d>"] = require("telescope-undo.actions").yank_deletions,
                                 ["<cr>"] = require("telescope-undo.actions").restore,
-                                ["<C-ya>"] = require("telescope-undo.actions").yank_additions,
-                                ["<C-yd>"] = require("telescope-undo.actions").yank_deletions
+                            },
+                            n = {
+                                ["ya"] = require("telescope-undo.actions").yank_additions,
+                                ["yd"] = require("telescope-undo.actions").yank_deletions,
+                                ["u"] = require("telescope-undo.actions").restore,
                             }
                         }
                     }
                 }
             }
+
             require('telescope').load_extension('undo');
         end
     },
@@ -90,14 +95,6 @@ require("lazy").setup({
 
             vim.cmd([[ TSUpdate ]])
         end
-    },
-    {
-        "folke/which-key.nvim",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 500
-        end,
-        opts = {}
     },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -194,14 +191,6 @@ require("lazy").setup({
                     cmp = true,
                     which_key = true,
                 },
-            })
-        end
-    },
-    {
-        "rose-pine/neovim",
-        config = function()
-            require("rose-pine").setup({
-                disable_italics = true
             })
         end
     },

@@ -4,7 +4,7 @@ function ColorTheThings(opts)
 
     vim.opt.background = "light"
     local options = opts or {}
-    local color = options.color or "rose-pine-dawn"
+    local color = options.color or "catppuccin-latte"
     local transparent = options.tp or false
 
     vim.cmd.colorscheme(color)

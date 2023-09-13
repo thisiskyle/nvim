@@ -1,5 +1,6 @@
 
 local tscope = require('telescope.builtin')
+local tscopeext = require('telescope').extensions
 local diag_active = true
 
 vim.g.mapleader = " "
@@ -14,7 +15,7 @@ vim.keymap.set('n', '<leader>fws', tscope.lsp_dynamic_workspace_symbols, { desc 
 vim.keymap.set('n', '<leader>fr', tscope.lsp_references, { desc = "Find lsp references" })
 vim.keymap.set('n', '<leader>reg', tscope.registers, { desc = "Find registers" })
 vim.keymap.set('n', '<leader>fi', tscope.lsp_implementations, { desc = "Find lsp implementations" })
-vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<CR>', { desc = "Open undo tree" })
+vim.keymap.set('n', '<leader>u', tscopeext.undo.undo, { desc = "Open undo tree" })
 
 
 vim.keymap.set('n', ']b', "<cmd>bn<CR>", { desc = "Next buffer" })
