@@ -18,7 +18,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab  = true
 vim.opt.autoindent  = true
 
-vim.opt.ruler = false
+vim.opt.ruler = true
 vim.opt.laststatus = 2
 vim.opt.modelines = 0
 

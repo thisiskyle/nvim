@@ -34,6 +34,9 @@ vim.keymap.set('n', '<leader>3', '<cmd>lua ColorTheThings({ color = "drab-night"
 vim.keymap.set('n', '<leader>4', '<cmd>lua ColorTheThings({ color = "catppuccin-latte", tp = false })<CR>', { desc = "catppuccin-latte" })
 vim.keymap.set('n', '<leader>5', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = false })<CR>', { desc = "catppuccin-frappe" })
 vim.keymap.set('n', '<leader>6', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = true })<CR>', { desc = "catppuccin-frappe transparent" })
+vim.keymap.set('n', '<leader>7', '<cmd>lua ColorTheThings({ color = "rose-pine-dawn", tp = false })<CR>', { desc = "catppuccin-latte" })
+vim.keymap.set('n', '<leader>8', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = false })<CR>', { desc = "catppuccin-frappe" })
+vim.keymap.set('n', '<leader>9', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = true })<CR>', { desc = "catppuccin-frappe transparent" })
 
 vim.keymap.set('n', '<leader>rain', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = "Make it rain" })
 vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>', { desc = "Game of life" })
@@ -67,69 +70,26 @@ end,
 -- lsp related mappings
 local lsp = require("lsp-zero")
 local cmp = require('cmp')
+
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
-
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
 })
-
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
-
 lsp.setup_nvim_cmp({ mapping = cmp_mappings })
-lsp.on_attach(function(client, bufnr)
 
-    vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Hover info"
-    })
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "View diagnostic"
-    })
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Next diagnostic"
-    })
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Previous diagnostic"
-    })
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {
-        buffer = bufnr,
-        remap = false,
-        desc = "Go to definition"
-    })
+lsp.on_attach(function(client, bufnr)
+    vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, { buffer = bufnr, remap = false, desc = "Hover info" })
+    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { buffer = bufnr, remap = false, desc = "View diagnostic" })
+    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, { buffer = bufnr, remap = false, desc = "Next diagnostic" })
+    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, { buffer = bufnr, remap = false, desc = "Previous diagnostic" })
+    vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, { buffer = bufnr, remap = false, desc = "Go to definition" })
+    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, { buffer = bufnr, remap = false, desc = "View Workspace symbol" })
+    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, { buffer = bufnr, remap = false, desc = "View code actions" })
+    vim.keymap.set("n", "<leader>vlr", function() vim.lsp.buf.references() end, { buffer = bufnr, remap = false, desc = "View references in current buffer" })
+    vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, { buffer = bufnr, remap = false, desc = "Rename" })
 end)

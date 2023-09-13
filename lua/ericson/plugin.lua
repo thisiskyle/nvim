@@ -140,6 +140,32 @@ require("lazy").setup({
         end
     },
     {
+        "nvim-lualine/lualine.nvim",
+        config = function()
+
+        -- just saving these here. it was a pain to find the right size
+        --    ▁▂▃▄▅▆▇█
+            require('lualine').setup({
+                options = {
+                    icons_enabled = false,
+                    theme = 'auto',
+                    component_separators = { left = '', right = ''},
+                    section_separators = { left = '', right = '' },
+                },
+                sections = {
+                    lualine_a = {{'mode'}},
+                    lualine_b = {{'branch'}},
+                    lualine_c = {{'filename'}},
+                    lualine_x = {{'diff'}},
+                    lualine_y = {{'diagnostics'}},
+                    lualine_z = {{'location'}}
+                },
+            })
+        end
+
+
+    },
+    {
         "catppuccin/nvim",
         config = function()
             require("catppuccin").setup({
@@ -161,46 +187,14 @@ require("lazy").setup({
         end
     },
     {
-        "nvim-lualine/lualine.nvim",
+        "rose-pine/neovim",
         config = function()
-
-        -- just saving these here. it was a pain to find the right size
-        --    ▁▂▃▄▅▆▇█
-            require('lualine').setup({
-                options = {
-                    icons_enabled = false,
-                    theme = 'auto',
-                    component_separators = { left = '', right = ''},
-                    section_separators = { left = '', right = '' },
-                },
-                sections = {
-                    lualine_a = {
-                        {'mode', separator = { left = '██  █', right = '█' }}
-                    },
-                    lualine_b = {
-                        {'branch', separator = { right = '██' }, draw_empty = true}
-                    },
-                    lualine_c = {
-                        {'filename'}
-                    },
-                    lualine_x = {
-                        {'diff'}
-                    },
-                    lualine_y = {
-                        {'diagnostics', separator = { left = '█'}, draw_empty = true}
-                    },
-                    lualine_z = {
-                        {'location', separator = { left = ''}},
-                        {'progress', separator = { right = '██  ' }}
-                    }
-                },
+            require("rose-pine").setup({
+                disable_italics = true
             })
         end
-
-
     },
     { "eandrju/cellular-automaton.nvim" },
-    { "rose-pine/neovim" },
 },
 {
     performance = { reset_packpath = false }
