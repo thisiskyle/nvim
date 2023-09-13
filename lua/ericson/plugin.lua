@@ -57,8 +57,8 @@ require("lazy").setup({
                         mappings = {
                             i = {
                                 ["<cr>"] = require("telescope-undo.actions").restore,
-                                ["<S-cr>"] = require("telescope-undo.actions").yank_additions,
-                                ["<C-cr>"] = require("telescope-undo.actions").yank_deletions
+                                ["<C-ya>"] = require("telescope-undo.actions").yank_additions,
+                                ["<C-yd>"] = require("telescope-undo.actions").yank_deletions
                             }
                         }
                     }
@@ -119,14 +119,26 @@ require("lazy").setup({
             require('mason').setup()
 
             local lsp = require("lsp-zero")
+            local cmp = require('cmp')
+
             lsp.preset("recommended")
             lsp.ensure_installed({})
+
             -- Fix Undefined global 'vim'
             lsp.nvim_workspace()
 
             lsp.set_preferences({
                 suggest_lsp_servers = false,
                 sign_icons = { error = 'E', warn = 'W', hint = 'H', info = 'I' }
+            })
+
+            lsp.setup_nvim_cmp({
+                mapping = lsp.defaults.cmp_mappings({
+                    ['<C-p>'] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
+                    ['<C-n>'] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
+                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                })
             })
 
             lsp.setup()
@@ -136,7 +148,6 @@ require("lazy").setup({
                 signs = false
 
             })
-
         end
     },
     {
