@@ -68,3 +68,12 @@ vim.keymap.set('n', '<leader>td', function()
 end,
 { desc = "Toggle diagnostics" })
 
+
+vim.keymap.set('n', '<leader>pad', function()
+    vim.cmd(":enew")
+    vim.cmd(":file scratch")
+    vim.opt_local.buftype = "nofile"
+    vim.opt_local.bufhidden = "hide"
+    vim.opt_local.swapfile = false
+end,
+{ desc = "Open scratch buffer" })

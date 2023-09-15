@@ -194,6 +194,14 @@ require("lazy").setup({
             })
         end
     },
+    {
+        "rose-pine/neovim",
+        config = function()
+            require("rose-pine").setup({
+                disable_italics = true
+            })
+        end
+    },
     { "eandrju/cellular-automaton.nvim" },
 },
 {
