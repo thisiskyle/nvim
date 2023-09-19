@@ -1,5 +1,5 @@
 local util = require("drab.util")
-local theme = require("drab.theme")
+local theme = require("drab.highlights")
 local colors = require("drab.colors")
 
 local M = {}

@@ -9,7 +9,7 @@ function M.setup(c)
         {
             groups = {
                 "Normal"
-            }, 
+            },
             style = {
                 fg = c.fg_normal,
                 bg = c.bg_normal
@@ -18,7 +18,7 @@ function M.setup(c)
         {
             groups = {
                 "Matchparen"
-            }, 
+            },
             style = {
                 fg = c.fg_normal,
                 bg = c.bg_01,
@@ -30,7 +30,7 @@ function M.setup(c)
         {
             groups = {
                 "Search"
-            }, 
+            },
             style = {
                 fg = c.fg_normal,
                 bg = c.bg_01,
@@ -39,7 +39,7 @@ function M.setup(c)
         {
             groups = {
                 "Visual"
-            }, 
+            },
             style = {
                 bg = c.bg_01
             }
@@ -47,7 +47,7 @@ function M.setup(c)
         {
             groups = {
                 "Cursor"
-            }, 
+            },
             style = {
                 fg = c.bg_normal,
                 bg = c.fg_normal
@@ -56,7 +56,7 @@ function M.setup(c)
         {
             groups = {
                 "PmenuSel"
-            }, 
+            },
             style = {
                 fg = c.fg_normal,
                 bg = c.fg_01
@@ -66,7 +66,7 @@ function M.setup(c)
             groups = {
                 "Wildmenu",
                 "Pmenu"
-            }, 
+            },
             style = {
                 fg = c.bg_normal,
                 bg = c.fg_normal
@@ -75,7 +75,7 @@ function M.setup(c)
         {
             groups = {
                 "Comment"
-            }, 
+            },
             style = {
                 fg = c.fg_01
             }
@@ -83,7 +83,7 @@ function M.setup(c)
         {
             groups = {
                 "Underlined"
-            }, 
+            },
             style = {
                 attributes = {
                     underline = true
@@ -93,7 +93,7 @@ function M.setup(c)
         {
             groups = {
                 "SpellBad"
-            }, 
+            },
             style = {
                 attributes = {
                     undercurl = true
@@ -103,15 +103,15 @@ function M.setup(c)
         {
             groups = {
                 "Error"
-            }, 
+            },
             style = {
-                fg = red
+                fg = c.red
             }
         },
         {
             groups = {
                 "TabLine"
-            }, 
+            },
             style = {
                 bg = c.bg_01,
                 attributes = {
@@ -122,7 +122,7 @@ function M.setup(c)
         {
             groups = {
                 "TabLineFill"
-            }, 
+            },
             style = {
                 bg = c.bg_normal,
                 attributes = {
@@ -133,7 +133,7 @@ function M.setup(c)
         {
             groups = {
                 "TabLineSel"
-            }, 
+            },
             style = {
                 fg = c.bg_normal,
                 bg = c.fg_normal
@@ -142,7 +142,7 @@ function M.setup(c)
         {
             groups = {
                 "StatusLine"
-            }, 
+            },
             style = {
                 fg = c.fg_normal,
                 bg = c.bg_normal,
@@ -154,7 +154,7 @@ function M.setup(c)
         {
             groups = {
                 "StatusLineNC"
-            }, 
+            },
             style = {
                 fg = c.fg_01,
                 bg = c.bg_normal,
@@ -167,25 +167,25 @@ function M.setup(c)
         {
             groups = {
                 "IncSearch"
-            }, 
+            },
             style = {
                 link = "Cursor"
             }
         },
         {
             groups = {
-                "ErrorMsg", 
+                "ErrorMsg",
                 "WarningMsg"
-            }, 
+            },
             style = {
                 link = "Error"
             }
         },
         {
             groups = {
-                "CursorLine", 
+                "CursorLine",
                 "CursorColumn"
-            }, 
+            },
             style = {
                 link = "Visual"
             }
@@ -193,7 +193,7 @@ function M.setup(c)
         {
             groups = {
                 "StatusLineTerm"
-            }, 
+            },
             style = {
                 link = "StatusLine"
             }
@@ -201,7 +201,7 @@ function M.setup(c)
         {
             groups = {
                 "StatusLineTermNC"
-            }, 
+            },
             style = {
                 link = "StatusLineNC"
             }
@@ -267,8 +267,8 @@ function M.setup(c)
                 "LineNrBelow",
                 "VisualNOS",
                 "MoreMsg",
-                "ModeMsg" 
-        }, 
+                "ModeMsg"
+        },
             style = {
                 link = "Normal"
             }
@@ -283,7 +283,7 @@ function M.setup(c)
                 "NonText",
                 "EndOfBuffer",
                 "LineNr"
-        }, 
+        },
             style = {
                 link = "Comment"
             }

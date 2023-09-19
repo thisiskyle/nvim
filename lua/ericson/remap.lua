@@ -1,6 +1,7 @@
 
 local tscope = require('telescope.builtin')
 local tscopeext = require('telescope').extensions
+local theme = require('ericson.theme')
 local diag_active = true
 
 vim.g.mapleader = " "
@@ -32,15 +33,17 @@ vim.keymap.set('x', '<leader>P', '"+P', { desc = "Paste backward from clipboard"
 vim.keymap.set('n', '<leader>y', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set('x', '<leader>y', '"+y', { desc = "Yank to clipboard" })
 
-vim.keymap.set('n', '<leader>1', '<cmd>lua ColorTheThings({ color = "drab", tp = false })<CR>', { desc = "drab" })
-vim.keymap.set('n', '<leader>2', '<cmd>lua ColorTheThings({ color = "drab-night", tp = false })<CR>', { desc = "drab-night" })
-vim.keymap.set('n', '<leader>3', '<cmd>lua ColorTheThings({ color = "drab-night", tp = true })<CR>', { desc = "drab-night transparent" })
-vim.keymap.set('n', '<leader>4', '<cmd>lua ColorTheThings({ color = "catppuccin-latte", tp = false })<CR>', { desc = "catppuccin-latte" })
-vim.keymap.set('n', '<leader>5', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = false })<CR>', { desc = "catppuccin-frappe" })
-vim.keymap.set('n', '<leader>6', '<cmd>lua ColorTheThings({ color = "catppuccin-frappe", tp = true })<CR>', { desc = "catppuccin-frappe transparent" })
-vim.keymap.set('n', '<leader>7', '<cmd>lua ColorTheThings({ color = "rose-pine-dawn", tp = false })<CR>', { desc = "rose-pine-dawn" })
-vim.keymap.set('n', '<leader>8', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = false })<CR>', { desc = "rose-pine-moon" })
-vim.keymap.set('n', '<leader>9', '<cmd>lua ColorTheThings({ color = "rose-pine-moon", tp = true })<CR>', { desc = "rose-pine-moon" })
+vim.keymap.set('n', '<leader>1', function() theme.set_theme(theme.themes.cat_light) end, { desc = "drab" })
+vim.keymap.set('n', '<leader>2', function() theme.set_theme(theme.themes.cat_light) end, { desc = "drab-night" })
+vim.keymap.set('n', '<leader>3', function() theme.set_theme(theme.themes.cat_light) end, { desc = "drab-night transparent" })
+
+vim.keymap.set('n', '<leader>4', function() theme.set_theme(theme.themes.cat_light) end, { desc = "catppuccin-latte" })
+vim.keymap.set('n', '<leader>5', function() theme.set_theme(theme.themes.cat_dark) end, { desc = "catppuccin-frappe" })
+vim.keymap.set('n', '<leader>6', function() theme.set_theme(theme.themes.cat_transparent) end, { desc = "catppuccin-transparent" })
+
+vim.keymap.set('n', '<leader>7', function() theme.set_theme(theme.themes.rose_light) end, { desc = "rose-pine-dawn" })
+vim.keymap.set('n', '<leader>8', function() theme.set_theme(theme.themes.rose_dark) end, { desc = "rose-pine-moon" })
+vim.keymap.set('n', '<leader>9', function() theme.set_theme(theme.themes.rose_transparent) end, { desc = "rose-pine-moon transparent" })
 
 vim.keymap.set('n', '<leader>rain', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = "Make it rain" })
 vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>', { desc = "Game of life" })
