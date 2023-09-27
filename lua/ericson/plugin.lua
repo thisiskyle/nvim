@@ -157,7 +157,7 @@ require("lazy").setup({
                 options = {
                     icons_enabled = false,
                     theme = 'auto',
-                    component_separators = { left = '', right = ''},
+                    component_separators = { left = '|', right = '|'},
                     section_separators = { left = '', right = '' },
                 },
                 sections = {
@@ -173,35 +173,8 @@ require("lazy").setup({
 
 
     },
-    {
-        "catppuccin/nvim",
-        config = function()
-            require("catppuccin").setup({
-                flavour = "frappe", -- latte, frappe, macchiato, mocha
-                background = { light = "latte", dark = "frappe", },
-                transparent_background = false,
-                show_end_of_buffer = true,
-                term_colors = false,
-                no_italic = true,
-                no_bold = false,
-                no_underline = false,
-                integrations = {
-                    treesitter = true,
-                    markdown = true,
-                    cmp = true,
-                    which_key = true,
-                },
-            })
-        end
-    },
-    {
-        "rose-pine/neovim",
-        config = function()
-            require("rose-pine").setup({
-                disable_italics = true
-            })
-        end
-    },
+    { "catppuccin/nvim" },
+    { "rose-pine/neovim" },
     { "eandrju/cellular-automaton.nvim" },
 },
 {
