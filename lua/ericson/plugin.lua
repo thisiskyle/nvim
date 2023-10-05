@@ -62,7 +62,7 @@ require("lazy").setup({
                             n = {
                                 ["ya"] = require("telescope-undo.actions").yank_additions,
                                 ["yd"] = require("telescope-undo.actions").yank_deletions,
-                                ["u"] = require("telescope-undo.actions").restore,
+                                ["<cr>"] = require("telescope-undo.actions").restore,
                             }
                         }
                     }
@@ -139,11 +139,9 @@ require("lazy").setup({
             })
 
             lsp.setup()
-
             vim.diagnostic.config({
                 virtual_text = true,
-                signs = false
-
+                signs = true
             })
         end
     },
