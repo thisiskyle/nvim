@@ -1,20 +1,8 @@
 
 local M = {}
 
-
-M.themes = {
-    cat_light = 1,
-    cat_dark = 2,
-    cat_transparent = 3,
-    rose_light = 4,
-    rose_dark = 5,
-    rose_transparent = 6,
-    drab = 7,
-}
-
-
-local theme_settings = {
-    {
+local themes = {
+    cat_light = {
         name = 'catppuccin',
         transparent = false,
         config = function()
@@ -35,7 +23,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    cat_dark = {
         name = 'catppuccin',
         transparent = false,
         config = function()
@@ -56,7 +44,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    cat_transparent = {
         name = 'catppuccin',
         transparent = true,
         config = function()
@@ -77,7 +65,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    rose_light = {
         name = 'rose-pine-dawn',
         transparent = false,
         config = function()
@@ -86,7 +74,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    rose_dark = {
         name = 'rose-pine-moon',
         transparent = false,
         config = function()
@@ -95,7 +83,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    rose_transparent = {
         name = 'rose-pine-moon',
         transparent = true,
         config = function()
@@ -104,7 +92,7 @@ local theme_settings = {
             })
         end
     },
-    {
+    drab = {
         name = 'drab',
         transparent = false
     }
@@ -132,22 +120,30 @@ local function apply_theme(_theme)
 end
 
 
-function M.set_theme(index)
-    apply_theme(theme_settings[index])
+function M.set_theme(name)
+    apply_theme(themes[name])
 end
 
 function M.pick_random()
+    -- count number of themes
     local n = 0
-    for i in pairs(M.themes) do
+    for i in pairs(themes) do
         n = n + 1
     end
 
+    -- generate random number
     math.randomseed(os.time())
-    apply_theme(theme_settings[math.random(1,n)])
+    local rand = math.random(1,n)
 
+    -- find the key for the number and set theme
+    n = 0
+    for k in pairs(themes) do
+        if(n == rand) then
+            apply_theme(themes[k])
+        end
+        n = n + 1
+    end
 end
 
-
-M.set_theme(M.themes.rose_light)
 
 return M

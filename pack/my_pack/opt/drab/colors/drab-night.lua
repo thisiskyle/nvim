@@ -1,1 +1,1 @@
-require("drab").load("night")
+require("drab").load("drab-night")

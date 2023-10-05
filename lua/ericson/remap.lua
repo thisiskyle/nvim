@@ -57,11 +57,9 @@ vim.keymap.set('n', '<leader>rain', '<cmd>CellularAutomaton make_it_rain<CR>', {
 vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>', { desc = "Game of life" })
 
 vim.keymap.set('n', '<leader>0', function() theme.pick_random() end, { desc = "Pick a random theme" })
-vim.keymap.set('n', '<leader>1', function() theme.set_theme(theme.themes.drab) end, { desc = "drab" })
-vim.keymap.set('n', '<leader>2', function() theme.set_theme(theme.themes.cat_light) end, { desc = "catppuccin-latte" })
-vim.keymap.set('n', '<leader>3', function() theme.set_theme(theme.themes.cat_transparent) end, { desc = "catppuccin-frappe transparent" })
-vim.keymap.set('n', '<leader>4', function() theme.set_theme(theme.themes.rose_light) end, { desc = "rose-pine-dawn" })
-vim.keymap.set('n', '<leader>5', function() theme.set_theme(theme.themes.rose_transparent) end, { desc = "rose-pine-moon transparent" })
+vim.keymap.set('n', '<leader>1', function() theme.set_theme("drab") end, { desc = "drab" })
+vim.keymap.set('n', '<leader>2', function() theme.set_theme("cat_light") end, { desc = "catppuccin-latte" })
+vim.keymap.set('n', '<leader>3', function() theme.set_theme("cat_transparent") end, { desc = "catppuccin-frappe transparent" })
 
 vim.keymap.set('n', '<leader>vg', function()
     vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/*")

@@ -1,6 +1,6 @@
 local M = {}
 
--- color palette
+-- colors
 local red    = {gui = "#ff0000", term = 9  }
 local black  = {gui = "#000000", term = 0  }
 local grey03 = {gui = "#080808", term = 232}
@@ -30,22 +30,22 @@ local grey93 = {gui = "#eeeeee", term = 255}
 local white  = {gui = "#ffffff", term = 231}
 
 
--- drab
-M.default = {
-    background = "light",
-    fg_normal = black,
-    fg_01 = grey70,
-    bg_normal = white,
-    bg_01 = grey89,
-}
+M.palettes = {
+    drab = {
+        background = "light",
+        fg_normal = black,
+        fg_01 = grey70,
+        bg_normal = white,
+        bg_01 = grey89,
+    },
 
--- drab-night
-M.night = {
-    background = "dark",
-    fg_normal = white,
-    fg_01 = grey50,
-    bg_normal = grey23,
-    bg_01 = grey62
+    drab_night = {
+        background = "dark",
+        fg_normal = white,
+        fg_01 = grey50,
+        bg_normal = grey23,
+        bg_01 = grey62
+    }
 }
 
 

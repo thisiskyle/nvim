@@ -1,1 +1,1 @@
-require("drab").load()
+require("drab").load("drab")
