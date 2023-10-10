@@ -66,29 +66,38 @@ local themes = {
         end
     },
     rose_light = {
-        name = 'rose-pine-dawn',
+        name = 'rose-pine',
         transparent = false,
         config = function()
             require("rose-pine").setup({
-                disable_italics = true
+                variant = 'dawn',
+                disable_italics = true,
+                disable_background = false,
+                disable_float_background = false
             })
         end
     },
     rose_dark = {
-        name = 'rose-pine-moon',
+        name = 'rose-pine',
         transparent = false,
         config = function()
             require("rose-pine").setup({
-                disable_italics = true
+                variant = 'moon',
+                disable_italics = true,
+                disable_background = false,
+                disable_float_background = false
             })
         end
     },
     rose_transparent = {
-        name = 'rose-pine-moon',
+        name = 'rose-pine',
         transparent = true,
         config = function()
             require("rose-pine").setup({
-                disable_italics = true
+                variant = 'moon',
+                disable_italics = true,
+                disable_background = true,
+                disable_float_background = true
             })
         end
     },
@@ -144,6 +153,5 @@ function M.pick_random()
         n = n + 1
     end
 end
-
 
 return M

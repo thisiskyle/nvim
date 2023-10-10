@@ -25,4 +25,4 @@ vim.opt.tags = './tags,tags;'
 vim.opt.guifont = 'agave nerd font mono:h11'
 vim.opt.signcolumn = "no"
 
-require('ericson.theme').set_theme("cat_light")
+require('ericson.theme').set_theme("rose_light")

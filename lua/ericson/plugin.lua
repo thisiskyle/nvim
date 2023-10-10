@@ -160,10 +160,10 @@ require("lazy").setup({
                 },
                 sections = {
                     lualine_a = {{'mode'}},
-                    lualine_b = {{'branch'}},
-                    lualine_c = {{'filename'}},
-                    lualine_x = {{'diff'}},
-                    lualine_y = {{'diagnostics'}},
+                    lualine_b = {{'branch'}, {'diff'}},
+                    lualine_c = {{'filename'}, {'diagnostics'}},
+                    lualine_x = {},
+                    lualine_y = {{'progress'}},
                     lualine_z = {{'location'}}
                 },
             })
