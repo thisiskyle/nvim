@@ -60,6 +60,7 @@ vim.keymap.set('n', '<leader>0', function() theme.pick_random() end, { desc = "P
 vim.keymap.set('n', '<leader>1', function() theme.set_theme("rose_light") end, { desc = "rose-pine-dawn" })
 vim.keymap.set('n', '<leader>2', function() theme.set_theme("rose_dark") end, { desc = "rose-pine-moon" })
 vim.keymap.set('n', '<leader>3', function() theme.set_theme("rose_transparent") end, { desc = "rose-pine transparent" })
+vim.keymap.set('n', '<leader>4', function() theme.set_theme("drab") end, { desc = "drab" })
 
 vim.keymap.set('n', '<leader>vg', function()
     vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/*")
