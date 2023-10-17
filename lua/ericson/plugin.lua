@@ -140,13 +140,15 @@ require("lazy").setup({
 
             lsp.setup()
             vim.diagnostic.config({
-                virtual_text = true,
-                signs = true
+                virtual_text = { spacing = 20 },
+                signs = true,
+                underline = false
             })
         end
     },
     {
         "nvim-lualine/lualine.nvim",
+        enabled = false,
         config = function()
 
         -- just saving these here. it was a pain to find the right size
@@ -156,20 +158,18 @@ require("lazy").setup({
                     icons_enabled = false,
                     theme = 'auto',
                     component_separators = { left = '|', right = '|'},
-                    section_separators = { left = '', right = '' },
+                    section_separators = { left = '', right = '' },
                 },
                 sections = {
-                    lualine_a = {{'mode'}},
+                    lualine_a = {{'mode', separator = { left = '  ', right = ''}}},
                     lualine_b = {{'branch'}, {'diff'}},
                     lualine_c = {{'filename'}, {'diagnostics'}},
                     lualine_x = {},
                     lualine_y = {{'progress'}},
-                    lualine_z = {{'location'}}
+                    lualine_z = {{'location', separator = { left = '', right = '  '}}}
                 },
             })
         end
-
-
     },
     { "catppuccin/nvim" },
     { "rose-pine/neovim" },
