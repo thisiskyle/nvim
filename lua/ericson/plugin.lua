@@ -146,31 +146,6 @@ require("lazy").setup({
             })
         end
     },
-    {
-        "nvim-lualine/lualine.nvim",
-        enabled = false,
-        config = function()
-
-        -- just saving these here. it was a pain to find the right size
-        --    ▁▂▃▄▅▆▇█
-            require('lualine').setup({
-                options = {
-                    icons_enabled = false,
-                    theme = 'auto',
-                    component_separators = { left = '|', right = '|'},
-                    section_separators = { left = '', right = '' },
-                },
-                sections = {
-                    lualine_a = {{'mode', separator = { left = '  ', right = ''}}},
-                    lualine_b = {{'branch'}, {'diff'}},
-                    lualine_c = {{'filename'}, {'diagnostics'}},
-                    lualine_x = {},
-                    lualine_y = {{'progress'}},
-                    lualine_z = {{'location', separator = { left = '', right = '  '}}}
-                },
-            })
-        end
-    },
     { "catppuccin/nvim" },
     { "rose-pine/neovim" },
     { "eandrju/cellular-automaton.nvim" },

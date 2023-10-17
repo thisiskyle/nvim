@@ -19,10 +19,29 @@ vim.opt.filetype = 'on'
 vim.opt.syntax = 'on'
 vim.opt.belloff = 'all'
 vim.opt.tags = './tags,tags;'
-vim.opt.guifont = 'agave nerd font mono:h11'
+vim.opt.guifont = 'agave:h11'
 vim.opt.signcolumn = "no"
 vim.opt.ruler = true
-vim.opt.laststatus = 0
-vim.opt.rulerformat = "%80(%=%m %t  |  %l:%c%)"
+vim.opt.laststatus = 1
+
+vim.opt.statusline = ""
+    .. "%="
+    .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
+    .. " "
+    .. "%m  %t"
+    .. "  "
+    .. "%l:%c"
+    .. " "
+
+vim.opt.rulerformat = ""
+    .. "%80"
+    .. "(%="
+    .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
+    .. " "
+    .. "%m %t"
+    .. "  "
+    .. "%l:%c"
+    .. "%)"
+
 require('ericson.theme').set_theme("rose_light")
 
