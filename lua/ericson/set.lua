@@ -1,3 +1,8 @@
+--
+-- just saving these here. it was a pain to find the right size
+--    ▁▂▃▄▅▆▇█
+--
+
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.incsearch  = true
@@ -21,27 +26,17 @@ vim.opt.belloff = 'all'
 vim.opt.tags = './tags,tags;'
 vim.opt.guifont = 'agave:h11'
 vim.opt.signcolumn = "no"
-vim.opt.ruler = true
-vim.opt.laststatus = 1
 
 vim.opt.statusline = ""
     .. "%="
     .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
-    .. " "
-    .. "%m  %t"
+    .. "     "
+    .. "%m"
+    .. "  "
+    .. "%<%F"
     .. "  "
     .. "%l:%c"
-    .. " "
+    .. "   "
 
-vim.opt.rulerformat = ""
-    .. "%80"
-    .. "(%="
-    .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
-    .. " "
-    .. "%m %t"
-    .. "  "
-    .. "%l:%c"
-    .. "%)"
 
 require('ericson.theme').set_theme("rose_light")
-
