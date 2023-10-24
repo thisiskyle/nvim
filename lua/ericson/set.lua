@@ -30,13 +30,12 @@ vim.opt.signcolumn = "no"
 vim.opt.statusline = ""
     .. "%="
     .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
-    .. "     "
+    .. "%="
     .. "%m"
-    .. "  "
-    .. "%<%F"
-    .. "  "
-    .. "%l:%c"
+    .. " "
+    .. "%t"
     .. "   "
-
+    .. "%l,%c"
+    .. "   "
 
 require('ericson.theme').set_theme("rose_light")
