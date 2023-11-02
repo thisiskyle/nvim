@@ -141,7 +141,7 @@ require("lazy").setup({
             lsp.setup()
             vim.diagnostic.config({
                 virtual_text = { spacing = 20 },
-                signs = true,
+                signs = false,
                 underline = false
             })
         end
