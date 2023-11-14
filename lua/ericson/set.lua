@@ -50,4 +50,4 @@ vim.opt.statusline = ""
     .. "%l,%c"
     .. " "
 
-require('ericson.theme').set_theme("cat_dark")
+require('ericson.theme').set_theme("cat_light")
