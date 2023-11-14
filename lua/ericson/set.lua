@@ -27,15 +27,27 @@ vim.opt.tags = './tags,tags;'
 vim.opt.guifont = 'agave:h11'
 vim.opt.signcolumn = "no"
 
+
+vim.api.nvim_create_autocmd({"FileType", "BufEnter", "FocusGained"}, {
+	callback = function()
+		vim.b.branch_name = require('ericson.utils').set_branch_name()
+	end
+})
+
+
 vim.opt.statusline = ""
+    .. " "
+    .. "[%n]"
     .. "%="
     .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
     .. "%="
+    .. "%{%v:lua.require('ericson.utils').git_branch()%}"
+    .. "  "
     .. "%m"
     .. " "
     .. "%t"
-    .. "   "
+    .. "  "
     .. "%l,%c"
-    .. "   "
+    .. " "
 
-require('ericson.theme').set_theme("rose_light")
+require('ericson.theme').set_theme("cat_dark")

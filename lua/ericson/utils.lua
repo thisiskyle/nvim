@@ -37,7 +37,7 @@ function M.set_branch_name()
     end
 
 	if branch ~= "" then
-		return "  " .. branch:gsub('\n', '') .. "  |"
+		return branch:gsub('\n', '')
 	else
 		return ""
 	end
