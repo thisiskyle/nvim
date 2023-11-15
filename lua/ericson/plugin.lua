@@ -149,6 +149,7 @@ require("lazy").setup({
     { "catppuccin/nvim" },
     { "rose-pine/neovim" },
     { "eandrju/cellular-automaton.nvim" },
+    { "tamton-aquib/duck.nvim" },
 },
 {
     performance = { reset_packpath = false }
