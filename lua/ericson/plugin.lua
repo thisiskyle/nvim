@@ -45,6 +45,10 @@ require("lazy").setup({
 
             require('telescope').setup {
                 defaults = {
+                    file_ignore_patterns = {
+                        "node_modules",
+                        ".git"
+                    },
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,

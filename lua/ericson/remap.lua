@@ -18,16 +18,16 @@ vim.keymap.set('n', '<C-l>', "<C-w>l", { desc = "Window move right" })
 
 vim.keymap.set('n', '<leader>ff', tscope.find_files, { desc = "Find all files" })
 vim.keymap.set('n', '<leader>ft', tscope.tags, { desc = "Find tags" })
-vim.keymap.set('n', '<leader>fg', tscope.git_files, { desc = "Find git-files" })
+vim.keymap.set('n', '<leader>fg', tscope.live_grep, { desc = "Grep all files" })
 vim.keymap.set('n', '<leader>fk', tscope.keymaps, { desc = "Find keymap" })
 vim.keymap.set('n', '<leader>fh', tscope.help_tags, { desc = "Find help" })
 vim.keymap.set('n', '<leader>fq', tscope.quickfix, { desc = "Find quickfix" })
 vim.keymap.set('n', '<leader>fd', tscope.diagnostics, { desc = "Find diagnostics" })
-vim.keymap.set('n', '<leader>fws', tscope.lsp_dynamic_workspace_symbols, { desc = "Find lsp workspace symbols" })
+vim.keymap.set('n', '<leader>fw', tscope.lsp_dynamic_workspace_symbols, { desc = "Find lsp workspace symbols" })
 vim.keymap.set('n', '<leader>fr', tscope.lsp_references, { desc = "Find lsp references" })
 vim.keymap.set('n', '<leader>fi', tscope.lsp_implementations, { desc = "Find lsp implementations" })
 vim.keymap.set('n', '<leader>fb', tscope.buffers, { desc = "Find buffers" })
-vim.keymap.set('n', '<leader>u', tscopeext.undo.undo, { desc = "Open undo history" })
+vim.keymap.set('n', '<leader>fu', tscopeext.undo.undo, { desc = "Open undo history" })
 
 vim.keymap.set('n', '<leader>ex', "<cmd>Ex<cr>", { desc = "Open explorer" })
 
@@ -39,11 +39,12 @@ vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { 
 
 vim.keymap.set('n', '<leader>td', utils.toggle_diagnostics, { desc = "Toggle diagnostics" })
 vim.keymap.set('n', '<leader>sb', utils.open_scratch_pad, { desc = "Open scratch buffer" })
-vim.keymap.set('n', '<leader>vg', utils.vimgrep, { desc = "Vimgrep" })
 
 vim.keymap.set('n', '<leader>p', '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set('x', '<leader>p', '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set('n', '<leader>y', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set('x', '<leader>y', '"+y', { desc = "Yank to clipboard" })
+
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>", { desc = "Run ctags" })
 vim.keymap.set('n', '<leader>cd', '<cmd>cd %:p:h<CR>', { desc = "Change directory to current file" })
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>", { desc = "Toggle line numbers" })
