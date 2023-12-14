@@ -47,7 +47,14 @@ require("lazy").setup({
                 defaults = {
                     file_ignore_patterns = {
                         "node_modules",
-                        ".git"
+                        ".git",
+                        "Library",
+                        "%.meta",
+                        "%.unity",
+                        "%.asset",
+                        "%.anim",
+                        "%.png",
+                        "%.asset"
                     },
                     mappings = {
                         i = {
