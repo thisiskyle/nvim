@@ -92,7 +92,7 @@ require("lazy").setup({
                 ensure_installed = {
                     "vimdoc", "javascript", "typescript", "c",
                     "lua", "sql", "html", "c_sharp",
-                    "scss", "css", "bash", "json",
+                    "scss", "python", "css", "bash", "json",
                     "markdown", "markdown_inline", "yaml"
                 },
 

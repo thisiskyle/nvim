@@ -144,11 +144,8 @@ function M.setup(c)
                 "StatusLine"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_normal,
-                attributes = {
-                    underline = true
-                }
+                fg = c.bg_normal,
+                bg = c.fg_normal,
             }
         },
         {
@@ -157,11 +154,7 @@ function M.setup(c)
             },
             style = {
                 fg = c.fg_01,
-                bg = c.bg_normal,
-
-                attributes = {
-                    underline = true
-                }
+                bg = c.fg_normal,
             }
         },
         {
