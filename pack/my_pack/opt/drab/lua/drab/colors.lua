@@ -34,17 +34,17 @@ M.palettes = {
     drab = {
         background = "light",
         fg_normal = black,
-        fg_01 = grey70,
+        fg_alt = grey70,
         bg_normal = white,
-        bg_01 = grey89,
+        bg_alt = grey89,
     },
 
     drab_night = {
         background = "dark",
         fg_normal = white,
-        fg_01 = grey50,
+        fg_alt = grey50,
         bg_normal = grey23,
-        bg_01 = grey62
+        bg_alt = grey62
     }
 }
 

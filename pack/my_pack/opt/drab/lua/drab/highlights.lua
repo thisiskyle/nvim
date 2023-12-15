@@ -21,7 +21,7 @@ function M.setup(c)
             },
             style = {
                 fg = c.fg_normal,
-                bg = c.bg_01,
+                bg = c.bg_alt,
                 attributes = {
                     bold = true
                 }
@@ -33,7 +33,7 @@ function M.setup(c)
             },
             style = {
                 fg = c.fg_normal,
-                bg = c.bg_01,
+                bg = c.bg_alt,
             }
         },
         {
@@ -41,7 +41,7 @@ function M.setup(c)
                 "Visual"
             },
             style = {
-                bg = c.bg_01
+                bg = c.bg_alt
             }
         },
         {
@@ -58,8 +58,8 @@ function M.setup(c)
                 "PmenuSel"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.fg_01
+                fg = c.bg_normal,
+                bg = c.fg_normal
             }
         },
         {
@@ -68,8 +68,8 @@ function M.setup(c)
                 "Pmenu"
             },
             style = {
-                fg = c.bg_normal,
-                bg = c.fg_normal
+                fg = c.fg_normal,
+                bg = c.bg_alt
             }
         },
         {
@@ -77,7 +77,7 @@ function M.setup(c)
                 "Comment"
             },
             style = {
-                fg = c.fg_01
+                fg = c.fg_alt
             }
         },
         {
@@ -113,7 +113,7 @@ function M.setup(c)
                 "TabLine"
             },
             style = {
-                bg = c.bg_01,
+                bg = c.bg_alt,
                 attributes = {
                     underline = true
                 }
@@ -144,8 +144,8 @@ function M.setup(c)
                 "StatusLine"
             },
             style = {
-                fg = c.bg_normal,
-                bg = c.fg_normal,
+                fg = c.fg_normal,
+                bg = c.bg_alt,
             }
         },
         {
@@ -153,8 +153,8 @@ function M.setup(c)
                 "StatusLineNC"
             },
             style = {
-                fg = c.fg_01,
-                bg = c.fg_normal,
+                fg = c.fg_alt,
+                bg = c.bg_alt,
             }
         },
         {
@@ -282,7 +282,6 @@ function M.setup(c)
             }
         },
     }
-
     return theme
 end
 
