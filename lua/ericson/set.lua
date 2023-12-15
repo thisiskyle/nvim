@@ -1,8 +1,3 @@
---
--- just saving these here. it was a pain to find the right size
---    ▁▂▃▄▅▆▇█
---
-
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.incsearch  = true
@@ -27,13 +22,11 @@ vim.opt.tags = './tags,tags;'
 vim.opt.guifont = 'agave:h11'
 vim.opt.signcolumn = "no"
 
-
 vim.api.nvim_create_autocmd({"FileType", "BufEnter", "FocusGained"}, {
 	callback = function()
 		vim.b.branch_name = require('ericson.utils').set_branch_name()
 	end
 })
-
 
 vim.opt.statusline = ""
     .. " "
@@ -50,4 +43,4 @@ vim.opt.statusline = ""
     .. "%l,%c"
     .. " "
 
-require('ericson.theme').set_theme("cat_light")
+require('ericson.theme').set_theme("drab")
