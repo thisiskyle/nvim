@@ -57,6 +57,9 @@ vim.keymap.set('n', '<leader>8', function() require("duck").hatch("ඞ") end, { 
 vim.keymap.set('n', '<leader>9', function() require("duck").cook() end, { desc = "Kill the duck!" })
 
 vim.keymap.set('n', '<leader>0', function() theme.set_theme("drab") end)
-vim.keymap.set('n', '<leader>1', function() theme.set_theme("cat_light") end)
-vim.keymap.set('n', '<leader>2', function() theme.set_theme("cat_dark") end)
-vim.keymap.set('n', '<leader>3', function() theme.set_theme("cat_transparent") end)
+vim.keymap.set('n', '<leader>1', function() theme.set_theme("rose_light") end)
+vim.keymap.set('n', '<leader>2', function() theme.set_theme("rose_dark") end)
+vim.keymap.set('n', '<leader>3', function() theme.set_theme("rose_transparent") end)
+vim.keymap.set('n', '<leader>4', function() theme.set_theme("cat_light") end)
+vim.keymap.set('n', '<leader>5', function() theme.set_theme("cat_dark") end)
+vim.keymap.set('n', '<leader>6', function() theme.set_theme("cat_transparent") end)
