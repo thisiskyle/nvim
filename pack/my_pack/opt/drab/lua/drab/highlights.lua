@@ -1,18 +1,18 @@
 local M = {}
 
+-- takes a pallete and applys the colors to the highlight groups
+function M.setup(p)
 
-function M.setup(c)
+    vim.opt.background = p.background or "dark"
 
-    vim.opt.background = c.background or "dark"
-
-    local theme = {
+    local highlight_rules = {
         {
             groups = {
                 "Normal"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_normal
+                fg = p.text,
+                bg = p.base
             }
         },
         {
@@ -20,8 +20,8 @@ function M.setup(c)
                 "Matchparen"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_alt,
+                fg = p.accent1,
+                bg = p.highlight1,
                 attributes = {
                     bold = true
                 }
@@ -32,8 +32,8 @@ function M.setup(c)
                 "Search"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_alt,
+                fg = p.accent1,
+                bg = p.highlight1,
             }
         },
         {
@@ -41,7 +41,7 @@ function M.setup(c)
                 "Visual"
             },
             style = {
-                bg = c.bg_alt
+                bg = p.highlight2
             }
         },
         {
@@ -49,8 +49,8 @@ function M.setup(c)
                 "Cursor"
             },
             style = {
-                fg = c.bg_normal,
-                bg = c.fg_normal
+                fg = p.base,
+                bg = p.text
             }
         },
         {
@@ -58,8 +58,8 @@ function M.setup(c)
                 "PmenuSel"
             },
             style = {
-                fg = c.bg_normal,
-                bg = c.fg_normal
+                fg = p.base,
+                bg = p.text
             }
         },
         {
@@ -68,8 +68,8 @@ function M.setup(c)
                 "Pmenu"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_alt
+                fg = p.text,
+                bg = p.highlight2
             }
         },
         {
@@ -77,7 +77,7 @@ function M.setup(c)
                 "Comment"
             },
             style = {
-                fg = c.fg_alt
+                fg = p.muted
             }
         },
         {
@@ -105,7 +105,15 @@ function M.setup(c)
                 "Error"
             },
             style = {
-                fg = c.red
+                fg = p.error
+            }
+        },
+        {
+            groups = {
+                "WarningMsg"
+            },
+            style = {
+                fg = p.warn
             }
         },
         {
@@ -113,7 +121,7 @@ function M.setup(c)
                 "TabLine"
             },
             style = {
-                bg = c.bg_alt,
+                bg = p.highlight2,
                 attributes = {
                     underline = true
                 }
@@ -124,7 +132,7 @@ function M.setup(c)
                 "TabLineFill"
             },
             style = {
-                bg = c.bg_normal,
+                bg = p.base,
                 attributes = {
                     underline = true
                 }
@@ -135,8 +143,8 @@ function M.setup(c)
                 "TabLineSel"
             },
             style = {
-                fg = c.bg_normal,
-                bg = c.fg_normal
+                fg = p.base,
+                bg = p.text
             }
         },
         {
@@ -144,8 +152,8 @@ function M.setup(c)
                 "StatusLine"
             },
             style = {
-                fg = c.fg_normal,
-                bg = c.bg_alt,
+                fg = p.text,
+                bg = p.highlight2,
             }
         },
         {
@@ -153,8 +161,8 @@ function M.setup(c)
                 "StatusLineNC"
             },
             style = {
-                fg = c.fg_alt,
-                bg = c.bg_alt,
+                fg = p.muted,
+                bg = p.highlight2,
             }
         },
         {
@@ -282,7 +290,7 @@ function M.setup(c)
             }
         },
     }
-    return theme
+    return highlight_rules
 end
 
 return M

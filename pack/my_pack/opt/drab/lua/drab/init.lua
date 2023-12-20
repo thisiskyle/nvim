@@ -1,11 +1,11 @@
-local theme = require("drab.highlights")
-local colors = require("drab.colors")
+local highlights = require("drab.highlights")
+local palettes = require("drab.palettes")
 
 local M = {}
 
 
 -- highlight function
-local function highlight(theme)
+local function color_the_things(theme)
     for key,value in pairs(theme) do
         for key2, value2 in pairs(value.groups) do
 
@@ -20,8 +20,8 @@ local function highlight(theme)
             local style = {
                 fg      = (value.style.fg == nil and {'NONE'} or {value.style.fg.gui})[1],
                 bg      = (value.style.bg == nil and {'NONE'} or {value.style.bg.gui})[1],
-                ctermfg = (value.style.fg == nil and {'NONE'} or {value.style.fg.cterm})[1],
-                ctermbg = (value.style.bg == nil and {'NONE'} or {value.style.bg.cterm})[1],
+                ctermfg = (value.style.fg == nil and {'NONE'} or {value.style.fg.term})[1],
+                ctermbg = (value.style.bg == nil and {'NONE'} or {value.style.bg.term})[1],
             }
 
             if(value.style.attributes ~= nil) then
@@ -38,13 +38,10 @@ local function highlight(theme)
 end
 
 
-
 function M.load(style)
-
     vim.cmd([[ hi clear ]])
     vim.g.colors_name = style
-    highlight(theme.setup(colors.palettes[style]))
-
+    color_the_things(highlights.setup(palettes.list[style]))
 end
 
 return M
