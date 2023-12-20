@@ -43,4 +43,4 @@ vim.opt.statusline = ""
     .. "%l,%c"
     .. " "
 
-require('ericson.theme').set_theme("drab_cozy")
+require('vibe-nvim').set_the_mood("drab_cozy")

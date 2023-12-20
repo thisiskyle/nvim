@@ -2,7 +2,7 @@ local M = {}
 
 local diag_active = true;
 
-
+-- test
 function M.toggle_diagnostics()
     diag_active = not diag_active
     if(diag_active) then
@@ -13,13 +13,6 @@ function M.toggle_diagnostics()
     end
 end
 
-
-function M.vimgrep()
-    vim.cmd.vimgrep(vim.fn.input("vimgrep > ") .. " ./**/*")
-    vim.cmd.vimgrep("Telescope quickfix")
-end
-
-
 function M.open_scratch_pad()
     vim.cmd(":enew")
     vim.cmd(":file scratch")
@@ -27,7 +20,6 @@ function M.open_scratch_pad()
     vim.opt_local.bufhidden = "hide"
     vim.opt_local.swapfile = false
 end
-
 
 function M.set_branch_name()
 	local branch = vim.fn.system("git branch --show-current")
@@ -42,7 +34,6 @@ function M.set_branch_name()
 		return ""
 	end
 end
-
 
 function M.git_branch()
     return vim.b.branch_name

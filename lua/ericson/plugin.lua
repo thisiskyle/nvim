@@ -157,7 +157,6 @@ require("lazy").setup({
             })
         end
     },
-    { "catppuccin/nvim" },
     { "rose-pine/neovim" },
     { "eandrju/cellular-automaton.nvim" },
     { "tamton-aquib/duck.nvim" },
@@ -167,3 +166,51 @@ require("lazy").setup({
 })
 
 vim.cmd.packadd("drab")
+vim.cmd.packadd("vibe-nvim")
+
+require('vibe-nvim').setup({
+    rose_light = {
+        name = 'rose-pine',
+        transparent = false,
+        config = function()
+            require("rose-pine").setup({
+                variant = 'dawn',
+                disable_italics = true,
+                disable_background = false,
+                disable_float_background = false
+            })
+        end
+    },
+    rose_dark = {
+        name = 'rose-pine',
+        transparent = false,
+        config = function()
+            require("rose-pine").setup({
+                variant = 'moon',
+                disable_italics = true,
+                disable_background = false,
+                disable_float_background = false
+            })
+        end
+    },
+    rose_transparent = {
+        name = 'rose-pine',
+        transparent = true,
+        config = function()
+            require("rose-pine").setup({
+                variant = 'moon',
+                disable_italics = true,
+                disable_background = true,
+                disable_float_background = true
+            })
+        end
+    },
+    drab = {
+        name = 'drab',
+        transparent = false
+    },
+    drab_cozy = {
+        name = 'drab-cozy',
+        transparent = false
+    }
+})
