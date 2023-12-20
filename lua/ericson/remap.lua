@@ -29,8 +29,6 @@ vim.keymap.set('n', '<leader>fi', tscope.lsp_implementations, { desc = "Find lsp
 vim.keymap.set('n', '<leader>fb', tscope.buffers, { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fu', tscopeext.undo.undo, { desc = "Open undo history" })
 
-vim.keymap.set('n', '<leader>ex', "<cmd>Ex<cr>", { desc = "Open explorer" })
-
 vim.keymap.set("n", "<leader>k", function() vim.lsp.buf.hover() end, { desc = "Hover info" })
 vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, { desc = "Code actions" })
@@ -53,10 +51,14 @@ vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>", { desc = "Toggle line numb
 vim.keymap.set('n', '<leader>rain', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = "Make it rain" })
 vim.keymap.set('n', '<leader>life', '<cmd>CellularAutomaton game_of_life<CR>', { desc = "Game of life" })
 
-vim.keymap.set('n', '<leader>8', function() require("duck").hatch("ඞ") end, { desc = "Release the duck!" })
+vim.keymap.set('n', '<leader>sus', function() require("duck").hatch("ඞ") end, { desc = "Release the duck!" })
 vim.keymap.set('n', '<leader>9', function() require("duck").cook() end, { desc = "Kill the duck!" })
 
-vim.keymap.set('n', '<leader>0', function() theme.set_theme("drab") end)
 vim.keymap.set('n', '<leader>1', function() theme.set_theme("rose_light") end)
 vim.keymap.set('n', '<leader>2', function() theme.set_theme("rose_dark") end)
 vim.keymap.set('n', '<leader>3', function() theme.set_theme("rose_transparent") end)
+vim.keymap.set('n', '<leader>4', function() theme.set_theme("cat_light") end)
+vim.keymap.set('n', '<leader>5', function() theme.set_theme("cat_dark") end)
+vim.keymap.set('n', '<leader>6', function() theme.set_theme("cat_transparent") end)
+vim.keymap.set('n', '<leader>7', function() theme.set_theme("drab") end)
+vim.keymap.set('n', '<leader>8', function() theme.set_theme("drab_cozy") end)

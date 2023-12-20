@@ -43,4 +43,4 @@ vim.opt.statusline = ""
     .. "%l,%c"
     .. " "
 
-require('ericson.theme').set_theme("rose_light")
+require('ericson.theme').set_theme("drab_cozy")

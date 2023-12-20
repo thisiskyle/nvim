@@ -105,8 +105,8 @@ local themes = {
         name = 'drab',
         transparent = false
     },
-    drab_cozy_light = {
-        name = 'drab_cozy_light',
+    drab_cozy = {
+        name = 'drab-cozy',
         transparent = false
     }
 }

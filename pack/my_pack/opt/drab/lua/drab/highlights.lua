@@ -20,8 +20,8 @@ function M.setup(p)
                 "Matchparen"
             },
             style = {
-                fg = p.accent1,
-                bg = p.highlight1,
+                fg = p.alt,
+                bg = p.accent,
                 attributes = {
                     bold = true
                 }
@@ -32,8 +32,8 @@ function M.setup(p)
                 "Search"
             },
             style = {
-                fg = p.accent1,
-                bg = p.highlight1,
+                fg = p.alt,
+                bg = p.accent,
             }
         },
         {
@@ -41,7 +41,7 @@ function M.setup(p)
                 "Visual"
             },
             style = {
-                bg = p.highlight2
+                bg = p.highlight
             }
         },
         {
@@ -69,7 +69,7 @@ function M.setup(p)
             },
             style = {
                 fg = p.text,
-                bg = p.highlight2
+                bg = p.highlight
             }
         },
         {
@@ -121,7 +121,7 @@ function M.setup(p)
                 "TabLine"
             },
             style = {
-                bg = p.highlight2,
+                bg = p.highlight,
                 attributes = {
                     underline = true
                 }
@@ -153,7 +153,7 @@ function M.setup(p)
             },
             style = {
                 fg = p.text,
-                bg = p.highlight2,
+                bg = p.highlight,
             }
         },
         {
@@ -162,7 +162,7 @@ function M.setup(p)
             },
             style = {
                 fg = p.muted,
-                bg = p.highlight2,
+                bg = p.highlight,
             }
         },
         {
@@ -170,7 +170,8 @@ function M.setup(p)
                 "IncSearch"
             },
             style = {
-                link = "Cursor"
+                fg = p.base,
+                bg = p.text,
             }
         },
         {
