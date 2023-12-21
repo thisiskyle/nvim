@@ -166,11 +166,11 @@ require("lazy").setup({
 })
 
 vim.cmd.packadd("drab")
-vim.cmd.packadd("vibe-nvim")
+vim.cmd.packadd("vibe-check-nvim")
 
-require('vibe-nvim').setup({
+require('vibe-check-nvim').setup({
     rose_light = {
-        name = 'rose-pine',
+        colorscheme = 'rose-pine',
         transparent = false,
         config = function()
             require("rose-pine").setup({
@@ -182,7 +182,7 @@ require('vibe-nvim').setup({
         end
     },
     rose_dark = {
-        name = 'rose-pine',
+        colorscheme = 'rose-pine',
         transparent = false,
         config = function()
             require("rose-pine").setup({
@@ -194,7 +194,7 @@ require('vibe-nvim').setup({
         end
     },
     rose_transparent = {
-        name = 'rose-pine',
+        colorscheme = 'rose-pine',
         transparent = true,
         config = function()
             require("rose-pine").setup({
@@ -206,11 +206,12 @@ require('vibe-nvim').setup({
         end
     },
     drab = {
-        name = 'drab',
-        transparent = false
-    },
-    drab_cozy = {
-        name = 'drab-cozy',
-        transparent = false
+        colorscheme = 'drab',
+        transparent = false,
+        config = function()
+            require("drab").setup({
+                variant = 'day',
+            })
+        end
     }
 })

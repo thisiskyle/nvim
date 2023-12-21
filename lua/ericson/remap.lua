@@ -1,6 +1,6 @@
 local tscope = require('telescope.builtin')
 local tscopeext = require('telescope').extensions
-local vibe = require('vibe-nvim')
+local vibe = require('vibe-check-nvim')
 
 vim.g.mapleader = " "
 
@@ -38,8 +38,7 @@ vim.keymap.set('x', '<leader>y', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>", { desc = "Run ctags" })
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>", { desc = "Toggle line numbers" })
 
-vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("rose_light") end)
-vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("rose_dark") end)
-vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("rose_transparent") end)
-vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("drab") end)
-vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("drab_cozy") end)
+vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
+vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("rose_light") end)
+vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("rose_dark") end)
+vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("rose_transparent") end)

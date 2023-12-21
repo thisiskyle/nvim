@@ -4,10 +4,11 @@ local palettes = require("drab.palettes")
 local M = {}
 
 
+
 -- highlight function
 local function color_the_things(theme)
-    for key,value in pairs(theme) do
-        for key2, value2 in pairs(value.groups) do
+    for _,value in pairs(theme) do
+        for key2,_ in pairs(value.groups) do
 
             if(value.style.link ~= nil) then
                 -- we want link to override everything else, so we ignore the rest of the style 
@@ -41,7 +42,20 @@ end
 function M.load(style)
     vim.cmd([[ hi clear ]])
     vim.g.colors_name = style
-    color_the_things(highlights.setup(palettes.list[style]))
+    color_the_things(highlights.set_rules(palettes.list[style]))
+end
+
+function M.setup(options)
+
+    if(options.variant) then
+        palettes.list["main"] = palettes.list[options.variant]
+    end
+
+    if(options.palette) then
+        palettes.list["main"] = options.palette
+    end
+
+    M.load("main")
 end
 
 return M

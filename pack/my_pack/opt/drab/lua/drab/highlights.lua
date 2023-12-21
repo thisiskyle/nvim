@@ -1,7 +1,7 @@
 local M = {}
 
 -- takes a pallete and applys the colors to the highlight groups
-function M.setup(p)
+function M.set_rules(p)
 
     vim.opt.background = p.background or "dark"
 
@@ -288,6 +288,14 @@ function M.setup(p)
         },
             style = {
                 link = "Comment"
+            }
+        },
+        {
+            groups = {
+                "TelescopeMatching",
+        },
+            style = {
+                link = "Cursor"
             }
         },
     }

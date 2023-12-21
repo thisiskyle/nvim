@@ -3,7 +3,6 @@ local M = {}
 
 local vibes = {}
 
-
 local function set_transparent()
     vim.api.nvim_set_hl(0, "Normal", { bg = 'none' })
     vim.api.nvim_set_hl(0, "NormalNC", { bg = 'none' })
@@ -16,7 +15,7 @@ local function apply_theme(_theme)
         _theme.config()
     end
 
-    vim.cmd.colorscheme(_theme.name)
+    vim.cmd.colorscheme(_theme.colorscheme)
 
     if(_theme.transparent) then
         set_transparent()
