@@ -21,6 +21,7 @@ vim.keymap.set('n', '<leader>fr', tscope.lsp_references, { desc = "Find lsp refe
 vim.keymap.set('n', '<leader>fi', tscope.lsp_implementations, { desc = "Find lsp implementations" })
 vim.keymap.set('n', '<leader>fb', tscope.buffers, { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fu', tscopeext.undo.undo, { desc = "Open undo history" })
+vim.keymap.set('n', '<leader>fn', tscopeext.notify.notify, { desc = "Open notification history" })
 
 vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
 vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, { desc = "Code actions" })

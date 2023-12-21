@@ -43,4 +43,3 @@ vim.opt.statusline = ""
     .. "%l,%c"
     .. " "
 
-require('vibe-check-nvim').set_the_mood("rose_light")

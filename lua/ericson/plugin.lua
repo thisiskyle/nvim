@@ -157,61 +157,77 @@ require("lazy").setup({
             })
         end
     },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            vim.notify = require("notify")
+            require("notify").setup({
+                icons = {
+                    DEBUG = "[D]",
+                    ERROR = "[E]",
+                    INFO = "[I]",
+                    TRACE = "[T]",
+                    WARN = "[W]"
+                },
+            })
+        end
+    },
     { "rose-pine/neovim" },
-    { "eandrju/cellular-automaton.nvim" },
-    { "tamton-aquib/duck.nvim" },
-},
-{
-    performance = { reset_packpath = false }
-})
+    { dir = "~/AppData/Local/nvim/pack/my_pack/opt/drab" },
+    {
+        dir = "~/AppData/Local/nvim/pack/my_pack/opt/vibe-check-nvim",
 
-vim.cmd.packadd("drab")
-vim.cmd.packadd("vibe-check-nvim")
+        config = function()
+            require('vibe-check-nvim').setup({
+                rose_light = {
+                    colorscheme = 'rose-pine',
+                    transparent = false,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'dawn',
+                            disable_italics = true,
+                            disable_background = false,
+                            disable_float_background = false
+                        })
+                    end
+                },
+                rose_dark = {
+                    colorscheme = 'rose-pine',
+                    transparent = false,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'moon',
+                            disable_italics = true,
+                            disable_background = false,
+                            disable_float_background = false
+                        })
+                    end
+                },
+                rose_transparent = {
+                    colorscheme = 'rose-pine',
+                    transparent = true,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'moon',
+                            disable_italics = true,
+                            disable_background = true,
+                            disable_float_background = true
+                        })
+                    end
+                },
+                drab = {
+                    colorscheme = 'drab',
+                    transparent = false,
+                    config = function()
+                        require("drab").setup({
+                            variant = 'day',
+                        })
+                    end
+                }
+            })
 
-require('vibe-check-nvim').setup({
-    rose_light = {
-        colorscheme = 'rose-pine',
-        transparent = false,
-        config = function()
-            require("rose-pine").setup({
-                variant = 'dawn',
-                disable_italics = true,
-                disable_background = false,
-                disable_float_background = false
-            })
+            require('vibe-check-nvim').set_the_mood("rose_light")
+
         end
     },
-    rose_dark = {
-        colorscheme = 'rose-pine',
-        transparent = false,
-        config = function()
-            require("rose-pine").setup({
-                variant = 'moon',
-                disable_italics = true,
-                disable_background = false,
-                disable_float_background = false
-            })
-        end
-    },
-    rose_transparent = {
-        colorscheme = 'rose-pine',
-        transparent = true,
-        config = function()
-            require("rose-pine").setup({
-                variant = 'moon',
-                disable_italics = true,
-                disable_background = true,
-                disable_float_background = true
-            })
-        end
-    },
-    drab = {
-        colorscheme = 'drab',
-        transparent = false,
-        config = function()
-            require("drab").setup({
-                variant = 'day',
-            })
-        end
-    }
 })
