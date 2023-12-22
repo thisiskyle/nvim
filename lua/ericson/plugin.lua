@@ -227,7 +227,6 @@ require("lazy").setup({
             })
 
             require('vibe-check-nvim').set_the_mood("rose_light")
-
         end
     },
 })
