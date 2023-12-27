@@ -52,6 +52,7 @@ function M.setup(options)
     end
 
     if(options.palette) then
+        -- TODO/enhance: merge these tables instead of just over writting it
         palettes.list["main"] = options.palette
     end
 

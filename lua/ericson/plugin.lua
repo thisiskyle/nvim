@@ -169,6 +169,7 @@ require("lazy").setup({
                     TRACE = "[T]",
                     WARN = "[W]"
                 },
+                background_colour = "#000000"
             })
         end
     },
