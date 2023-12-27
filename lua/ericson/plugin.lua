@@ -174,6 +174,7 @@ require("lazy").setup({
         end
     },
     { "rose-pine/neovim" },
+    { "catppuccin/nvim" },
     { dir = "~/AppData/Local/nvim/pack/my_pack/opt/drab" },
     {
         dir = "~/AppData/Local/nvim/pack/my_pack/opt/vibe-check-nvim",
