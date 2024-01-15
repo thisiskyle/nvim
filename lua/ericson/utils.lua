@@ -1,8 +1,6 @@
 local M = {}
 
 local diag_active = true;
-
--- test
 function M.toggle_diagnostics()
     diag_active = not diag_active
     if(diag_active) then
@@ -12,33 +10,6 @@ function M.toggle_diagnostics()
         vim.opt.signcolumn = "no"
     end
 end
-
-function M.open_scratch_pad()
-    vim.cmd(":enew")
-    vim.cmd(":file scratch")
-    vim.opt_local.buftype = "nofile"
-    vim.opt_local.bufhidden = "hide"
-    vim.opt_local.swapfile = false
-end
-
-function M.set_branch_name()
-	local branch = vim.fn.system("git branch --show-current")
-
-    if(string.find(branch, 'fatal')) then
-        branch = ""
-    end
-
-	if branch ~= "" then
-		return "Git: " .. branch:gsub('\n', '')
-	else
-		return ""
-	end
-end
-
-function M.git_branch()
-    return vim.b.branch_name
-end
-
 
 function M.get_diag_count()
     if vim.fn.has('nvim-0.6') == 1 then

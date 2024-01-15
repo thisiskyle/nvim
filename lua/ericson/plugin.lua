@@ -87,7 +87,6 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require('nvim-treesitter.install').compilers = { "zig", "clang", "gcc" }
-
             require('nvim-treesitter.configs').setup({
                 ensure_installed = {
                     "vimdoc", "javascript", "typescript", "c",
@@ -95,15 +94,12 @@ require("lazy").setup({
                     "scss", "python", "css", "bash", "json",
                     "markdown", "markdown_inline", "yaml"
                 },
-
                 auto_install = true,
-
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
                 },
             })
-
             vim.cmd([[ TSUpdate ]])
         end
     },
@@ -157,28 +153,10 @@ require("lazy").setup({
             })
         end
     },
-    {
-        "rcarriga/nvim-notify",
-        config = function()
-            vim.notify = require("notify")
-            require("notify").setup({
-                icons = {
-                    DEBUG = "[D]",
-                    ERROR = "[E]",
-                    INFO = "[I]",
-                    TRACE = "[T]",
-                    WARN = "[W]"
-                },
-                background_colour = "#000000"
-            })
-        end
-    },
     { "rose-pine/neovim" },
-    { "catppuccin/nvim" },
     { dir = "~/AppData/Local/nvim/pack/my_pack/opt/drab" },
     {
         dir = "~/AppData/Local/nvim/pack/my_pack/opt/vibe-check-nvim",
-
         config = function()
             require('vibe-check-nvim').setup({
                 rose_light = {
@@ -218,17 +196,16 @@ require("lazy").setup({
                     end
                 },
                 drab = {
-                    colorscheme = 'drab',
+                    colorscheme = 'drab-day',
                     transparent = false,
-                    config = function()
-                        require("drab").setup({
-                            variant = 'day',
-                        })
-                    end
+                },
+                drab_transparent = {
+                    colorscheme = 'drab-night',
+                    transparent = true,
                 }
             })
 
-            require('vibe-check-nvim').set_the_mood("rose_light")
+            require('vibe-check-nvim').set_the_mood("drab")
         end
     },
 })
