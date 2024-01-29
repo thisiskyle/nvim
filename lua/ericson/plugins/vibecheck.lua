@@ -3,53 +3,8 @@ return {
         dir = "~/AppData/Local/nvim/pack/my_pack/opt/vibe-check-nvim",
         config = function()
             require('vibe-check-nvim').setup({
-                rose_light = {
-                    colorscheme = 'rose-pine',
-                    background = 'light',
-                    transparent = false,
-                    config = function()
-                        require("rose-pine").setup({
-                            variant = 'dawn',
-                            style = {
-                                bold = false,
-                                italic = false,
-                                transparency = false
-                            }
-                        })
-                    end
-                },
-                rose_dark = {
-                    colorscheme = 'rose-pine',
-                    background = 'dark',
-                    transparent = false,
-                    config = function()
-                        require("rose-pine").setup({
-                            variant = 'moon',
-                            style = {
-                                bold = false,
-                                italic = false,
-                                transparency = false
-                            }
-                        })
-                    end
-                },
-                rose_transparent = {
-                    colorscheme = 'rose-pine',
-                    background = 'dark',
-                    transparent = true,
-                    config = function()
-                        require("rose-pine").setup({
-                            variant = 'moon',
-                            style = {
-                                bold = false,
-                                italic = false,
-                                transparency = true
-                            }
-                        })
-                    end
-                },
                 cat = {
-                    colorscheme = 'catppuccin',
+                    colorscheme = 'catppuccin-frappe',
                     background = 'dark',
                     transparent = false,
                     post = function()
@@ -57,7 +12,7 @@ return {
                     end
                 },
                 cat_light = {
-                    colorscheme = 'catppuccin',
+                    colorscheme = 'catppuccin-latte',
                     background = 'light',
                     transparent = false,
                     post = function()
@@ -65,7 +20,7 @@ return {
                     end
                 },
                 cat_ghost = {
-                    colorscheme = 'catppuccin',
+                    colorscheme = 'catppuccin-frappe',
                     background = 'dark',
                     transparent = true,
                     post = function()
@@ -77,12 +32,12 @@ return {
                     background = 'light',
                     transparent = false,
                 },
-                drab_dark = {
+                drab_night = {
                     colorscheme = 'drab-night',
                     background = 'dark',
                     transparent = false,
                 },
-                drab_transparent = {
+                drab_ghost = {
                     colorscheme = 'drab-night',
                     background = 'dark',
                     transparent = true,

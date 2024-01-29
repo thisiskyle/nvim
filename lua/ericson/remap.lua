@@ -23,7 +23,7 @@ vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node
 
 vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
 vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("drab_dark") end)
-vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_transparent") end)
-vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("rose_light") end)
-vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("rose_dark") end)
-vim.keymap.set('n', '<leader>6', function() vibe.set_the_mood("rose_transparent") end)
+vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)
+vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("cat_light") end)
+vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("cat") end)
+vim.keymap.set('n', '<leader>6', function() vibe.set_the_mood("cat_ghost") end)
