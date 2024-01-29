@@ -15,7 +15,12 @@ local function apply_theme(_theme)
         _theme.config()
     end
 
+    vim.opt.background = _theme.background
     vim.cmd.colorscheme(_theme.colorscheme)
+
+    if _theme.post then
+        _theme.post()
+    end
 
     if(_theme.transparent) then
         set_transparent()
