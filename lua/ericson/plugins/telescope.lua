@@ -6,7 +6,6 @@ return {
             'debugloop/telescope-undo.nvim'
         },
         config = function()
-
             -- this function is for opening multiple files at once
             local select_one_or_multi = function(prompt_bufnr)
                 local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
