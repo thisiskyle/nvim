@@ -16,6 +16,7 @@ vim.keymap.set('n', '<leader>fc', ts.command_history)
 vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 
 vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.definition() end)
+vim.keymap.set('n', '<leader>gt', function() vim.lsp.buf.type_definition() end)
 vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.hover() end)
 vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end)
 
@@ -27,4 +28,3 @@ vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)
 vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("cat_light") end)
 vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("cat") end)
 vim.keymap.set('n', '<leader>6', function() vibe.set_the_mood("cat_ghost") end)
-vim.keymap.set('n', '<leader>7', function() vibe.set_the_mood("gruv") end)
