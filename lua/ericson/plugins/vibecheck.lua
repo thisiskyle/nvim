@@ -98,8 +98,53 @@ return {
                         vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                     end
                 },
+                rose_light = {
+                    colorscheme = 'rose-pine',
+                    background = 'light',
+                    transparent = false,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'dawn',
+                            styles = {
+                                bold = false,
+                                italic = false,
+                                transparency = false
+                            }
+                        })
+                    end
+                },
+                rose = {
+                    colorscheme = 'rose-pine',
+                    background = 'dark',
+                    transparent = false,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'moon',
+                            styles = {
+                                bold = false,
+                                italic = false,
+                                transparency = false
+                            }
+                        })
+                    end
+                },
+                rose_ghost = {
+                    colorscheme = 'rose-pine',
+                    background = 'dark',
+                    transparent = true,
+                    config = function()
+                        require("rose-pine").setup({
+                            variant = 'moon',
+                            styles = {
+                                bold = false,
+                                italic = false,
+                                transparency = true
+                            }
+                        })
+                    end
+                },
             })
-            require('vibe-check-nvim').set_the_mood("cat")
+            require('vibe-check-nvim').set_the_mood("rose")
         end
     },
 }

@@ -22,4 +22,5 @@ require("lazy").setup({
     require('ericson.plugins.lspzero'),
     require('ericson.plugins.colorschemes'),
     require('ericson.plugins.vibecheck'),
+    require('ericson.plugins.vim-apm'),
 })
