@@ -26,7 +26,7 @@ return {
                 defaults = {
                     file_ignore_patterns = {
                         "node_modules",
-                        ".git",
+                        ".git\\",
                         "Library",
                         "%.meta",
                         "%.unity",
@@ -39,6 +39,11 @@ return {
                         i = {
                             ["<CR>"] = select_one_or_multi,
                         }
+                    }
+                },
+                pickers = {
+                    find_files = {
+                        hidden = true
                     }
                 },
                 extensions = {
