@@ -3,7 +3,6 @@ vim.opt.wildoptions = 'pum'
 vim.opt.incsearch  = true
 vim.opt.hlsearch  = true
 vim.opt.wrapscan = false
-vim.opt.hidden = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
@@ -18,5 +17,7 @@ vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.statusline = ""
-    .. " %F %m%=%="
+    .. " %F %m"
+    .. "%="
+    .. "%="
     .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
