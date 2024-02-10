@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     require('ericson.plugins.telescope'),
     require('ericson.plugins.treesitter'),
-    require('ericson.plugins.lspzero'),
+    require('ericson.plugins.lsp'),
     require('ericson.plugins.colorschemes'),
     require('ericson.plugins.vibecheck'),
     require('ericson.plugins.vim-apm'),

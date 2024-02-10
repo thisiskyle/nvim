@@ -1,3 +1,3 @@
 require("ericson.set")
-require("ericson.plugins")
+require("ericson.lazy")
 require("ericson.remap")
