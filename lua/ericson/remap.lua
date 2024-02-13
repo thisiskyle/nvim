@@ -23,7 +23,7 @@ vim.keymap.set('n', '<leader>gt', function() vim.lsp.buf.type_definition() end)
 vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.hover() end)
 
 -- diagnostic
-vim.keymap.st('n', '<leader>vd', function() vim.diagnostic.open_float() end)
+vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end)
 
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
