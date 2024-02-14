@@ -26,10 +26,11 @@ vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end)
 
 -- git
 vim.keymap.set('n', '<leader>gs', "<cmd>!git status<CR>")
-vim.keymap.set('n', '<leader>gb', "<cmd>!git branch<CR>")
 
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
+vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
+vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<CR>")
 vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
 
 vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
