@@ -47,6 +47,15 @@ return {
                             }
                         })
                     end,
+
+                    ["omnisharp"] = function()
+                        require("lspconfig").omnisharp.setup({
+                            capabilities = capabilities,
+                            root_dir = function(fname)
+                                return require('lspconfig').util.root_pattern('.git', '.sln')(fname)
+                            end,
+                        })
+                    end,
                 },
             })
 
