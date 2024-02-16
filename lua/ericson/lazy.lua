@@ -18,9 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 -- setup plugins
 require("lazy").setup({
     require('ericson.plugins.telescope'),
-    require('ericson.plugins.treesitter'),
     require('ericson.plugins.lsp'),
+    require('ericson.plugins.vim-apm'),
     require('ericson.plugins.colorschemes'),
     require('ericson.plugins.vibecheck'),
-    require('ericson.plugins.vim-apm'),
+    require('ericson.plugins.treesitter'),
 })
