@@ -56,6 +56,15 @@ return {
                             end,
                         })
                     end,
+
+                    ["omnisharp_mono"] = function()
+                        require("lspconfig").omnisharp_mono.setup({
+                            capabilities = capabilities,
+                            root_dir = function(fname)
+                                return require('lspconfig').util.root_pattern('.git', '.sln')(fname)
+                            end,
+                        })
+                    end,
                 },
             })
 

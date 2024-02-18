@@ -20,9 +20,14 @@ vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 vim.keymap.set('n', '<leader>jd', function() vim.lsp.buf.definition() end)
 vim.keymap.set('n', '<leader>jt', function() vim.lsp.buf.type_definition() end)
 vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.hover() end)
+vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 
 -- diagnostic
-vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end)
+vim.keymap.set('n', '<leader>di', function() vim.diagnostic.open_float() end)
+vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end)
+vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end)
+vim.keymap.set('n', '<leader>dq', function() vim.diagnostic.setqflist() end)
+vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setloclist() end)
 
 -- git
 vim.keymap.set('n', '<leader>gs', "<cmd>!git status<CR>")

@@ -111,6 +111,9 @@ return {
                                 transparency = false
                             }
                         })
+                    end,
+                    post = function()
+                        vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                     end
                 },
                 rose = {
@@ -126,6 +129,9 @@ return {
                                 transparency = false
                             }
                         })
+                    end,
+                    post = function()
+                        vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                     end
                 },
                 rose_ghost = {
@@ -141,6 +147,9 @@ return {
                                 transparency = true
                             }
                         })
+                    end,
+                    post = function()
+                        vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                     end
                 },
             })
