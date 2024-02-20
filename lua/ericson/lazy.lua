@@ -23,4 +23,5 @@ require("lazy").setup({
     require('ericson.plugins.colorschemes'),
     require('ericson.plugins.vibecheck'),
     require('ericson.plugins.treesitter'),
+    require('ericson.plugins.toys'),
 })
