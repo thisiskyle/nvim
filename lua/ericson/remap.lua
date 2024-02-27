@@ -6,7 +6,7 @@ local apm = require('vim-apm')
 vim.g.mapleader = " "
 
 -- telescope
---vim.keymap.set('n', '<leader>ff', ts.find_files)
+vim.keymap.set('n', '<leader>ff', ts.find_files)
 vim.keymap.set('n', '<leader>fg', ts.live_grep)
 vim.keymap.set('n', '<leader>fh', ts.help_tags)
 vim.keymap.set('n', '<leader>fd', ts.diagnostics)
@@ -16,14 +16,9 @@ vim.keymap.set('n', '<leader>fi', ts.lsp_implementations)
 vim.keymap.set('n', '<leader>fc', ts.command_history)
 vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 
--- fuzzy search
-vim.keymap.set('n', '<leader>ff', ":find ./**/*")
-
 -- lsp
 vim.keymap.set('n', '<leader>jd', function() vim.lsp.buf.definition() end)
 vim.keymap.set('n', '<leader>jt', function() vim.lsp.buf.type_definition() end)
-vim.keymap.set('n', '<leader>vr', function() vim.lsp.buf.references() end)
-vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.implementations() end)
 vim.keymap.set('n', '<leader>vk', function() vim.lsp.buf.hover() end)
 vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 
@@ -38,7 +33,7 @@ vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setloclist() end)
 vim.keymap.set('n', '<leader>gs', "<cmd>!git status<CR>")
 
 -- snippets
-vim.keymap.set('n', '<leader>spook', ":-1read ~/AppData/Local/nvim/templates/skeleton.")
+vim.keymap.set('n', '<leader>sn', ":-1read ~/AppData/Local/nvim/snippets/")
 
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")

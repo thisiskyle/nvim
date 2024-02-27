@@ -100,6 +100,9 @@ return {
             vim.diagnostic.config({
                 signs = false,
                 underline = false,
+                virtual_text = {
+                    prefix = "!"
+                },
                 float = {
                     focusable = false,
                     style = "minimal",
