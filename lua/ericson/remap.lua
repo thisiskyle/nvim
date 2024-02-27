@@ -32,6 +32,9 @@ vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setloclist() end)
 -- git
 vim.keymap.set('n', '<leader>gs', "<cmd>!git status<CR>")
 
+-- snippets
+vim.keymap.set('n', '<leader>spook', ":-1read ~/AppData/Local/nvim/templates/skeleton.")
+
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
@@ -45,3 +48,9 @@ vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)
 vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("rose_light") end)
 vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("rose") end)
 vim.keymap.set('n', '<leader>6', function() vibe.set_the_mood("rose_ghost") end)
+
+
+
+
+
+
