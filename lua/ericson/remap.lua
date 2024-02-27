@@ -5,8 +5,8 @@ local apm = require('vim-apm')
 
 vim.g.mapleader = " "
 
--- fuzzy search
-vim.keymap.set('n', '<leader>ff', ts.find_files)
+-- telescope
+--vim.keymap.set('n', '<leader>ff', ts.find_files)
 vim.keymap.set('n', '<leader>fg', ts.live_grep)
 vim.keymap.set('n', '<leader>fh', ts.help_tags)
 vim.keymap.set('n', '<leader>fd', ts.diagnostics)
@@ -16,10 +16,15 @@ vim.keymap.set('n', '<leader>fi', ts.lsp_implementations)
 vim.keymap.set('n', '<leader>fc', ts.command_history)
 vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 
+-- fuzzy search
+vim.keymap.set('n', '<leader>ff', ":find ./**/*")
+
 -- lsp
 vim.keymap.set('n', '<leader>jd', function() vim.lsp.buf.definition() end)
 vim.keymap.set('n', '<leader>jt', function() vim.lsp.buf.type_definition() end)
-vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.hover() end)
+vim.keymap.set('n', '<leader>vr', function() vim.lsp.buf.references() end)
+vim.keymap.set('n', '<leader>vi', function() vim.lsp.buf.implementations() end)
+vim.keymap.set('n', '<leader>vk', function() vim.lsp.buf.hover() end)
 vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 
 -- diagnostic
@@ -48,9 +53,3 @@ vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)
 vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("rose_light") end)
 vim.keymap.set('n', '<leader>5', function() vibe.set_the_mood("rose") end)
 vim.keymap.set('n', '<leader>6', function() vibe.set_the_mood("rose_ghost") end)
-
-
-
-
-
-
