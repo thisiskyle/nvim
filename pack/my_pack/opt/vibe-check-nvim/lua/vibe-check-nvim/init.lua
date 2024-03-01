@@ -3,10 +3,10 @@ local M = {}
 
 local configDir = ""
 
-if(vim.loop.os_uname().sysname == "Linux") then
-    configDir = os.getenv("HOME") .. "/.config/nvim/"
-elseif(vim.loop.os_uname().sysname == "Windows_NT") then
+if(vim.loop.os_uname().sysname == "Windows_NT") then
     configDir = os.getenv("userprofile") .. "/AppData/Local/nvim-data/"
+else
+    configDir = os.getenv("HOME") .. "/.config/nvim/"
 end
 
 local config = {
@@ -40,9 +40,7 @@ local function apply_theme(_theme)
 end
 
 local function use_last()
-
     local f = io.open(config.save_file, "r")
-
     if(f == nil) then
         if(config.default == "") then
             M.pick_random()
@@ -56,15 +54,15 @@ local function use_last()
 end
 
 local function save(name)
-    print(config.save_file)
     local f = assert(io.open(config.save_file, "w"))
 
     if(f == nil) then
-        print("failed to save: file not found")
+        print("Failed to save: " .. config.save_file .. " not found")
         return
     end
     f:write(name)
     f:close()
+    print("Vibe saved to " .. config.save_file)
 end
 
 function M.setup(_config)
