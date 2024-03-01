@@ -5,12 +5,12 @@ local configDir = ""
 
 if(vim.loop.os_uname().sysname == "Linux") then
     configDir = os.getenv("HOME") .. "/.config/nvim/"
-elseif(vim.loop.os_uname().sysname == "Windows") then
-    configDir = os.getenv("userprofile") .. "/AppData/Local/nvim/"
+elseif(vim.loop.os_uname().sysname == "Windows_NT") then
+    configDir = os.getenv("userprofile") .. "/AppData/Local/nvim-data/"
 end
 
 local config = {
-    save_file = configDir .. "/.vibecheck",
+    save_file = configDir .. ".vibecheck",
     default = "",
     use_last = true,
     vibes = {},
@@ -56,6 +56,7 @@ local function use_last()
 end
 
 local function save(name)
+    print(config.save_file)
     local f = assert(io.open(config.save_file, "w"))
 
     if(f == nil) then
