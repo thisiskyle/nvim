@@ -9,11 +9,9 @@ vim.g.mapleader = " "
 vim.keymap.set('n', '<leader>ff', ts.find_files)
 vim.keymap.set('n', '<leader>fg', ts.live_grep)
 vim.keymap.set('n', '<leader>fh', ts.help_tags)
-vim.keymap.set('n', '<leader>fd', ts.diagnostics)
 vim.keymap.set('n', '<leader>fw', ts.lsp_dynamic_workspace_symbols)
 vim.keymap.set('n', '<leader>fr', ts.lsp_references)
 vim.keymap.set('n', '<leader>fi', ts.lsp_implementations)
-vim.keymap.set('n', '<leader>fc', ts.command_history)
 vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 
 -- lsp
@@ -24,23 +22,14 @@ vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 
 -- diagnostic
 vim.keymap.set('n', '<leader>di', function() vim.diagnostic.open_float() end)
-vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end)
-vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end)
 vim.keymap.set('n', '<leader>dq', function() vim.diagnostic.setqflist() end)
 vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setloclist() end)
-
--- git
-vim.keymap.set('n', '<leader>gs', "<cmd>!git status<CR>")
-
--- snippets
-vim.keymap.set('n', '<leader>sn', ":-1read ~/AppData/Local/nvim/snippets/")
 
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
 vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<CR>")
 vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
-
 vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
 vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("drab_night") end)
 vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)

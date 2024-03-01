@@ -25,6 +25,7 @@ return {
             require('telescope').setup {
                 defaults = {
                     file_ignore_patterns = {
+                        "tags",
                         "node_modules",
                         ".git\\",
                         "Library",

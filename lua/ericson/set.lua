@@ -16,8 +16,5 @@ vim.opt.autoindent  = true
 vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
-vim.opt.statusline = ""
-    .. " %F %m"
-    .. "%="
-    .. "%="
-    .. "%{%v:lua.require('ericson.utils').get_diag_count()%}"
+vim.opt.statusline = " %F %m%=%="
+vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
