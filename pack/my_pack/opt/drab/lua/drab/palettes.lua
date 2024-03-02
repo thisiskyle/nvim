@@ -13,8 +13,11 @@ M.list = {
         highlight = {gui = "#e4e4e4"},
         accent = {gui = "#e4e4e4"},
         -- other
-        error = {gui = "#ff0000"},
-        warn = {gui = "#ea9d34"}
+        error = {gui = "#eb6f92"},
+        warn = {gui = "#f6c177"},
+        info = {gui = "#3e8fb0"},
+        hint = {gui = "#c4a7e7"},
+        ok = {gui = "#9ccfd8"},
     },
 
     day = {
@@ -27,9 +30,12 @@ M.list = {
         base = {gui = "#ffffff"},
         highlight = {gui = "#e4e4e4"},
         accent = {gui = "#e4e4e4"},
-        -- other
-        error = {gui = "#ff0000"},
-        warn = {gui = "#ea9d34"}
+        -- diag
+        error = {gui = "#eb6f92"},
+        warn = {gui = "#f6c177"},
+        info = {gui = "#3e8fb0"},
+        hint = {gui = "#c4a7e7"},
+        ok = {gui = "#9ccfd8"},
     },
 
     night = {
@@ -43,8 +49,11 @@ M.list = {
         highlight = {gui = "#3a3a3a"},
         accent = {gui = "#3a3a3a"},
         -- other
-        error = {gui = "#ff0000"},
-        warn = {gui = "#ea9d34"}
+        error = {gui = "#eb6f92"},
+        warn = {gui = "#f6c177"},
+        info = {gui = "#3e8fb0"},
+        hint = {gui = "#c4a7e7"},
+        ok = {gui = "#9ccfd8"},
     },
 }
 

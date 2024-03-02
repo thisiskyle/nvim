@@ -1,7 +1,6 @@
 local ts = require('telescope.builtin')
 local tse = require('telescope').extensions
 local vibe = require('vibe-check-nvim')
-local apm = require('vim-apm')
 
 vim.g.mapleader = " "
 
@@ -24,12 +23,15 @@ vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 vim.keymap.set('n', '<leader>di', function() vim.diagnostic.open_float() end)
 vim.keymap.set('n', '<leader>dq', function() vim.diagnostic.setqflist() end)
 vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setloclist() end)
+vim.keymap.set('n', '<leader>dh', function() vim.diagnostic.hide() end)
+vim.keymap.set('n', '<leader>ds', function() vim.diagnostic.show() end)
+vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end)
+vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end)
 
 -- misc
 vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
 vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<CR>")
-vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
 vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
 vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("drab_night") end)
 vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("drab_ghost") end)

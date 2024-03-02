@@ -16,6 +16,7 @@ function M.set_rules(p)
             }
         },
         {
+
             groups = {
                 "Matchparen"
             },
@@ -110,7 +111,7 @@ function M.set_rules(p)
         },
         {
             groups = {
-                "WarningMsg"
+                "WarningMsg",
             },
             style = {
                 fg = p.warn
@@ -177,10 +178,42 @@ function M.set_rules(p)
         {
             groups = {
                 "ErrorMsg",
-                "WarningMsg"
+                "DiagnosticError",
             },
             style = {
                 link = "Error"
+            }
+        },
+        {
+            groups = {
+                "DiagnosticWarn",
+            },
+            style = {
+                link = "WarningMsg"
+            }
+        },
+        {
+            groups = {
+                "DiagnosticInfo",
+            },
+            style = {
+                fg = p.info,
+            }
+        },
+        {
+            groups = {
+                "DiagnosticHint",
+            },
+            style = {
+                fg = p.hint,
+            }
+        },
+        {
+            groups = {
+                "DiagnosticOk",
+            },
+            style = {
+                fg = p.ok,
             }
         },
         {
