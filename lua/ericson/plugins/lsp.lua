@@ -12,7 +12,6 @@ return {
             {'saadparwaiz1/cmp_luasnip'},
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
-            {'j-hui/fidget.nvim'},
         },
         config = function()
 
@@ -25,7 +24,6 @@ return {
                 cmp_lsp.default_capabilities()
             )
 
-            require("fidget").setup({})
             require('mason').setup()
             require('mason-lspconfig').setup({
                 handlers = {
