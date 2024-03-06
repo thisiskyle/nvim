@@ -28,11 +28,9 @@ vim.keymap.set('n', '<leader>dn', function() vim.diagnostic.goto_next() end)
 vim.keymap.set('n', '<leader>dp', function() vim.diagnostic.goto_prev() end)
 
 -- misc
-vim.keymap.set('n', '<leader>tag', "<cmd>!ctags -R --exclude=.git --exclude=node_modules<CR>")
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
 vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<CR>")
 
-vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("drab") end)
-vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("drab_ghost") end)
-vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("rose") end)
-vim.keymap.set('n', '<leader>4', function() vibe.set_the_mood("rose_ghost") end)
+vim.keymap.set('n', '<leader>1', function() vibe.set_the_mood("rose_light") end)
+vim.keymap.set('n', '<leader>2', function() vibe.set_the_mood("rose") end)
+vim.keymap.set('n', '<leader>3', function() vibe.set_the_mood("rose_ghost") end)

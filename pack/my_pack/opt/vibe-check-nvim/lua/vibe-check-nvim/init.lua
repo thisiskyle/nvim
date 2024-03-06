@@ -62,7 +62,7 @@ local function save(name)
     end
     f:write(name)
     f:close()
-    vim.notify("Vibe saved to " .. config.save_file)
+    vim.notify("Colorscheme saved to " .. config.save_file)
 end
 
 function M.setup(_config)

@@ -1,17 +1,11 @@
 local M = {}
 
-local diag_active = true;
-function M.toggle_diagnostics()
-    diag_active = not diag_active
-    if(diag_active) then
-        vim.diagnostic.enable()
-    else
-        vim.diagnostic.disable()
-        vim.opt.signcolumn = "no"
-    end
+function M.apm()
+    local apm = require('vim-apm')
+    return apm:get_statusline()
 end
 
-function M.get_diag_count()
+function M.diag_count()
     if vim.fn.has('nvim-0.6') == 1 then
       -- On nvim 0.6+ use vim.diagnostic to get lsp generated diagnostic count.
       local diagnostics = vim.diagnostic.get(0)
