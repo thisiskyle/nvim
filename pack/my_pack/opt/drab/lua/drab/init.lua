@@ -4,7 +4,6 @@ local palettes = require("drab.palettes")
 local M = {}
 
 
-
 -- highlight function
 local function color_the_things(theme)
     for _,value in pairs(theme) do
@@ -42,18 +41,17 @@ end
 function M.load(style)
     vim.cmd([[ hi clear ]])
     vim.g.colors_name = style
-    color_the_things(highlights.set_rules(palettes.list[style]))
+    color_the_things(highlights.set_rules(palettes[style]))
 end
 
 function M.setup(options)
-
     if(options.variant) then
-        palettes.list["main"] = palettes.list[options.variant]
+        palettes["main"] = palettes[options.variant]
     end
 
     if(options.palette) then
         -- TODO/enhance: merge these tables instead of just over writting it
-        palettes.list["main"] = options.palette
+        palettes["main"] = options.palette
     end
 
     M.load("main")

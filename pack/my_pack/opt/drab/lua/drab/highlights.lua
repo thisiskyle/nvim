@@ -24,7 +24,8 @@ function M.set_rules(p)
                 fg = p.alt,
                 bg = p.accent,
                 attributes = {
-                    bold = true
+                    bold = true,
+                    underline = true
                 }
             }
         },
@@ -136,6 +137,16 @@ function M.set_rules(p)
                 bg = p.base,
                 attributes = {
                     underline = true
+                }
+            }
+        },
+        {
+            groups = {
+                "String"
+            },
+            style = {
+                attributes = {
+                    bold = true
                 }
             }
         },
@@ -260,7 +271,6 @@ function M.set_rules(p)
                 "SignColumn",
                 "Title",
                 "Function",
-                "String",
                 "Character",
                 "Statement",
                 "PreProc",

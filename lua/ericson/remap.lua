@@ -17,7 +17,6 @@ vim.keymap.set('n', '<leader>fu', tse.undo.undo)
 vim.keymap.set('n', '<leader>jd', function() vim.lsp.buf.definition() end)
 vim.keymap.set('n', '<leader>jt', function() vim.lsp.buf.type_definition() end)
 vim.keymap.set('n', '<leader>vk', function() vim.lsp.buf.hover() end)
-vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end)
 
 -- diagnostic
 vim.keymap.set('n', '<leader>di', function() vim.diagnostic.open_float() end)

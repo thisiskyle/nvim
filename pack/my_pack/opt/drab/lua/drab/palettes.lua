@@ -1,7 +1,4 @@
-local M = {}
-
-M.list = {
-
+local M = {
     main = {
         background = "light",
         -- text
