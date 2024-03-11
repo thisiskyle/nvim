@@ -1,3 +1,4 @@
+
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -22,7 +23,10 @@ return {
                 end
             end
 
-            require('telescope').setup {
+            local ts = require('telescope')
+            local tsundo = require('telescope-undo.actions')
+
+            ts.setup({
                 defaults = {
                     file_ignore_patterns = {
                         "tags",
@@ -51,21 +55,31 @@ return {
                     undo = {
                         mappings = {
                             i = {
-                                ["<C-a>"] = require("telescope-undo.actions").yank_additions,
-                                ["<C-d>"] = require("telescope-undo.actions").yank_deletions,
-                                ["<cr>"] = require("telescope-undo.actions").restore,
+                                ["<C-a>"] = tsundo.yank_additions,
+                                ["<C-d>"] = tsundo.yank_deletions,
+                                ["<cr>"] = tsundo.restore,
                             },
                             n = {
-                                ["ya"] = require("telescope-undo.actions").yank_additions,
-                                ["yd"] = require("telescope-undo.actions").yank_deletions,
-                                ["<cr>"] = require("telescope-undo.actions").restore,
+                                ["ya"] = tsundo.yank_additions,
+                                ["yd"] = tsundo.yank_deletions,
+                                ["<cr>"] = tsundo.restore,
                             }
                         }
                     }
                 }
-            }
+            })
 
             require('telescope').load_extension('undo');
-        end
+
+        end,
+        keys = {
+            { '<leader>ff', "<cmd>Telescope find_files<cr>", mode = 'n'},
+            { '<leader>fg', "<cmd>Telescope live_grep<cr>", mode = 'n'},
+            { '<leader>fh', "<cmd>Telescope help_tags<cr>", mode = 'n'},
+            { '<leader>fq', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", mode = 'n'},
+            { '<leader>fr', "<cmd>Telescope lsp_references<cr>", mode = 'n'},
+            { '<leader>fi', "<cmd>Telescope lsp_implementations<cr>", mode = 'n'},
+            { '<leader>fu', "<cmd>Telescope undo<cr>", mode = 'n'},
+        }
     },
 }

@@ -6,8 +6,9 @@ vim.opt.wrapscan = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
+vim.opt.ruler = false
 vim.opt.termguicolors = true
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -17,10 +18,10 @@ vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
-vim.opt.statusline = ""
-    .. " "
-    .. "%F %m"
-    .. "%="
+
+vim.opt.laststatus = 1
+vim.opt.statusline = " "
+    .. "%{expand('%:~:.')} %m"
+    .. "%=" -- middle
     .. "%{%v:lua.require('ericson.utils').diag_count()%}"
-    .. "%="
-    .. " "
+    .. "%=" -- right

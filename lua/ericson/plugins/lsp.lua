@@ -110,6 +110,18 @@ return {
                     prefix = "",
                 },
             })
-        end
+        end,
+        keys = {
+            {'<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},
+            {'<leader>jt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n'},
+            {'<leader>vk', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
+            {'<leader>di', '<cmd>lua vim.disagnostic.open_float()<cr>', mode = 'n'},
+            {'<leader>dq', '<cmd>lua vim.disagnostic.setqflist()<cr>', mode = 'n'},
+            {'<leader>dl', '<cmd>lua vim.disagnostic.setloclist()<cr>', mode = 'n'},
+            {'<leader>dh', '<cmd>lua vim.disagnostic.hide()<cr>', mode = 'n'},
+            {'<leader>ds', '<cmd>lua vim.disagnostic.show()<cr>', mode = 'n'},
+            {'<leader>dn', '<cmd>lua vim.disagnostic.goto_next()<cr>', mode = 'n'},
+            {'<leader>dp', '<cmd>lua vim.disagnostic.goto_prev()<cr>', mode = 'n'},
+        }
     }
 }

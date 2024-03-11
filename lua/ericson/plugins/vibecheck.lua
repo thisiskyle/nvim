@@ -6,46 +6,9 @@ return {
                 default = "rose_ghost",
                 use_last = true,
                 vibes = {
-                    drab = {
-                        colorscheme = 'drab-day',
-                        background = 'light',
-                        transparent = false,
-                    },
-
-                    drab_night = {
-                        colorscheme = 'drab-night',
-                        background = 'dark',
-                        transparent = false,
-                    },
-
-                    drab_ghost = {
-                        colorscheme = 'drab-night',
-                        background = 'dark',
-                        transparent = true,
-                    },
-
-                    rose_light = {
-                        colorscheme = 'rose-pine',
-                        background = 'light',
-                        transparent = false,
-                        config = function()
-                            require("rose-pine").setup({
-                                variant = 'dawn',
-                                styles = {
-                                    bold = false,
-                                    italic = false,
-                                    transparency = false
-                                }
-                            })
-                        end,
-                        post = function()
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                        end
-                    },
                     rose = {
                         colorscheme = 'rose-pine',
                         background = 'dark',
-                        transparent = false,
                         config = function()
                             require("rose-pine").setup({
                                 variant = 'moon',
@@ -80,6 +43,10 @@ return {
                     },
                 }
             })
-        end
+        end,
+        keys = {
+            {'<leader>1', "<cmd>lua require('vibe-check-nvim').set_the_mood('rose')<cr>", mode = 'n'},
+            {'<leader>2', "<cmd>lua require('vibe-check-nvim').set_the_mood('rose_ghost')<cr>", mode = 'n'},
+        }
     },
 }
