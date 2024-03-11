@@ -10,6 +10,7 @@ return {
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
         },
+        lazy = false,
         config = function()
 
             local cmp = require('cmp')
@@ -85,12 +86,6 @@ return {
 
             })
 
-            local signs = {
-                ERROR = "E",
-                WARN = "W",
-                INFO = "I",
-                HINT = "H",
-            }
 
             vim.diagnostic.config({
                 signs = false,
@@ -98,6 +93,12 @@ return {
                 virtual_text = {
                     prefix = "!"
                     --prefix = function(diagnostic)
+                    --    local signs = {
+                    --        ERROR = "E",
+                    --        WARN = "W",
+                    --        INFO = "I",
+                    --        HINT = "H",
+                    --    }
                     --    return signs[vim.diagnostic.severity[diagnostic.severity]]
                     --end,
                 },
@@ -114,7 +115,8 @@ return {
         keys = {
             {'<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},
             {'<leader>jt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n'},
-            {'<leader>vk', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
+            {'<leader>lh', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
+
             {'<leader>di', '<cmd>lua vim.disagnostic.open_float()<cr>', mode = 'n'},
             {'<leader>dq', '<cmd>lua vim.disagnostic.setqflist()<cr>', mode = 'n'},
             {'<leader>dl', '<cmd>lua vim.disagnostic.setloclist()<cr>', mode = 'n'},

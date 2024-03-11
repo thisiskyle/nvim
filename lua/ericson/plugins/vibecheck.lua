@@ -1,9 +1,10 @@
 return {
     {
         dir = "~/AppData/Local/nvim/pack/my_pack/opt/vibe-check-nvim",
+        lazy = false,
         config = function()
             require('vibe-check-nvim').setup({
-                default = "rose_ghost",
+                default = "rose",
                 use_last = true,
                 vibes = {
                     rose = {
