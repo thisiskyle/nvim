@@ -15,7 +15,7 @@ return {
                     enable = true
                 },
             })
-            vim.cmd([[ TSUpdate ]])
+            --vim.cmd([[ TSUpdate ]])
         end
     },
 }
