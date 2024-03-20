@@ -76,7 +76,7 @@ return {
             { '<leader>ff', "<cmd>Telescope find_files<cr>", mode = 'n'},
             { '<leader>fg', "<cmd>Telescope live_grep<cr>", mode = 'n'},
             { '<leader>fh', "<cmd>Telescope help_tags<cr>", mode = 'n'},
-            { '<leader>fq', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", mode = 'n'},
+            { '<leader>fw', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", mode = 'n'},
             { '<leader>fr', "<cmd>Telescope lsp_references<cr>", mode = 'n'},
             { '<leader>fi', "<cmd>Telescope lsp_implementations<cr>", mode = 'n'},
             { '<leader>fu', "<cmd>Telescope undo<cr>", mode = 'n'},
