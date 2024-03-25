@@ -1,16 +1,8 @@
 
 local M = {}
 
-local configDir = ""
-
-if(vim.loop.os_uname().sysname == "Windows_NT") then
-    configDir = os.getenv("userprofile") .. "/AppData/Local/nvim-data/"
-else
-    configDir = os.getenv("HOME") .. "/.config/nvim/"
-end
-
 local config = {
-    save_file = configDir .. ".vibecheck",
+    save_file = vim.fn.stdpath("data") .. "/.vibecheck",
     default = "",
     use_last = true,
     vibes = {},

@@ -17,8 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup plugins
 require("lazy").setup({
-    --require('ericson.plugins.fidget'),
-    --require('ericson.plugins.nvim-notify'),
     require('ericson.plugins.telescope'),
     require('ericson.plugins.cmp'),
     require('ericson.plugins.lsp'),
