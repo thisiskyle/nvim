@@ -43,7 +43,11 @@ return {
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,
+                            ["<C-p>"] = require("telescope.actions.layout").toggle_preview
                         }
+                    },
+                    preview = {
+                        hide_on_startup = true
                     }
                 },
                 pickers = {
