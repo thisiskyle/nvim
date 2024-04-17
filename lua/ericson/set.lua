@@ -18,6 +18,7 @@ vim.opt.autoindent  = true
 vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
+vim.opt.mouse = ""
 
 vim.opt.laststatus = 1
 vim.opt.statusline = " "
@@ -26,5 +27,5 @@ vim.opt.statusline = " "
     .. "%{%v:lua.require('ericson.utils').diag_count()%}"
     .. "%=" -- right
 
-vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<CR>")
-vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<CR>")
+vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<cr>")
+vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<cr>")
