@@ -43,7 +43,10 @@ return {
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,
-                            ["<C-p>"] = require("telescope.actions.layout").toggle_preview
+                        },
+                        n = {
+                            ["<CR>"] = select_one_or_multi,
+                            ["<leader>z"] = require("telescope.actions.layout").toggle_preview,
                         }
                     },
                     preview = {
@@ -58,11 +61,7 @@ return {
                 extensions = {
                     undo = {
                         mappings = {
-                            i = {
-                                ["<C-a>"] = tsundo.yank_additions,
-                                ["<C-d>"] = tsundo.yank_deletions,
-                                ["<cr>"] = tsundo.restore,
-                            },
+                            i = { },
                             n = {
                                 ["ya"] = tsundo.yank_additions,
                                 ["yd"] = tsundo.yank_deletions,
