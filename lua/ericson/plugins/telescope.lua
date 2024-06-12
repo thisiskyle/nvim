@@ -33,6 +33,8 @@ return {
                         "node_modules",
                         ".git\\",
                         "Library",
+                        "%.dll",
+                        "%.exe",
                         "%.meta",
                         "%.unity",
                         "%.asset",
@@ -43,10 +45,15 @@ return {
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,
+                            ["<c-p>"] = require("telescope.actions.layout").toggle_preview,
+                            ["<c-j>"] = require("telescope.actions").move_selection_next,
+                            ["<c-k>"] = require("telescope.actions").move_selection_previous,
+                            ["<c-h>"] = require("telescope.actions").add_selection,
+                            ["<c-l>"] = require("telescope.actions").remove_selection,
                         },
                         n = {
                             ["<CR>"] = select_one_or_multi,
-                            ["<leader>z"] = require("telescope.actions.layout").toggle_preview,
+                            ["<leader>p"] = require("telescope.actions.layout").toggle_preview,
                         }
                     },
                     preview = {
@@ -62,10 +69,14 @@ return {
                 extensions = {
                     undo = {
                         mappings = {
-                            i = { },
+                            i = {
+                                ["<c-a>"] = tsundo.yank_additions,
+                                ["<c-d>"] = tsundo.yank_deletions,
+                                ["<cr>"] = tsundo.restore,
+                            },
                             n = {
-                                ["ya"] = tsundo.yank_additions,
-                                ["yd"] = tsundo.yank_deletions,
+                                ["a"] = tsundo.yank_additions,
+                                ["d"] = tsundo.yank_deletions,
                                 ["<cr>"] = tsundo.restore,
                             }
                         }
@@ -84,6 +95,8 @@ return {
             { '<leader>fr', "<cmd>Telescope lsp_references<cr>", mode = 'n'},
             { '<leader>fi', "<cmd>Telescope lsp_implementations<cr>", mode = 'n'},
             { '<leader>fu', "<cmd>Telescope undo<cr>", mode = 'n'},
+            { '<leader>fb', "<cmd>Telescope buffers<cr>", mode = 'n'},
+            { '<leader>fk', "<cmd>Telescope keymaps<cr>", mode = 'n'},
         }
     },
 }
