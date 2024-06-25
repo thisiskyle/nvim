@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     --require('ericson.plugins.nvim-notify'),
     --require('ericson.plugins.fidget'),
-    require('ericson.plugins.fugitive'),
+    --require('ericson.plugins.fugitive'),
     require('ericson.plugins.treesitter'),
     require('ericson.plugins.telescope'),
     require('ericson.plugins.cmp'),
