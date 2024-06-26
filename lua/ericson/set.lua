@@ -20,7 +20,7 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 
-vim.opt.laststatus = 1
+vim.opt.laststatus = 2
 vim.opt.statusline = " "
     .. "%{expand('%:~:.')} %m"
     .. "%=" -- middle

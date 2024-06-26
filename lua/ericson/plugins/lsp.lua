@@ -85,7 +85,7 @@ return {
         keys = {
             {'<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},
             {'<leader>jt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n'},
-            {'<leader>vd', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
+            {'<leader>li', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
             {'<leader>di', '<cmd>lua vim.diagnostic.open_float()<cr>', mode = 'n'},
             {'<leader>dq', '<cmd>lua vim.diagnostic.setqflist()<cr>', mode = 'n'},
             {'<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<cr>', mode = 'n'},
