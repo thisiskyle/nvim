@@ -19,14 +19,29 @@ vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
-
 vim.opt.laststatus = 2
 vim.opt.statusline = " "
-    .. "%{expand('%:~:.')} %m"
-    .. "%=" -- middle
+    .. "File: %{expand('%:~:.')} %m"
+    .. "  |  "
+    .. "Line: %l"
+    .. " "
+    .. "Column: %c"
+    .. "  |  "
+    .. "Git: %{%v:lua.require('ericson.utils').git_branch()%}"
+    .. "  |  "
     .. "%{%v:lua.require('ericson.utils').diag_count()%}"
+    .. "%=" -- middle
     .. "%=" -- right
 
 vim.keymap.set('n', '<leader>tn', "<cmd>set nu!<cr>")
 vim.keymap.set('n', '<leader>tr', "<cmd>set rnu!<cr>")
+vim.keymap.set('n', '<leader>ts', "<cmd>lua require('ericson.utils').toggle_status()<cr>")
+vim.keymap.set('n', '<leader>q', "<cmd>lua require('ericson.utils').open_scratch_pad()<cr>")
 vim.keymap.set('n', '<leader>x', ":sp<cr>:term<cr>a")
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.g.branch_name = require("ericson.utils").set_branch_name()
+    end
+})
+
