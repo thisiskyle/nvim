@@ -19,15 +19,13 @@ vim.opt.scrolloff = 8
 vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
-vim.opt.laststatus = 2
+vim.opt.laststatus = 1
 vim.opt.statusline = " "
     .. "File: %{expand('%:~:.')} %m"
     .. "  |  "
-    .. "Line: %l"
-    .. " "
-    .. "Column: %c"
-    .. "  |  "
     .. "Git: %{%v:lua.require('ericson.utils').git_branch()%}"
+    .. "  |  "
+    .. "Line: %l Column: %c"
     .. "  |  "
     .. "%{%v:lua.require('ericson.utils').diag_count()%}"
     .. "%=" -- middle
