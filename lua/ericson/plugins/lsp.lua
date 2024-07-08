@@ -61,16 +61,7 @@ return {
                 signs = false,
                 underline = false,
                 virtual_text = {
-                    prefix = "!"
-                    --prefix = function(diagnostic)
-                    --    local signs = {
-                    --        ERROR = "E",
-                    --        WARN = "W",
-                    --        INFO = "I",
-                    --        HINT = "H",
-                    --    }
-                    --    return signs[vim.diagnostic.severity[diagnostic.severity]]
-                    --end,
+                    prefix = "•",
                 },
                 float = {
                     focusable = false,

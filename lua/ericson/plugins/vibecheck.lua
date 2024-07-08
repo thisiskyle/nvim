@@ -44,7 +44,6 @@ return {
                     rose_clear = {
                         colorscheme = 'rose-pine',
                         background = 'dark',
-                        transparent = true,
                         config = function()
                             require("rose-pine").setup({
                                 variant = 'moon',
