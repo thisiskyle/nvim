@@ -2,6 +2,7 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
+            {'hrsh7th/cmp-nvim-lsp'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
         },
@@ -41,7 +42,7 @@ return {
                         require("lspconfig").omnisharp.setup({
                             capabilities = capabilities,
                             root_dir = function(fname)
-                                return require('lspconfig').util.root_pattern('.git', '.sln')(fname)
+                                return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
                             end,
                         })
                     end,
@@ -50,7 +51,7 @@ return {
                         require("lspconfig").omnisharp_mono.setup({
                             capabilities = capabilities,
                             root_dir = function(fname)
-                                return require('lspconfig').util.root_pattern('.git', '.sln')(fname)
+                                return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
                             end,
                         })
                     end,
@@ -73,7 +74,7 @@ return {
         keys = {
             {'<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},
             {'<leader>jt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n'},
-            {'<leader>li', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
+            {'<leader>K', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
             {'<leader>di', '<cmd>lua vim.diagnostic.open_float()<cr>', mode = 'n'},
             {'<leader>dq', '<cmd>lua vim.diagnostic.setqflist()<cr>', mode = 'n'},
             {'<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<cr>', mode = 'n'},

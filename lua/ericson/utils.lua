@@ -5,6 +5,7 @@ function M.open_scratch_pad()
     vim.cmd(":file scratch")
     vim.opt_local.buftype = "nofile"
     vim.opt_local.bufhidden = "hide"
+    vim.opt_local.filetype = "markdown"
     vim.opt_local.swapfile = false
 end
 

@@ -45,10 +45,12 @@ return {
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,
+                            ["<c-j>"] = require("telescope.actions").move_selection_next,
+                            ["<c-k>"] = require("telescope.actions").move_selection_previous,
                         },
                         n = {
                             ["<CR>"] = select_one_or_multi,
-                            ["<leader>v"] = require("telescope.actions.layout").toggle_preview,
+                            ["<leader>p"] = require("telescope.actions.layout").toggle_preview,
                         }
                     },
                     preview = {
