@@ -20,7 +20,6 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.fillchars = "eob:~"
 vim.opt.statusline = ""
     .. "%#Constant# Project: "
     .. "%#String#%{fnamemodify(getcwd(), ':t')}"

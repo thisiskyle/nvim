@@ -19,14 +19,11 @@ return {
                                     transparency = false,
                                 },
                                 highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true }
+                                    Comment = { fg = "subtle", italic = true },
+                                    Todo = { link = "Comment"}
                                 }
                             })
                         end,
-                        after = function()
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
-                        end
                     },
 
                     rose_dawn = {
@@ -41,14 +38,11 @@ return {
                                     transparency = false
                                 },
                                 highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true }
+                                    Comment = { fg = "subtle", italic = true },
+                                    Todo = { link = "Comment"}
                                 }
                             })
                         end,
-                        after = function()
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
-                        end
                     },
 
                     rose_clear = {
@@ -63,14 +57,11 @@ return {
                                     transparency = true
                                 },
                                 highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true }
+                                    Comment = { fg = "subtle", italic = true },
+                                    Todo = { link = "Comment"}
                                 }
                             })
                         end,
-                        after = function()
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
-                        end
                     },
 
                     cyberdream_light = {
@@ -94,6 +85,7 @@ return {
                             })
                         end,
                         after = function()
+                            vim.opt.fillchars = "eob:~"
                             vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                             vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end
@@ -120,6 +112,7 @@ return {
                             })
                         end,
                         after = function()
+                            vim.opt.fillchars = "eob:~"
                             vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                             vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end
@@ -146,6 +139,7 @@ return {
                             })
                         end,
                         after = function()
+                            vim.opt.fillchars = "eob:~"
                             vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
                             vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end

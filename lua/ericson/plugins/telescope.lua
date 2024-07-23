@@ -46,8 +46,6 @@ return {
                     mappings = {
                         i = {
                             ["<CR>"] = select_one_or_multi,
-                            ["<c-j>"] = require("telescope.actions").move_selection_next,
-                            ["<c-k>"] = require("telescope.actions").move_selection_previous,
                         },
                         n = {
                             ["<CR>"] = select_one_or_multi,
@@ -73,8 +71,8 @@ return {
                                 ["<cr>"] = tsundo.restore,
                             },
                             n = {
-                                ["a"] = tsundo.yank_additions,
-                                ["d"] = tsundo.yank_deletions,
+                                ["ya"] = tsundo.yank_additions,
+                                ["yd"] = tsundo.yank_deletions,
                                 ["<cr>"] = tsundo.restore,
                             }
                         }

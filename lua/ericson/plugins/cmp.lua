@@ -15,13 +15,19 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
 
             local cmp = require('cmp')
-            local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
             cmp.setup({
                 sources = {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
-                    { name = 'buffer' },
+                    {
+                        name = 'buffer',
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end
+                        }
+                    },
                 },
 
                 snippet = {
@@ -36,8 +42,6 @@ return {
                 },
 
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-                    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
                     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                 }),
