@@ -1,4 +1,4 @@
-
+-- telescope config
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -31,6 +31,7 @@ return {
                     file_ignore_patterns = {
                         "tags",
                         "node_modules",
+                        ".angular\\cache\\",
                         ".git\\",
                         "Library",
                         "%.dll",

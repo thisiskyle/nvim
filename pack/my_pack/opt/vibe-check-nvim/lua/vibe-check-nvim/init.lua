@@ -4,7 +4,7 @@ local M = {}
 local config = {
     save_file = vim.fn.stdpath("data") .. "/.vibecheck",
     default = "",
-    use_last = true,
+    startup = "default",
     vibes = {},
 }
 
@@ -15,15 +15,15 @@ local function set_transparent()
 end
 
 local function apply_theme(_theme)
-    if _theme.config then
+    if(_theme.config) then
         _theme.config()
     end
 
     vim.opt.background = _theme.background
     vim.cmd.colorscheme(_theme.colorscheme)
 
-    if _theme.post then
-        _theme.post()
+    if(_theme.after) then
+        _theme.after()
     end
 
     if(_theme.transparent) then
@@ -56,19 +56,6 @@ local function save(name)
     f:close()
 end
 
-function M.setup(_config)
-    -- merge the tables
-    for k,v in pairs(_config) do
-        config[k] = v
-    end
-
-    if(config.use_last) then
-        use_last()
-    else
-        apply_theme(config.vibes[config.default])
-    end
-end
-
 --- Sets the theme to the provided name
 ---@param name any
 function M.set_the_mood(name)
@@ -77,6 +64,7 @@ function M.set_the_mood(name)
         save(name)
     end
 end
+
 
 function M.pick_random()
     -- count number of vibes
@@ -94,6 +82,22 @@ function M.pick_random()
             apply_theme(config.vibes[k])
         end
         n = n + 1
+    end
+end
+
+
+function M.setup(_config)
+    -- merge the tables
+    for k,v in pairs(_config) do
+        config[k] = v
+    end
+
+    if(config.startup == "previous") then
+        use_last()
+    elseif(config.startup == "random") then
+        M.pick_random()
+    else
+        apply_theme(config.vibes[config.default])
     end
 end
 
