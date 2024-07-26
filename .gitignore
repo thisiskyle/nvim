@@ -1,8 +1,8 @@
 *
 
 !.gitignore
-!/init.lua
+!./init.lua
 
-!*/
-!lua/ericson/**
-!pack/my_pack/**
+!./lua/ericson/**
+!./pack/my_pack/**
+!./syntax/**

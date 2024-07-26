@@ -7,6 +7,7 @@ return {
                 default = "cyberdream_dark",
                 startup = "previous",
                 vibes = {
+
                     rose = {
                         colorscheme = 'rose-pine',
                         background = 'dark',
