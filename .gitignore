@@ -3,7 +3,11 @@
 !.gitignore
 !init.lua
 
-!*/
+!lua/ericson/
 !lua/ericson/**
+
+!pack/my_pack/
 !pack/my_pack/**
+
+!syntax/
 !syntax/**
