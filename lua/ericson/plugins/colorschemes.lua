@@ -1,4 +1,3 @@
 return {
-    { "rose-pine/neovim" },
-    { "scottmckendry/cyberdream.nvim" },
+    { "folke/tokyonight.nvim" },
 }

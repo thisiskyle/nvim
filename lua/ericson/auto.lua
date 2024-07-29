@@ -5,7 +5,4 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
 })
 
-vim.cmd([[
-    au BufRead,BufNewFile *.todo set filetype=todo
-]])
-
+vim.cmd([[ au BufRead,BufNewFile *.todo set filetype=todo ]])

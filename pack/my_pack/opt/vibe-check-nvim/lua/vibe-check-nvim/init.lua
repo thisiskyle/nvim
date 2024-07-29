@@ -101,4 +101,10 @@ function M.setup(_config)
     end
 end
 
+vim.api.nvim_create_user_command('VibeCheck', function(tabl)
+    M.set_the_mood(tabl.args[1])
+
+end, {})
+
+
 return M

@@ -4,157 +4,96 @@ return {
         lazy = false,
         config = function()
             require('vibe-check-nvim').setup({
-                default = "cyberdream_dark",
+                default = "tokyonight",
                 startup = "previous",
                 vibes = {
 
-                    rose = {
-                        colorscheme = 'rose-pine',
+                    tokyonight = {
+                        colorscheme = 'tokyonight',
                         background = 'dark',
                         config = function()
-                            require("rose-pine").setup({
-                                variant = 'moon',
-                                styles = {
-                                    bold = false,
-                                    italic = false,
-                                    transparency = false,
-                                },
-                                highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true },
-                                    Todo = { link = "Comment"}
-                                }
-                            })
-                        end,
-                    },
-
-                    rose_dawn = {
-                        colorscheme = 'rose-pine',
-                        background = 'light',
-                        config = function()
-                            require("rose-pine").setup({
-                                variant = 'dawn',
-                                styles = {
-                                    bold = false,
-                                    italic = false,
-                                    transparency = false
-                                },
-                                highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true },
-                                    Todo = { link = "Comment"}
-                                }
-                            })
-                        end,
-                    },
-
-                    rose_clear = {
-                        colorscheme = 'rose-pine',
-                        background = 'dark',
-                        config = function()
-                            require("rose-pine").setup({
-                                variant = 'moon',
-                                styles = {
-                                    bold = false,
-                                    italic = false,
-                                    transparency = true
-                                },
-                                highlight_groups = {
-                                    Comment = { fg = "subtle", italic = true },
-                                    Todo = { link = "Comment"}
-                                }
-                            })
-                        end,
-                    },
-
-                    cyberdream_light = {
-                        colorscheme = 'cyberdream',
-                        background = 'light',
-                        config = function()
-                            require("cyberdream").setup({
+                            require("tokyonight").setup({
+                                style = "storm",
                                 transparent = false,
-                                italic_comments = true,
-                                hide_fillchars = false,
-                                borderless_telescope = true,
                                 terminal_colors = true,
-                                theme = {
-                                    variant = "auto",
+                                styles = {
+                                    comments = { italic = true },
+                                    keywords = { italic = false },
+                                    functions = { italic = false },
+                                    variables = { italic = false },
+                                    sidebars = "dark",
+                                    floats = "dark",
                                 },
-
-                                extensions = {
-                                    telescope = true,
-                                    cmp = true,
-                                },
+                                on_highlights = function(hl, c)
+                                    hl.EndOfBuffer = { link = "Comment" }
+                                end,
                             })
                         end,
                         after = function()
                             vim.opt.fillchars = "eob:~"
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end
                     },
 
-                    cyberdream_dark = {
-                        colorscheme = 'cyberdream',
-                        background = 'dark',
+                    tokyonight_light = {
+                        colorscheme = 'tokyonight',
+                        background = 'light',
                         config = function()
-                            require("cyberdream").setup({
+                            require("tokyonight").setup({
+                                style = "day",
                                 transparent = false,
-                                italic_comments = true,
-                                hide_fillchars = false,
-                                borderless_telescope = true,
                                 terminal_colors = true,
-                                theme = {
-                                    variant = "auto",
+                                styles = {
+                                    comments = { italic = true },
+                                    keywords = { italic = false },
+                                    functions = { italic = false },
+                                    variables = { italic = false },
+                                    sidebars = "light",
+                                    floats = "light",
                                 },
-
-                                extensions = {
-                                    telescope = true,
-                                    cmp = true,
-                                },
+                                on_highlights = function(hl, c)
+                                    hl.EndOfBuffer = { link = "Comment" }
+                                end,
+                                -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+                                day_brightness = 0.3,
                             })
                         end,
                         after = function()
                             vim.opt.fillchars = "eob:~"
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end
                     },
 
-                    cyberdream_clear = {
-                        colorscheme = 'cyberdream',
+                    tokyonight_clear = {
+                        colorscheme = 'tokyonight',
                         background = 'dark',
                         config = function()
-                            require("cyberdream").setup({
+                            require("tokyonight").setup({
+                                style = "storm",
                                 transparent = true,
-                                italic_comments = true,
-                                hide_fillchars = false,
-                                borderless_telescope = true,
                                 terminal_colors = true,
-                                theme = {
-                                    variant = "auto",
+                                styles = {
+                                    comments = { italic = true },
+                                    keywords = { italic = false },
+                                    functions = { italic = false },
+                                    variables = { italic = false },
+                                    sidebars = "transparent",
+                                    floats = "transparent",
                                 },
-
-                                extensions = {
-                                    telescope = true,
-                                    cmp = true,
-                                },
+                                on_highlights = function(hl, c)
+                                    hl.EndOfBuffer = { link = "Comment" }
+                                end,
                             })
                         end,
                         after = function()
                             vim.opt.fillchars = "eob:~"
-                            vim.api.nvim_set_hl(0, 'Todo', { link = 'Comment' })
-                            vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Comment' })
                         end
                     },
                 }
             })
         end,
         keys = {
-            {'<leader>1', "<cmd>lua require('vibe-check-nvim').set_the_mood('rose')<cr>", mode = 'n'},
-            {'<leader>2', "<cmd>lua require('vibe-check-nvim').set_the_mood('rose_clear')<cr>", mode = 'n'},
-            {'<leader>3', "<cmd>lua require('vibe-check-nvim').set_the_mood('rose_dawn')<cr>", mode = 'n'},
-            {'<leader>4', "<cmd>lua require('vibe-check-nvim').set_the_mood('cyberdream_dark')<cr>", mode = 'n'},
-            {'<leader>5', "<cmd>lua require('vibe-check-nvim').set_the_mood('cyberdream_clear')<cr>", mode = 'n'},
-            {'<leader>6', "<cmd>lua require('vibe-check-nvim').set_the_mood('cyberdream_light')<cr>", mode = 'n'},
+            {'<leader>1', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight')<cr>", mode = 'n'},
+            {'<leader>2', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight_clear')<cr>", mode = 'n'},
+            {'<leader>3', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight_light')<cr>", mode = 'n'},
         }
     },
 }
