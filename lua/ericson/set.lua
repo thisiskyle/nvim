@@ -20,16 +20,9 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = ""
-    .. "  "
+vim.opt.statusline = "  "
     .. "%{fnamemodify(getcwd(), ':t')}"
-    .. "     "
-    .. "%f"
-    .. "     "
-    .. "%{%v:lua.require('ericson.utils').git_branch()%}"
-    .. "     "
+    .. "  "
+    .. "%t"
+    .. "  "
     .. "%h%m%r%w"
-    .. "     "
-    .. "%{%v:lua.require('ericson.utils').diag_count()%}"
-    .. "%=" -- middle
-    .. "%=" -- right
