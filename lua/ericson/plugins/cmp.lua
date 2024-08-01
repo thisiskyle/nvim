@@ -28,6 +28,7 @@ return {
                             end
                         }
                     },
+                    { name = 'path' },
                 },
 
                 snippet = {

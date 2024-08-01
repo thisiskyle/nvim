@@ -1,9 +1,9 @@
 return {
     {
-        dir = vim.fn.stdpath("config") .. "/pack/my_pack/opt/vibe-check-nvim",
+        dir = vim.fn.stdpath("config") .. "/pack/my_pack/opt/vibecheck-nvim",
         lazy = false,
         config = function()
-            require('vibe-check-nvim').setup({
+            require('vibecheck').setup({
                 default = "tokyonight",
                 startup = "previous",
                 vibes = {
@@ -91,9 +91,9 @@ return {
             })
         end,
         keys = {
-            {'<leader>1', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight')<cr>", mode = 'n'},
-            {'<leader>2', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight_clear')<cr>", mode = 'n'},
-            {'<leader>3', "<cmd>lua require('vibe-check-nvim').set_the_mood('tokyonight_light')<cr>", mode = 'n'},
+            {'<leader>1', "<cmd>VibeCheck tokyonight<cr>", mode = 'n'},
+            {'<leader>2', "<cmd>VibeCheck tokyonight_clear<cr>", mode = 'n'},
+            {'<leader>3', "<cmd>VibeCheck tokyonight_light<cr>", mode = 'n'},
         }
     },
 }

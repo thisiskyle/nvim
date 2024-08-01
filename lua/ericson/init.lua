@@ -1,4 +1,4 @@
-require("ericson.set")
+require("ericson.settings")
+require("ericson.autocommands")
 require("ericson.keymaps")
-require("ericson.auto")
 require("ericson.lazy")
