@@ -5,7 +5,7 @@ return {
         config = function()
             require('vibecheck').setup({
                 default = "tokyonight",
-                startup = "previous",
+                startup = "last",
                 vibes = {
 
                     tokyonight = {

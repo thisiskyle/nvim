@@ -33,6 +33,7 @@ function M.toggle_status()
 end
 
 
+
 function M.diag_count()
     if vim.fn.has('nvim-0.6') == 1 then
       -- On nvim 0.6+ use vim.diagnostic to get lsp generated diagnostic count.

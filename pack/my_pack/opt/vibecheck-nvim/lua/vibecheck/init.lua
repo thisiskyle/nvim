@@ -1,9 +1,14 @@
 
 require("vibecheck.commands")
-local config = require("vibecheck.config")
+
+local M = {}
+M.config = require("vibecheck.config")
+
+
 
 --- Takes a vibe table and applys the theme accordingly
 --- @param _vibe table
+---
 local function apply_vibe(_vibe)
     if(_vibe.config) then
         _vibe.config()
@@ -91,9 +96,6 @@ local function pick_random(_vibes)
     return ret
 end
 
-
-local M = {}
-
 --- Uses the given string to apply the vibe.
 --- Once applied, it will also save the name to 
 --- config.save_file
@@ -101,16 +103,16 @@ local M = {}
 ---
 function M.vibe_check(name)
 
-    if(config.vibes[name] == nil) then
+    if(M.config.vibes[name] == nil) then
         print("Vibe " .. name .. "does not exist")
         vim.cmd.colorscheme("default")
         return
     end
 
-    apply_vibe(config.vibes[name])
+    apply_vibe(M.config.vibes[name])
 
-    if(config.save_file ~= "") then
-        save(name, config.save_file)
+    if(M.config.save_file ~= "") then
+        save(name, M.config.save_file)
     end
 
 end
@@ -121,15 +123,15 @@ end
 --- and decides on the startup method to use
 --- @param _config any
 function M.setup(_config)
-    config.setup(_config)
+    M.config.setup(_config)
 
-    local vibe = config.default
+    local vibe = M.config.default
 
-    if(config.startup == "previous") then
-        vibe = get_last(config)
+    if(M.config.startup == "last") then
+        vibe = get_last(M.config)
 
-    elseif(config.startup == "random") then
-        vibe = pick_random(config.vibes)
+    elseif(M.config.startup == "random") then
+        vibe = pick_random(M.config.vibes)
 
     end
 

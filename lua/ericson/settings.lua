@@ -1,4 +1,4 @@
-vim.opt.wildmenu = true
+vim.optwildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
 vim.opt.incsearch  = true
@@ -20,11 +20,14 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = "  "
+vim.opt.statusline = ""
+    .. "  "
     .. "%{fnamemodify(getcwd(), ':t')}"
-    .. "     "
-    .. "%{expand('%:~:.')}"
-    .. "     "
+    .. "    "
+    .. "%t"
+    .. "    "
+    .. "%{%v:lua.require('ericson.utils').git_branch()%}"
+    .. "    "
     .. "%m%h%r%w"
-    .. "     "
+    .. "    "
     .. "%{%v:lua.require('ericson.utils').diag_count()%}"
