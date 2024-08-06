@@ -4,8 +4,6 @@ require("vibecheck.commands")
 local M = {}
 M.config = require("vibecheck.config")
 
-
-
 --- Takes a vibe table and applys the theme accordingly
 --- @param _vibe table
 ---
@@ -58,6 +56,7 @@ local function save(name, save_file)
     local f = assert(io.open(save_file, "w"))
 
     if(f == nil) then
+        -- TODO/feat: we should create the file if there isnt one
         print("Failed to save: " .. save_file .. " not found")
         return
     end
@@ -104,12 +103,16 @@ end
 function M.vibe_check(name)
 
     if(M.config.vibes[name] == nil) then
-        print("Vibe " .. name .. "does not exist")
+        print("Vibe " .. name .. " does not exist")
         vim.cmd.colorscheme("default")
         return
     end
 
     apply_vibe(M.config.vibes[name])
+
+    if(M.config.vibes[name].after_any) then
+        M.config.vibes[name].after_any()
+    end
 
     if(M.config.save_file ~= "") then
         save(name, M.config.save_file)
@@ -117,11 +120,10 @@ function M.vibe_check(name)
 
 end
 
-
-
 --- Calls the setup function on the config
 --- and decides on the startup method to use
 --- @param _config any
+---
 function M.setup(_config)
     M.config.setup(_config)
 

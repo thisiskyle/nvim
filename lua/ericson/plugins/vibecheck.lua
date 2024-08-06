@@ -6,6 +6,10 @@ return {
             require('vibecheck').setup({
                 default = "tokyonight",
                 startup = "last",
+                after_any = function()
+                    vim.opt.fillchars = "eob:~"
+                end,
+
                 vibes = {
 
                     tokyonight = {
@@ -29,9 +33,6 @@ return {
                                 end,
                             })
                         end,
-                        after = function()
-                            vim.opt.fillchars = "eob:~"
-                        end
                     },
 
                     tokyonight_light = {
@@ -53,13 +54,9 @@ return {
                                 on_highlights = function(hl, c)
                                     hl.EndOfBuffer = { link = "Comment" }
                                 end,
-                                -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
                                 day_brightness = 0.3,
                             })
                         end,
-                        after = function()
-                            vim.opt.fillchars = "eob:~"
-                        end
                     },
 
                     tokyonight_clear = {
@@ -83,11 +80,8 @@ return {
                                 end,
                             })
                         end,
-                        after = function()
-                            vim.opt.fillchars = "eob:~"
-                        end
                     },
-                }
+                },
             })
         end,
         keys = {
