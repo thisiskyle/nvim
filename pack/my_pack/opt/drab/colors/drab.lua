@@ -1,1 +1,0 @@
-require("drab").load("light")
