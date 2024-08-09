@@ -8,13 +8,17 @@ return {
                 startup = "last",
                 after_any = function()
                     vim.opt.fillchars = "eob:~"
+                    vim.api.nvim_set_hl(0, "EndOfBuffer", { link = "Comment" })
                 end,
 
                 vibes = {
 
-                    rosepine = {
-                        colorscheme = 'rose-pine-moon',
-                        background = 'dark',
+                    quiet = {
+                        colorscheme = 'quiet',
+                        background = 'light',
+                        after = function()
+                            vim.api.nvim_set_hl(0, "Comment", { fg = "#848484", italic = true })
+                        end
                     },
 
                     tokyonight = {
@@ -33,9 +37,6 @@ return {
                                     sidebars = "dark",
                                     floats = "dark",
                                 },
-                                on_highlights = function(hl, c)
-                                    hl.EndOfBuffer = { link = "Comment" }
-                                end,
                             })
                         end,
                     },
@@ -56,9 +57,6 @@ return {
                                     sidebars = "light",
                                     floats = "light",
                                 },
-                                on_highlights = function(hl, c)
-                                    hl.EndOfBuffer = { link = "Comment" }
-                                end,
                                 day_brightness = 0.3,
                             })
                         end,
@@ -80,9 +78,6 @@ return {
                                     sidebars = "transparent",
                                     floats = "transparent",
                                 },
-                                on_highlights = function(hl, c)
-                                    hl.EndOfBuffer = { link = "Comment" }
-                                end,
                             })
                         end,
                     },
@@ -92,7 +87,7 @@ return {
         keys = {
             {'<leader>1', "<cmd>VibeCheck tokyonight<cr>", mode = 'n'},
             {'<leader>2', "<cmd>VibeCheck tokyonight_clear<cr>", mode = 'n'},
-            {'<leader>3', "<cmd>VibeCheck rosepine<cr>", mode = 'n'},
+            {'<leader>3', "<cmd>VibeCheck tokyonight_light<cr>", mode = 'n'},
         }
     },
 }

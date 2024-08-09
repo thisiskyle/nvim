@@ -16,3 +16,11 @@ vim.api.nvim_create_user_command(
         end
     }
 )
+
+vim.api.nvim_create_user_command(
+    'VibeRandom',
+    function()
+        require("vibecheck").random()
+    end,
+    { }
+)

@@ -15,6 +15,13 @@ local function apply_vibe(_vibe)
     vim.opt.background = _vibe.background
     vim.cmd.colorscheme(_vibe.colorscheme)
 
+    -- run the after_any function
+    if(M.config.after_any) then
+        M.config.after_any()
+    end
+
+    -- run the vibe specific after function
+    -- this will override after_any
     if(_vibe.after) then
         _vibe.after()
     end
@@ -84,9 +91,9 @@ local function pick_random(_vibes)
 
     -- find the key for the number and set theme
     n = 0
-    for k in pairs(_vibes) do
+    for k,_ in pairs(_vibes) do
         if(n == rand) then
-            ret = _vibes[k]
+            ret = k
             break
         end
         n = n + 1
@@ -110,14 +117,17 @@ function M.vibe_check(name)
 
     apply_vibe(M.config.vibes[name])
 
-    if(M.config.vibes[name].after_any) then
-        M.config.vibes[name].after_any()
-    end
 
     if(M.config.save_file ~= "") then
         save(name, M.config.save_file)
     end
 
+end
+
+--- Sets a random vibe
+---
+function M.random()
+    M.vibe_check(pick_random(M.config.vibes))
 end
 
 --- Calls the setup function on the config
