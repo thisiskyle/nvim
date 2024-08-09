@@ -12,6 +12,11 @@ return {
 
                 vibes = {
 
+                    rosepine = {
+                        colorscheme = 'rose-pine-moon',
+                        background = 'dark',
+                    },
+
                     tokyonight = {
                         colorscheme = 'tokyonight',
                         background = 'dark',
@@ -87,7 +92,7 @@ return {
         keys = {
             {'<leader>1', "<cmd>VibeCheck tokyonight<cr>", mode = 'n'},
             {'<leader>2', "<cmd>VibeCheck tokyonight_clear<cr>", mode = 'n'},
-            {'<leader>3', "<cmd>VibeCheck tokyonight_light<cr>", mode = 'n'},
+            {'<leader>3', "<cmd>VibeCheck rosepine<cr>", mode = 'n'},
         }
     },
 }

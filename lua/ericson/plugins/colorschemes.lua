@@ -1,6 +1,6 @@
 return {
     { "folke/tokyonight.nvim" },
+    { "rose-pine/nvim" },
     --{ "scottmckendry/cyberdream.nvim" },
-    --{ "rose-pine/nvim" },
     --{ "rebelot/kanagawa.nvim" },
 }
