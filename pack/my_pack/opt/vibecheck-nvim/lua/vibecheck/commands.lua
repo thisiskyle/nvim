@@ -1,5 +1,5 @@
 vim.api.nvim_create_user_command(
-    'VibeCheck',
+    'Vibe',
     function(tabl)
         require("vibecheck").vibe_check(tabl.args)
     end,

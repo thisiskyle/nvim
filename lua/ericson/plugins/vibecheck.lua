@@ -26,7 +26,7 @@ return {
                         background = 'dark',
                         config = function()
                             require("tokyonight").setup({
-                                style = "storm",
+                                style = "moon",
                                 transparent = false,
                                 terminal_colors = true,
                                 styles = {
@@ -67,7 +67,7 @@ return {
                         background = 'dark',
                         config = function()
                             require("tokyonight").setup({
-                                style = "storm",
+                                style = "moon",
                                 transparent = true,
                                 terminal_colors = true,
                                 styles = {
@@ -81,13 +81,51 @@ return {
                             })
                         end,
                     },
+                    rose_pine = {
+                        colorscheme = 'rose-pine',
+                        background = 'dark',
+                        config = function()
+                            require("rose-pine").setup({
+                                variant = "moon",
+                                transparent = false,
+                                enable = {
+                                    terminal = true
+                                },
+                                styles = {
+                                    bold = true,
+                                    italic = false,
+                                    transparency = false,
+                                },
+                                highlight_groups = {
+                                    Comment = { italic = true }
+                                }
+                            })
+                        end,
+                    },
+                    rose_pine_light = {
+                        colorscheme = 'rose-pine',
+                        background = 'light',
+                        config = function()
+                            require("rose-pine").setup({
+                                variant = "dawn",
+                                transparent = false,
+                                enable = {
+                                    terminal = true
+                                },
+                                styles = {
+                                    bold = true,
+                                    italic = false,
+                                    transparency = false,
+                                },
+                            })
+                        end,
+                    },
                 },
             })
         end,
         keys = {
-            {'<leader>1', "<cmd>VibeCheck tokyonight<cr>", mode = 'n'},
-            {'<leader>2', "<cmd>VibeCheck tokyonight_clear<cr>", mode = 'n'},
-            {'<leader>3', "<cmd>VibeCheck tokyonight_light<cr>", mode = 'n'},
+            {'<leader>1', "<cmd>VibeCheck rose_pine<cr>", mode = 'n'},
+            {'<leader>2', "<cmd>VibeCheck rose_pine_light<cr>", mode = 'n'},
         }
     },
 }
