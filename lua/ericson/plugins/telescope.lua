@@ -1,4 +1,3 @@
--- telescope config
 return {
     {
         "nvim-telescope/telescope.nvim",

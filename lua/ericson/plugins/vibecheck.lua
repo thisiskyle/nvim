@@ -4,7 +4,7 @@ return {
         lazy = false,
         config = function()
             require('vibecheck').setup({
-                default = "tokyonight",
+                default = "rose-pine",
                 startup = "last",
                 after_any = function()
                     vim.opt.fillchars = "eob:~"
@@ -12,15 +12,6 @@ return {
                 end,
 
                 vibes = {
-
-                    quiet = {
-                        colorscheme = 'quiet',
-                        background = 'light',
-                        after = function()
-                            vim.api.nvim_set_hl(0, "Comment", { fg = "#848484", italic = true })
-                        end
-                    },
-
                     tokyonight = {
                         colorscheme = 'tokyonight',
                         background = 'dark',
@@ -81,6 +72,7 @@ return {
                             })
                         end,
                     },
+
                     rose_pine = {
                         colorscheme = 'rose-pine',
                         background = 'dark',
@@ -102,6 +94,7 @@ return {
                             })
                         end,
                     },
+
                     rose_pine_light = {
                         colorscheme = 'rose-pine',
                         background = 'light',
@@ -124,8 +117,8 @@ return {
             })
         end,
         keys = {
-            {'<leader>1', "<cmd>VibeCheck rose_pine<cr>", mode = 'n'},
-            {'<leader>2', "<cmd>VibeCheck rose_pine_light<cr>", mode = 'n'},
+            {'<leader>1', "<cmd>Vibe rose_pine<cr>", mode = 'n'},
+            {'<leader>2', "<cmd>Vibe tokyonight<cr>", mode = 'n'},
         }
     },
 }
