@@ -1,7 +1,6 @@
 return {
     {
         'hrsh7th/nvim-cmp',
-        lazy = false,
         dependencies = {
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
@@ -10,6 +9,7 @@ return {
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         },
+        lazy = false,
         config = function()
 
             require("luasnip.loaders.from_vscode").lazy_load()
