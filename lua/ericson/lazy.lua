@@ -23,6 +23,7 @@ require("lazy").setup({
     require('ericson.plugins.cmp'),
     require('ericson.plugins.colorschemes'),
     require('ericson.plugins.smear'),
-    --require('ericson.plugins.cellular-automatan'),
+    require('ericson.plugins.fidget'),
+    require('ericson.plugins.cellular-automatan'),
     --require('ericson.plugins.snacks'),
 })

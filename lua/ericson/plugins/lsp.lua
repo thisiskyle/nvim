@@ -24,38 +24,32 @@ return {
                             capabilities = capabilities
                         })
                     end,
-
-                    ["lua_ls"] = function()
-                        require("lspconfig").lua_ls.setup({
-                            capabilities = capabilities,
-                            settings = {
-                                Lua = {
-                                    diagnostics = {
-                                        globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                    }
-                                }
-                            }
-                        })
-                    end,
-
-                    ["omnisharp"] = function()
-                        require("lspconfig").omnisharp.setup({
-                            capabilities = capabilities,
-                            root_dir = function(fname)
-                                return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
-                            end,
-                        })
-                    end,
-
-                    ["omnisharp_mono"] = function()
-                        require("lspconfig").omnisharp_mono.setup({
-                            capabilities = capabilities,
-                            root_dir = function(fname)
-                                return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
-                            end,
-                        })
-                    end,
                 },
+            })
+
+            require("lspconfig").lua_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim", "it", "describe", "before_each", "after_each" },
+                        }
+                    }
+                }
+            })
+
+            require("lspconfig").omnisharp.setup({
+                capabilities = capabilities,
+                root_dir = function(fname)
+                    return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
+                end,
+            })
+
+            require("lspconfig").omnisharp_mono.setup({
+                capabilities = capabilities,
+                root_dir = function(fname)
+                    return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
+                end,
             })
 
             vim.diagnostic.config({
@@ -65,12 +59,13 @@ return {
                 float = {
                     focusable = false,
                     style = "minimal",
-                    border = "rounded",
+                    border = "single",
                     source = "always",
                     header = "",
                     prefix = "",
                 },
             })
+
         end,
         keys = {
             {'<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},

@@ -4,14 +4,14 @@ return {
         config = function()
             require("rose-pine").setup({
                 variant = "moon",
-                transparent = false,
+                transparent = true,
                 enable = {
                     terminal = true
                 },
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = false,
+                    transparency = true,
                 },
                 highlight_groups = {
                     Comment = { italic = true }
