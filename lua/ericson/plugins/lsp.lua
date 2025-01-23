@@ -5,7 +5,6 @@ return {
             {'hrsh7th/cmp-nvim-lsp'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
-            {'j-hui/fidget.nvim'},
         },
         lazy = false,
         config = function()
@@ -16,12 +15,6 @@ return {
                 vim.lsp.protocol.make_client_capabilities(),
                 require('cmp_nvim_lsp').default_capabilities()
             )
-
-            require('fidget').setup({
-                notification = {
-                    override_vim_notify = true
-                }
-            })
 
             require('mason').setup()
             require('mason-lspconfig').setup({
@@ -66,7 +59,7 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = false,
+                virtual_text = true,
                 signs = false,
                 underline = false,
                 float = {
