@@ -1,3 +1,6 @@
 return {
-    enabled = true
+    enabled = true,
+    toggles = {
+        dim = true
+    }
 }

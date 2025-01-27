@@ -1,29 +1,31 @@
--- install lazy.nvim if its not installed
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim/"
-
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-
--- add lazypath to runtime path
 vim.opt.rtp:prepend(lazypath)
+
 
 -- setup plugins
 require("lazy").setup({
     require('ericson.plugins.treesitter'),
-    require('ericson.plugins.telescope'),
     require('ericson.plugins.lsp'),
     require('ericson.plugins.cmp'),
     require('ericson.plugins.colorschemes'),
-    require('ericson.plugins.smear'),
-    require('ericson.plugins.fidget'),
     require('ericson.plugins.cellular-automatan'),
     require('ericson.plugins.snacks'),
+    require('ericson.plugins.undotree'),
+    --require('ericson.plugins.telescope'),
+    --require('ericson.plugins.smear'),
+    --require('ericson.plugins.fidget'),
 })
