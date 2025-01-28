@@ -21,8 +21,8 @@ return {
             hidden      = "",
             ignored     = "",
             follow      = "",
-            selected    = "● ",
-            unselected  = "○ ",
+            selected    = "+ ",
+            unselected  = "  ",
         },
         git = {
             commit = "",

@@ -25,7 +25,7 @@ require("lazy").setup({
     require('ericson.plugins.cellular-automatan'),
     require('ericson.plugins.snacks'),
     require('ericson.plugins.undotree'),
+    require('ericson.plugins.smear'),
     --require('ericson.plugins.telescope'),
-    --require('ericson.plugins.smear'),
     --require('ericson.plugins.fidget'),
 })
