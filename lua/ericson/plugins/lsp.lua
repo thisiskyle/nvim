@@ -16,6 +16,8 @@ return {
                 require('cmp_nvim_lsp').default_capabilities()
             )
 
+            --local capabilities = require('blink.cmp').get_list_capabilities()
+
             require('mason').setup()
             require('mason-lspconfig').setup({
                 handlers = {

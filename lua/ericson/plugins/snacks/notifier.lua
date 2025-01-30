@@ -8,11 +8,11 @@ return {
     sort = { "level", "added" },
     level = vim.log.levels.TRACE,
     icons = {
-        error = "Error",
-        warn = "Warn",
-        info = "Info",
-        debug = "Debug",
-        trace = "Trace",
+        error = "[Error]",
+        warn = "[Warn]",
+        info = "[Info]",
+        debug = "[Debug]",
+        trace = "[Trace]",
     },
     keep = function(notif)
         return vim.fn.getcmdpos() > 0

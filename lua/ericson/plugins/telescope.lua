@@ -61,6 +61,7 @@ return {
                         no_ignore = true
                     }
                 },
+
                 extensions = {
                     undo = {
                         mappings = {
