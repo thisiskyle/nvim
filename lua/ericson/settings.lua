@@ -28,6 +28,6 @@ vim.opt.statusline = ""
     .. "    "
     .. "%m%h%r%w"
     .. "    "
-    .. "%{%v:lua.require('ericson.utils').diag_count()%}"
+    .. "L:%l"
 
 vim.cmd.colorscheme("rose-pine")

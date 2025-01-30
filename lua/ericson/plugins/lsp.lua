@@ -2,21 +2,14 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            {'hrsh7th/cmp-nvim-lsp'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
         },
         lazy = false,
         config = function()
 
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                require('cmp_nvim_lsp').default_capabilities()
-            )
-
-            --local capabilities = require('blink.cmp').get_list_capabilities()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            --local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             require('mason').setup()
             require('mason-lspconfig').setup({

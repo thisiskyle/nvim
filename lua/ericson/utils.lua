@@ -1,37 +1,5 @@
 local M = {}
 
-function M.open_scratch_pad()
-    vim.cmd(":enew")
-    vim.cmd(":file scratch")
-    vim.opt_local.buftype = "nofile"
-    vim.opt_local.bufhidden = "hide"
-    vim.opt_local.filetype = "markdown"
-    vim.opt_local.swapfile = false
-end
-
-function M.set_branch_name()
-	local branch = vim.fn.system("git branch --show-current")
-
-    if(string.find(branch, 'fatal')) then
-        branch = ""
-    end
-
-	if branch ~= "" then
-		return branch:gsub('\n', '')
-	else
-		return ""
-	end
-end
-
-function M.git_branch()
-    return vim.g.branch_name
-end
-
-function M.toggle_status()
-    local num = vim.opt.laststatus:get()
-    vim.opt.laststatus = (num % 2) + 1
-end
-
 function M.diag_count()
     if vim.fn.has('nvim-0.6') == 1 then
       -- On nvim 0.6+ use vim.diagnostic to get lsp generated diagnostic count.

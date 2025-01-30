@@ -19,14 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 -- setup plugins
 require("lazy").setup({
     require('ericson.plugins.treesitter'),
+    require('ericson.plugins.snacks'),
     require('ericson.plugins.lsp'),
     require('ericson.plugins.cmp'),
-    --require('ericson.plugins.blink'),
     require('ericson.plugins.colorschemes'),
-    require('ericson.plugins.cellular-automatan'),
-    require('ericson.plugins.snacks'),
     require('ericson.plugins.undotree'),
-    require('ericson.plugins.smear'),
-    --require('ericson.plugins.telescope'),
-    --require('ericson.plugins.fidget'),
 })
