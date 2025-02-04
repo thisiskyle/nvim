@@ -7,13 +7,12 @@ return {
         notifier = require("ericson.plugins.snacks.notifier"),
         picker = require("ericson.plugins.snacks.picker"),
         dim = { enabled = true },
-        scopes = { enabled = true }
+        scopes = { enabled = true },
+        git = { enabled = true }
     },
     keys = {
         { '<leader>z', function() Snacks.zen() end, mode = 'n'},
-
         { '<leader>nh', function() Snacks.notifier.show_history() end, mode = 'n'},
-
         { '<leader>ff', function() Snacks.picker.files() end, mode = 'n'},
         { '<leader>fg', function() Snacks.picker.grep() end, mode = 'n'},
         { '<leader>fw', function() Snacks.picker.grep_word() end, mode = 'n'},

@@ -20,16 +20,5 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = ""
-    .. "  "
-    .. "cwd: %{fnamemodify(getcwd(), ':t')}"
-    .. "   "
-    .. "buf: %t %m%h%r%w "
-    .. "  "
-    .. "L:%l"
-    .. "    "
-    .. "git: "
-    .. "    "
-    .. "%{%v:lua.require('ericson.utils').diag_count()%}"
-
+vim.opt.statusline = " %F  %m%h%r%w"
 vim.cmd.colorscheme("rose-pine")

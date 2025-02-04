@@ -23,6 +23,5 @@ require("lazy").setup({
     require('ericson.plugins.lsp'),
     require('ericson.plugins.cmp'),
     require('ericson.plugins.colorschemes'),
-    --require('ericson.plugins.undotree'),
-
+    require('ericson.plugins.undotree'),
 })
