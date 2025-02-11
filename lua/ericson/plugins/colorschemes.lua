@@ -44,7 +44,7 @@ return {
                 '<leader>1',
                 function()
                     require("rose-pine").setup(moon)
-                    vim.cmd.colorscheme("rose_pine")
+                    vim.cmd.colorscheme("rose-pine")
                 end,
                 mode = 'n'
             },
@@ -53,7 +53,7 @@ return {
                 '<leader>2',
                 function()
                     require("rose-pine").setup(moon_clear)
-                    vim.cmd.colorscheme("rose_pine")
+                    vim.cmd.colorscheme("rose-pine")
                 end,
                 mode = 'n'
             },
