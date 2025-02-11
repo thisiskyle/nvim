@@ -1,4 +1,3 @@
 require("ericson.keymaps")
-require("ericson.lazy")
+require("ericson.plugins")
 require("ericson.settings")
-

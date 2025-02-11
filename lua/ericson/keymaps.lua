@@ -24,20 +24,6 @@ vim.keymap.set(
 
 vim.keymap.set(
     'n',
-    '<leader>c',
-    'gcc',
-    { desc = 'Toggle comment line', remap = true }
-)
-
-vim.keymap.set(
-    'v',
-    '<leader>c',
-    'gc',
-    { desc = 'Toggle comment block', remap = true }
-)
-
-vim.keymap.set(
-    'n',
     '<leader>tl',
     function()
         if(vim.g.cul) then

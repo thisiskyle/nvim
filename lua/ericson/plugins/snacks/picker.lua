@@ -21,7 +21,7 @@ return {
             hidden      = "",
             ignored     = "",
             follow      = "",
-            selected    = "+ ",
+            selected    = "+",
             unselected  = "  ",
         },
         git = {
