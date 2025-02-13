@@ -33,7 +33,7 @@ return {
         return vim.fn.getcmdpos() > 0
     end,
     style = "compact",
-    top_down = false,
+    top_down = true,
     date_format = "%R",
     more_format = " ↓ %d lines ",
     refresh = 50,

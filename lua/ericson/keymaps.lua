@@ -18,7 +18,7 @@ vim.keymap.set(
 vim.keymap.set(
     'n',
     '<leader>.',
-    ':sp<cr>:term<cr>a',
+    ':vsp<cr>:term<cr>a',
     { desc = 'Open terminal' }
 )
 
