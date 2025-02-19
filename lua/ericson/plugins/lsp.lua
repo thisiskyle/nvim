@@ -1,3 +1,4 @@
+
 return {
     {
         'neovim/nvim-lspconfig',
@@ -68,48 +69,10 @@ return {
             {'<leader>di', '<cmd>lua vim.diagnostic.open_float()<cr>', mode = 'n'},
             {'<leader>dq', '<cmd>lua vim.diagnostic.setqflist()<cr>', mode = 'n'},
             {'<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<cr>', mode = 'n'},
-            {'<leader>ds',
-                function ()
-                    vim.diagnostic.config({
-                        virtual_text = true,
-                        signs = false,
-                        underline = false,
-                        float = {
-                            focusable = false,
-                            style = "minimal",
-                            border = "single",
-                            source = "always",
-                            header = "",
-                            prefix = "",
-                        },
-                    })
-
-                end,
-                mode = 'n'
-            },
-            {'<leader>dh',
-                function ()
-                    vim.diagnostic.config({
-                        virtual_text = false,
-                        signs = false,
-                        underline = false,
-                        float = {
-                            focusable = false,
-                            style = "minimal",
-                            border = "single",
-                            source = "always",
-                            header = "",
-                            prefix = "",
-                        },
-                    })
-
-                end,
-                mode = 'n'
-            },
-            -- {'<leader>dh', '<cmd>lua vim.diagnostic.hide()<cr>', mode = 'n'},
-            -- {'<leader>ds', '<cmd>lua vim.diagnostic.show()<cr>', mode = 'n'},
             {'<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<cr>', mode = 'n'},
             {'<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', mode = 'n'},
+            {'<leader>ds', function() vim.diagnostic.config({ virtual_text = true }) end, mode = 'n' },
+            {'<leader>dh', function() vim.diagnostic.config({ virtual_text = false }) end, mode = 'n' },
         }
     }
 }
