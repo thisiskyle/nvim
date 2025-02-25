@@ -1,112 +1,52 @@
+function ColorMe(conf)
+    local c = "rose-pine-moon"
+    local t = false
 
-local tokyo_moon = {
-    style = "moon",
-    transparent = false,
-    terminal_colors = true,
-    styles = {
-        comments = { italic = true },
-        keywords = { italic = false },
-        functions = { italic = false },
-        variables = { italic = false },
-        sidebars = "normal",
-        floats = "normal",
-    }
-}
+    if(conf) then
+        c = conf.scheme or c
+        t = conf.transparent or t
+    end
 
-local tokyo_clear = {
-    style = "moon",
-    transparent = true,
-    terminal_colors = true,
-    styles = {
-        comments = { italic = true },
-        keywords = { italic = false },
-        functions = { italic = false },
-        variables = { italic = false },
-        sidebars = "transparent",
-        floats = "transparent",
-    }
-}
-
-local rose_moon = {
-    variant = "moon",
-    enable = {
-        terminal = true
-    },
-    styles = {
-        bold = true,
-        italic = false,
-        transparency = false,
-    },
-    highlight_groups = {
-        Comment = { italic = true }
-    }
-}
-
-local rose_clear = {
-    variant = "moon",
-    enable = {
-        terminal = true
-    },
-    styles = {
-        bold = true,
-        italic = false,
-        transparency = true,
-    },
-    highlight_groups = {
-        Comment = { italic = true }
-    }
-}
+    vim.cmd.colorscheme(c)
+    if(t) then
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    end
+end
 
 
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        config = function()
-            require("tokyonight").setup(tokyo_moon)
-            -- vim.cmd.colorscheme("tokyonight")
-        end,
-        keys = {
-            {
-                '<leader>3',
-                function()
-                    require("tokyonight").setup(tokyo_moon)
-                    vim.cmd.colorscheme("tokyonight")
-                end,
-                mode = 'n'
-            },
-            {
-                '<leader>4',
-                function()
-                    require("tokyonight").setup(tokyo_clear)
-                    vim.cmd.colorscheme("tokyonight")
-                end,
-                mode = 'n'
-            },
-        }
-    },
-
-    {
         "rose-pine/neovim",
         lazy = false,
         config = function()
-            require("rose-pine").setup(rose_moon)
-            vim.cmd.colorscheme("rose-pine")
+            require("rose-pine").setup({
+                variant = "moon",
+                enable = {
+                    terminal = true
+                },
+                styles = {
+                    bold = false,
+                    italic = false,
+                    transparency = false,
+                },
+                highlight_groups = {
+                    Comment = { italic = true }
+                }
+            })
+            ColorMe()
         end,
         keys = {
             {
                 '<leader>1',
                 function()
-                    require("rose-pine").setup(rose_moon)
-                    vim.cmd.colorscheme("rose-pine")
+                    ColorMe()
                 end,
                 mode = 'n'
             },
             {
                 '<leader>2',
                 function()
-                    require("rose-pine").setup(rose_clear)
-                    vim.cmd.colorscheme("rose-pine")
+                    ColorMe({ transparent = true })
                 end,
                 mode = 'n'
             },
