@@ -35,17 +35,18 @@ return {
 
             require("lspconfig").omnisharp.setup({
                 capabilities = capabilities,
+                cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp.cmd" },
                 root_dir = function(fname)
                     return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
                 end,
             })
 
-            require("lspconfig").omnisharp_mono.setup({
-                capabilities = capabilities,
-                root_dir = function(fname)
-                    return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
-                end,
-            })
+            -- require("lspconfig").omnisharp_mono.setup({
+            --     capabilities = capabilities,
+            --     root_dir = function(fname)
+            --         return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
+            --     end,
+            -- })
 
             vim.diagnostic.config({
                 virtual_text = true,
