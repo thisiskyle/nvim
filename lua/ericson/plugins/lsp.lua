@@ -64,16 +64,16 @@ return {
 
         end,
         keys = {
-            {'<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n'},
-            {'<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n'},
-            {'<leader>li', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n'},
-            {'<leader>di', '<cmd>lua vim.diagnostic.open_float()<cr>', mode = 'n'},
-            {'<leader>dq', '<cmd>lua vim.diagnostic.setqflist()<cr>', mode = 'n'},
-            {'<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<cr>', mode = 'n'},
-            {'<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<cr>', mode = 'n'},
-            {'<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', mode = 'n'},
-            {'<leader>ds', function() vim.diagnostic.config({ virtual_text = true }) end, mode = 'n' },
-            {'<leader>dh', function() vim.diagnostic.config({ virtual_text = false }) end, mode = 'n' },
+            { '<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>', mode = 'n', desc = 'lsp: jump definition' },
+            { '<leader>jt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', mode = 'n', desc = 'lsp: jump type' },
+            { '<leader>lf', '<cmd>lua vim.lsp.buf.hover()<cr>', mode = 'n', desc = 'lsp: open float' },
+            { '<leader>df', '<cmd>lua vim.diagnostic.open_float()<cr>', mode = 'n', desc = 'diagnostic: open float' },
+            { '<leader>dq', '<cmd>lua vim.diagnostic.setqflist()<cr>', mode = 'n', desc = 'diagnostic: quickfix' },
+            { '<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<cr>', mode = 'n', desc = 'diagnostic: local list' },
+            { '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<cr>', mode = 'n', desc = 'diagnostic: go to next' },
+            { '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', mode = 'n', desc = 'diagnostic: go to prev' },
+            { '<leader>ds', function() vim.diagnostic.config({ virtual_text = true }) end, mode = 'n', desc = 'diagnostic: turn on virtual text' },
+            { '<leader>dh', function() vim.diagnostic.config({ virtual_text = false }) end, mode = 'n', desc = 'diagnostic: turn off virtual text' },
         }
     }
 }
