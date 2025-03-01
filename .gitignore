@@ -13,3 +13,7 @@
 
 !syntax/
 !syntax/**
+
+!after/
+!after/ftplugin/
+!after/ftplugin/**
