@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.g.cul = false
 
 vim.keymap.set(
     'n',
@@ -20,21 +19,6 @@ vim.keymap.set(
     '<leader>.',
     ':vsp<cr>:term<cr>a',
     { desc = 'Open terminal' }
-)
-
-vim.keymap.set(
-    'n',
-    '<leader>tl',
-    function()
-        if(vim.g.cul) then
-            vim.cmd(":set nocul")
-            vim.g.cul = false
-        else
-            vim.cmd(":set cul")
-            vim.g.cul = true
-        end
-    end,
-    { desc = 'Toggle cursorline' }
 )
 
 vim.keymap.set(
