@@ -10,6 +10,7 @@ function ColorMe(conf)
     vim.cmd.colorscheme(c)
     if(t) then
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
     end
 end
 
@@ -24,6 +25,7 @@ return {
                 enable = {
                     terminal = true
                 },
+                dim_inactive_windows = false,
                 styles = {
                     bold = false,
                     italic = false,
@@ -33,7 +35,7 @@ return {
                     Comment = { italic = true }
                 }
             })
-            ColorMe()
+            ColorMe({ transparent = true })
         end,
         keys = {
             {
