@@ -2,6 +2,13 @@ vim.g.mapleader = " "
 
 vim.keymap.set(
     'n',
+    '<leader>cd',
+    '<cmd>cd %:p:h<cr>',
+    { desc = 'Change directory to current buffer' }
+)
+
+vim.keymap.set(
+    'n',
     '<leader>tn',
     '<cmd>set nu!<cr>',
     { desc = 'Toggle number line' }
@@ -43,4 +50,22 @@ vim.keymap.set(
         vim.opt_local.swapfile = false
     end,
     { desc = 'Open scratch buffer' }
+)
+
+vim.keymap.set(
+    'n',
+    '<leader>\'',
+    function ()
+        vim.cmd(":e $HOME/.notes/index.md")
+    end,
+    { desc = 'Open notes' }
+)
+
+vim.keymap.set(
+    'n',
+    '<leader>;',
+    function ()
+        vim.cmd(":e " .. vim.fn.stdpath("config") .. "/init.lua")
+    end,
+    { desc = 'Open config' }
 )
