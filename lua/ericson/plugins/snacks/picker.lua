@@ -1,9 +1,14 @@
 return {
     enabled = true,
     prompt = "> ",
+    sources = {
+        files = {
+            hidden = true
+        }
+    },
     icons = {
         files = {
-            enabled = false, -- show file icons
+            enabled = false,
         },
         keymaps = {
             nowait = ""
