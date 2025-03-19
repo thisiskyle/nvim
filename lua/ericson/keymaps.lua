@@ -24,7 +24,7 @@ vim.keymap.set(
 vim.keymap.set(
     'n',
     '<leader>.',
-    ':vsp<cr>:term<cr>a',
+    ':sp<cr>:term<cr>a',
     { desc = 'Open terminal' }
 )
 
@@ -56,7 +56,7 @@ vim.keymap.set(
     'n',
     '<leader>\'',
     function ()
-        vim.cmd(":e $HOME/.notes/index.md")
+        vim.cmd(":e $HOME/.notes/")
     end,
     { desc = 'Open notes' }
 )
