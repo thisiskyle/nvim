@@ -20,4 +20,4 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = " %F %m%h%r%w     %l,%c"
+vim.opt.statusline = " %F %m%h%r%w"

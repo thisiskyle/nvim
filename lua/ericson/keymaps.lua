@@ -2,30 +2,9 @@ vim.g.mapleader = " "
 
 vim.keymap.set(
     'n',
-    '<leader>cd',
-    '<cmd>cd %:p:h<cr>',
-    { desc = 'Change directory to current buffer' }
-)
-
-vim.keymap.set(
-    'n',
     '<leader>tn',
     '<cmd>set nu!<cr>',
     { desc = 'Toggle number line' }
-)
-
-vim.keymap.set(
-    'n',
-    '<leader>tr',
-    '<cmd>set rnu!<cr>',
-    { desc = 'Toggle relative number line' }
-)
-
-vim.keymap.set(
-    'n',
-    '<leader>.',
-    ':sp<cr>:term<cr>a',
-    { desc = 'Open terminal' }
 )
 
 vim.keymap.set(
@@ -40,7 +19,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     'n',
-    '<leader>,',
+    '<leader>\'',
     function ()
         vim.cmd(":enew")
         vim.cmd(":file scratch")
@@ -54,18 +33,29 @@ vim.keymap.set(
 
 vim.keymap.set(
     'n',
-    '<leader>\'',
+    '<leader>;',
+    ':sp<cr>:term<cr>a',
+    { desc = 'Open terminal' }
+)
+
+vim.keymap.set(
+    'n',
+    '<leader>/',
     function ()
-        vim.cmd(":e $HOME/.notes/")
+        local path = "$HOME/.notes/"
+        vim.cmd(":cd " .. path)
+        vim.cmd(":e " .. path)
     end,
     { desc = 'Open notes' }
 )
 
 vim.keymap.set(
     'n',
-    '<leader>;',
+    '<leader>.',
     function ()
-        vim.cmd(":e " .. vim.fn.stdpath("config") .. "/init.lua")
+        local path = vim.fn.stdpath("config")
+        vim.cmd(":cd " .. path)
+        vim.cmd(":e " .. path)
     end,
     { desc = 'Open config' }
 )
