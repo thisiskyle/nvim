@@ -21,3 +21,26 @@ vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w"
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = false,
+    underline = false,
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "single",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
+})
+
+vim.lsp.enable({
+    'lua',
+    'omnisharp',
+    'bash',
+    'typescript',
+    'json',
+    'java'
+})

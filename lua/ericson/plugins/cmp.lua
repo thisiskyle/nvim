@@ -10,6 +10,7 @@ return {
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         },
+        enabled = false,
         lazy = false,
         config = function()
 
