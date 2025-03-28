@@ -4,7 +4,6 @@ return {
         dependencies = {
             'rafamadriz/friendly-snippets'
         },
-
         opts = {
             keymap = {
                 preset = 'default'
@@ -44,36 +43,36 @@ return {
             appearance = {
                 nerd_font_variant = 'mono',
                 kind_icons = {
-                    Text = '',
-                    Method = '',
-                    Function = '',
-                    Constructor = '',
+                    Text = 'text',
+                    Method = 'method',
+                    Function = 'function',
+                    Constructor = 'constructor',
 
-                    Field = '',
-                    Variable = '',
-                    Property = '',
+                    Field = 'field',
+                    Variable = 'variable',
+                    Property = 'property',
 
-                    Class = '',
-                    Interface = '',
-                    Struct = '',
-                    Module = '',
+                    Class = 'class',
+                    Interface = 'interface',
+                    Struct = 'struct',
+                    Module = 'module',
 
-                    Unit = '',
-                    Value = '',
-                    Enum = '',
-                    EnumMember = '',
+                    Unit = 'unit',
+                    Value = 'value',
+                    Enum = 'enum',
+                    EnumMember = 'enumMember',
 
-                    Keyword = '',
-                    Constant = '',
+                    Keyword = 'keyword',
+                    Constant = 'constant',
 
-                    Snippet = '',
-                    Color = '',
-                    File = '',
-                    Reference = '',
-                    Folder = '',
-                    Event = '',
-                    Operator = '',
-                    TypeParameter = '',
+                    Snippet = 'snippet',
+                    Color = 'color',
+                    File = 'file',
+                    Reference = 'reference',
+                    Folder = 'folder',
+                    Event = 'event',
+                    Operator = 'operator',
+                    TypeParameter = 'typeParameter',
                 },
             },
 
