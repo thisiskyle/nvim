@@ -1,4 +1,4 @@
-vim.optwildmenu = true
+vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
 vim.opt.incsearch  = true
@@ -22,8 +22,20 @@ vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w"
 
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson"))
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson/after"))
+
+-- enable all lsp
+local configs = {}
+for _, v in ipairs(vim.api.nvim_get_runtime_file('/lua/ericson/lsp/*', true)) do
+    local name = vim.fn.fnamemodify(v, ':t:r')
+    configs[name] = true
+end
+vim.lsp.enable(vim.tbl_keys(configs))
+
 vim.diagnostic.config({
     virtual_text = true,
+    virtual_lines = false,
     signs = false,
     underline = false,
     float = {
@@ -34,13 +46,4 @@ vim.diagnostic.config({
         header = "",
         prefix = "",
     },
-})
-
-vim.lsp.enable({
-    'lua',
-    'omnisharp',
-    'bash',
-    'typescript',
-    'json',
-    'java'
 })

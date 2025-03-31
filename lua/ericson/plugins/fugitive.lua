@@ -2,6 +2,6 @@ return {
     {
         "tpope/vim-fugitive",
         lazy = false,
-        enabled = false
+        enabled = true
     }
 }

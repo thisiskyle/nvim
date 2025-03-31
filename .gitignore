@@ -17,3 +17,6 @@
 !after/
 !after/ftplugin/
 !after/ftplugin/**
+
+!lsp/
+!lsp/**

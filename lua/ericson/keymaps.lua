@@ -119,13 +119,13 @@ vim.keymap.set(
 vim.keymap.set(
     { 'n' },
     '<leader>ds',
-    '<cmd>lua vim.diagnostic.config({ virtual_text = true })<cr>',
+    '<cmd>lua vim.diagnostic.config({ virtual_text = true, virtual_lines = false })<cr>',
     { desc = 'diagnostic: turn on virtual text' }
 )
 
 vim.keymap.set(
     { 'n' },
     '<leader>dh',
-    '<cmd>lua vim.diagnostic.config({ virtual_text = false })<cr>',
+    '<cmd>lua vim.diagnostic.config({ virtual_text = false, virtual_lines = false })<cr>',
     { desc = 'diagnostic: turn off virtual text' }
 )
