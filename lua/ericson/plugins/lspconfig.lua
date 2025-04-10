@@ -14,6 +14,7 @@ return {
             require('mason').setup()
             require('mason-lspconfig').setup({
                 handlers = {
+                    -- default handler
                     function(server_name)
                         require("lspconfig")[server_name].setup({
                             capabilities = blink_capabilities,
@@ -27,7 +28,13 @@ return {
                     settings = {
                         Lua = {
                             diagnostics = {
-                                globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                globals = {
+                                    "vim",
+                                    "it",
+                                    "describe",
+                                    "before_each",
+                                    "after_each"
+                                },
                             }
                         }
                     }
@@ -40,12 +47,6 @@ return {
                     end,
                 },
 
-                omnisharp_mono = {
-                    cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp_mono.cmd" },
-                    root_dir = function(fname)
-                        return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
-                    end,
-                },
             }
 
             for k,v in pairs(servers) do
