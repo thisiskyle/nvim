@@ -4,6 +4,8 @@ return {
         dependencies = {
             'rafamadriz/friendly-snippets'
         },
+        lazy = false,
+        priority = 50,
         opts = {
             keymap = {
                 preset = 'default'
