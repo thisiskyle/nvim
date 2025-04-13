@@ -12,16 +12,19 @@ return {
             local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
 
             require('mason').setup()
+
             require('mason-lspconfig').setup({
                 handlers = {
                     -- default handler
                     function(server_name)
-                        require("lspconfig")[server_name].setup({
+                        vim.lsp.config(server_name, {
                             capabilities = blink_capabilities,
                         })
+                        vim.lsp.enable(server_name)
                     end,
                 },
             })
+
 
             local servers = {
                 lua_ls = {
@@ -42,18 +45,25 @@ return {
 
                 omnisharp = {
                     cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp.cmd" },
-                    root_dir = function(fname)
-                        return require('lspconfig').util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".git")(fname)
-                    end,
+                    filetypes = {
+                        "cs"
+                    },
+                    root_markers = {
+                        "*.sln",
+                        "*.csproj",
+                        "omnisharp.json",
+                        "function.json",
+                        ".git"
+                    }
                 },
-
             }
 
             for k,v in pairs(servers) do
                 if(servers[k].capabilities == nil) then
                     servers[k].capabilities = blink_capabilities
                 end
-                require("lspconfig")[k].setup(v)
+                vim.lsp.config(k, v)
+                vim.lsp.enable(k)
             end
 
         end
