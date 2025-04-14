@@ -3,7 +3,6 @@
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson/after"))
 
-
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
@@ -27,7 +26,6 @@ vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w"
-
 
 vim.diagnostic.config({
     virtual_text = true,

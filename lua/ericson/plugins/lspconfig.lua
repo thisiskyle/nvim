@@ -6,7 +6,7 @@ return {
             {'williamboman/mason-lspconfig.nvim'},
         },
         lazy = false,
-        priority = 51,
+        priority = 50,
         config = function()
 
             local blink_capabilities = require('blink.cmp').get_lsp_capabilities()

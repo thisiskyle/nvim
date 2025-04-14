@@ -19,6 +19,7 @@ return {
     {
         "rose-pine/neovim",
         lazy = false,
+        priority = 52,
         config = function()
             require("rose-pine").setup({
                 variant = "moon",
@@ -49,6 +50,20 @@ return {
                 '<leader>2',
                 function()
                     ColorMe({ transparent = true })
+                end,
+                mode = 'n'
+            },
+            {
+                '<leader>3',
+                function()
+                    ColorMe({ scheme = 'rose-pine-dawn', transparent = false })
+                end,
+                mode = 'n'
+            },
+            {
+                '<leader>4',
+                function()
+                    ColorMe({ scheme = 'quiet', transparent = false })
                 end,
                 mode = 'n'
             },

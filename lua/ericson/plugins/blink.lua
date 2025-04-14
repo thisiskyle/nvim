@@ -5,7 +5,7 @@ return {
             'rafamadriz/friendly-snippets'
         },
         lazy = false,
-        priority = 50,
+        priority = 51,
         opts = {
             keymap = {
                 preset = 'default'
@@ -26,7 +26,7 @@ return {
                     }
                 },
                 ghost_text =  {
-                    enabled = false,
+                    enabled = true,
                     show_with_menu = true
                 },
                 menu = {
