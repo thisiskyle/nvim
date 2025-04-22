@@ -7,6 +7,7 @@ return {
                     "it",
                     "describe",
                     "before_each",
+                    "Snacks",
                     "after_each"
                 },
             }

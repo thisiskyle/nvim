@@ -1,3 +1,5 @@
+local utils = require('ericson.utils')
+
 vim.g.mapleader = " "
 
 vim.keymap.set(
@@ -58,27 +60,6 @@ vim.keymap.set(
         vim.cmd(":e " .. path)
     end,
     { desc = 'open: config' }
-)
-
-vim.keymap.set(
-    { 'n' },
-    '<leader>ld',
-    '<cmd>lua vim.lsp.buf.definition()<cr>',
-    { desc = 'lsp: jump definition' }
-)
-
-vim.keymap.set(
-    { 'n' },
-    '<leader>lt',
-    '<cmd>lua vim.lsp.buf.type_definition()<cr>',
-    { desc = 'lsp: jump type' }
-)
-
-vim.keymap.set(
-    { 'n' },
-    '<leader>lf',
-    '<cmd>lua vim.lsp.buf.hover()<cr>',
-    { desc = 'lsp: open float' }
 )
 
 vim.keymap.set(

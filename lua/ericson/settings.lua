@@ -27,17 +27,3 @@ vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w"
 
-vim.diagnostic.config({
-    virtual_text = true,
-    virtual_lines = false,
-    signs = false,
-    underline = false,
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "single",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-})
