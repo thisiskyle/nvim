@@ -1,5 +1,3 @@
-local utils = require('ericson.utils')
-
 vim.g.mapleader = " "
 
 vim.keymap.set(
