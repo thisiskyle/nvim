@@ -1,8 +1,3 @@
--- we add this to path so our lua/ericson folder can contain all my config instead of using the
--- root nvim config folder
-vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson"))
-vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson/after"))
-
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
@@ -25,5 +20,6 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = " %F %m%h%r%w"
+vim.opt.statusline = " %F %m%h%r%w L:%l C:%c "
 
+require("ericson.utils").ColorMe({ color = "rose-pine", bg = "transparent" })

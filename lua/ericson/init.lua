@@ -1,4 +1,8 @@
 require("ericson.keymaps")
 require("ericson.lazy")
 require("ericson.settings")
--- require("ericson.lsp") -- for native lsp config
+
+-- we add this to path so our lua/ericson folder can contain all my config instead of using the
+-- root nvim config folder
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson"))
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/ericson/after"))
