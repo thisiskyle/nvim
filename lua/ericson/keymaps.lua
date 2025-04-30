@@ -28,12 +28,17 @@ vim.keymap.set(
     { 'n' },
     '<leader>\'',
     function ()
-        vim.cmd(":enew")
-        vim.cmd(":file scratch")
-        vim.opt_local.buftype = "nofile"
-        vim.opt_local.bufhidden = "hide"
-        vim.opt_local.filetype = "markdown"
-        vim.opt_local.swapfile = false
+        local name = "scratch"
+        if(vim.fn.bufexists(name) == 0) then
+            vim.cmd(":enew")
+            vim.cmd(":file " .. name)
+            vim.opt_local.buftype = "nofile"
+            vim.opt_local.bufhidden = "hide"
+            vim.opt_local.filetype = "markdown"
+            vim.opt_local.swapfile = false
+        else
+            vim.cmd(":b " .. name)
+        end
     end,
     { desc = 'open: scratch buffer' }
 )
