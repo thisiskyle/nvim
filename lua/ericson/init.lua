@@ -1,5 +1,5 @@
 require("ericson.keymaps")
-require("ericson.lazy")
+require("ericson.lazy_init")
 require("ericson.settings")
 
 -- we add this to path so our lua/ericson folder can contain all my config instead of using the

@@ -22,4 +22,4 @@ vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w L:%l C:%c "
 
-require("ericson.utils").ColorMe({ color = "rose-pine", bg = "transparent" })
+require("ericson.utils").color_me({ color = "rose-pine", bg = "transparent" })

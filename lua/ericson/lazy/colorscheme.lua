@@ -4,7 +4,7 @@ return {
     {
         "rose-pine/neovim",
         lazy = false,
-        priority = 52,
+        priority = 9999,
         config = function()
             require("rose-pine").setup({
                 variant = "moon",
@@ -26,33 +26,33 @@ return {
             {
                 '<leader>1',
                 mode = 'n',
-                desc = 'color: set rose-pine',
+                desc = 'colorscheme: set rose-pine',
                 function()
-                    utils.ColorMe({ color = "rose-pine" })
+                    utils.color_me({ color = "rose-pine" })
                 end,
             },
             {
                 '<leader>2',
                 mode = 'n',
-                desc = 'color: set rose-pine',
+                desc = 'colorscheme: set quiet',
                 function()
-                    utils.ColorMe({ color = "quiet" })
+                    utils.color_me({ color = "quiet" })
                 end,
             },
             {
                 '<leader>9',
                 mode = 'n',
-                desc = 'color: set bg solid',
+                desc = 'colorscheme: set bg solid',
                 function()
-                    utils.SolidBg()
+                    utils.solid_bg()
                 end,
             },
             {
                 '<leader>0',
                 mode = 'n',
-                desc = 'color: set bg tranparent',
+                desc = 'colorscheme: set bg tranparent',
                 function()
-                    utils.TransparentBg()
+                    utils.transparent_bg()
                 end,
             },
         }

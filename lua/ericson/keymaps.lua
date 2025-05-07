@@ -1,5 +1,13 @@
 vim.g.mapleader = " "
 
+
+vim.keymap.set(
+    { 'v' },
+    '<leader>s',
+    ":Sleepy<cr>",
+    { desc = '' }
+)
+
 vim.keymap.set(
     { 'n' },
     '<leader>cd',

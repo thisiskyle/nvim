@@ -3,9 +3,9 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-        notifier = require("ericson.plugins.snacks.notifier"),
-        picker = require("ericson.plugins.snacks.picker"),
-        zen = require("ericson.plugins.snacks.zen"),
+        notifier = require("ericson.lazy.snacks.notifier"),
+        picker = require("ericson.lazy.snacks.picker"),
+        zen = require("ericson.lazy.snacks.zen"),
         dim = { enabled = true },
         scopes = { enabled = true },
     },

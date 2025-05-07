@@ -1,23 +1,3 @@
-
-local lsp_override = {
-    lua_ls = {
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = {
-                        "vim",
-                        "it",
-                        "describe",
-                        "before_each",
-                        "Snacks",
-                        "after_each"
-                    },
-                }
-            }
-        }
-    }
-}
-
 return {
     {
         'neovim/nvim-lspconfig',
@@ -29,24 +9,8 @@ return {
         priority = 50,
         config = function()
 
-
             require('mason').setup()
-
-            -- use mason-lspconfig so we can automate lsp enabling
-            -- this allows us to install with Mason and enable without adding
-            -- a vim.lsp.enable() to our config
-            require('mason-lspconfig').setup({
-                handlers = {
-                    function(lsp)
-                        if(lsp_override[lsp]) then
-                            -- override/merge custom config with nvim-lspconfig
-                            vim.lsp.config(lsp, lsp_override[lsp])
-                        end
-                        vim.lsp.enable(lsp)
-                    end,
-                },
-            })
-
+            require('mason-lspconfig').setup({ automatic_enable = true })
 
             vim.diagnostic.config({
                 virtual_text = true,
@@ -61,6 +25,24 @@ return {
                     header = "",
                     prefix = "",
                 },
+            })
+
+            -- override config in lsp/ directories
+            vim.lsp.config("lua_ls", {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {
+                                "vim",
+                                "it",
+                                "describe",
+                                "before_each",
+                                "Snacks",
+                                "after_each"
+                            },
+                        }
+                    }
+                }
             })
 
         end,
