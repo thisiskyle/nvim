@@ -3,9 +3,16 @@ vim.g.mapleader = " "
 
 vim.keymap.set(
     { 'v' },
-    '<leader>s',
-    ":Sleepy<cr>",
-    { desc = '' }
+    '<leader>nn',
+    ":Nap<cr>",
+    { desc = 'nap: run' }
+)
+
+vim.keymap.set(
+    { 'v' },
+    '<leader>nt',
+    ":NapTest<cr>",
+    { desc = 'nap: test' }
 )
 
 vim.keymap.set(
