@@ -43,7 +43,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>\'',
     function ()
-        local name = "scratch"
+        local name = "scratch_pad"
         if(vim.fn.bufexists(name) == 0) then
             vim.cmd(":enew")
             vim.cmd(":file " .. name)
@@ -70,8 +70,7 @@ vim.keymap.set(
     '<leader>/',
     function ()
         local path = "$HOME/.notes/"
-        vim.cmd(":cd " .. path)
-        vim.cmd(":e " .. path)
+        vim.cmd(":Ex " .. path)
     end,
     { desc = 'open: notes' }
 )
@@ -81,8 +80,7 @@ vim.keymap.set(
     '<leader>.',
     function ()
         local path = vim.fn.stdpath("config")
-        vim.cmd(":cd " .. path)
-        vim.cmd(":e " .. path)
+        vim.cmd(":Ex " .. path)
     end,
     { desc = 'open: config' }
 )
