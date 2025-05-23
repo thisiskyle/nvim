@@ -41,10 +41,22 @@ function M.validate(t)
 end
 
 
+-- todo: instead of using load here, we should put the string in a file
+--       then use require to get the tables from it
 function M.get_visual_selection_as_lua()
     local selected = M.get_visual_selection()
-    local data = load("return {" .. selected .. "}")()
-    return M.validate(data)
+    local path = vim.fn.stdpath("cache") .. "/tmp.lua"
+    local file = io.open(path, "w")
+
+    if(file) then
+        file:write("return {\n" .. selected .. "\n}")
+        file:close()
+    end
+
+    local data = dofile(path)
+
+    print(data[1].request.body)
+    return data
 end
 
 return M

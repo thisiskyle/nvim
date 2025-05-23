@@ -2,15 +2,6 @@
 M = {}
 
 local function add_headers(headers)
-    if(headers == nil) then
-        return ""
-    end
-
-    local h = ""
-    for _,v in ipairs(headers) do
-        h = h .. '-H "' .. v .. '" '
-    end
-    return h
 end
 
 local function add_request_type(type)
@@ -46,7 +37,7 @@ local function add_body(body)
     if(body == nil) then
         return ""
     end
-    return '-d "' .. body .. '" '
+    return "-d '" .. body .. "' "
 end
 
 local function add_params(params)
@@ -63,29 +54,40 @@ local function add_params(params)
 end
 
 -- build the command string from a table
-function M.build(data)
+function M.build(request)
 
-    local t = add_request_type(data.request.type)
+    local _request = {}
+    table.insert(_request, "curl")
+    table.insert(_request, "-s")
+    table.insert(_request, "-X")
+    table.insert(_request, request.type)
 
-    -- type is required
-    if(t == nil) then
-        vim.notify("request type is not set")
-        return ""
+    if(request.type == "GET") then
+        table.insert(_request, "--get")
     end
 
-    -- url is required
-    if(data.request.url == nil) then
-        vim.notify("request url is not set")
-        return ""
+    if(request.headers ~= nil) then
+        for _,v in ipairs(request.headers) do
+            table.insert(_request, "-H")
+            table.insert(_request, v)
+        end
     end
 
-    return "curl -s --ssl-no-revoke "
-        .. t
-        .. add_user(data.request.user)
-        .. add_headers(data.request.headers)
-        .. add_body(data.request.body)
-        .. add_params(data.request.params)
-        .. '"' .. data.request.url .. '"'
+    if(request.body) then
+        table.insert(_request, "-d")
+        table.insert(_request, request.body)
+    end
+
+    if(request.params) then
+        for _,v in ipairs(request.params) do
+            table.insert(_request, "--data-urlencode")
+            table.insert(_request, v)
+        end
+    end
+
+    table.insert(_request, request.url)
+
+    return _request
 end
 
 

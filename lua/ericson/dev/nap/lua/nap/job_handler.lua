@@ -43,7 +43,7 @@ local function build(data)
 
         table.insert(jobs, {
             name = v.name or "nap",
-            cmd = curl.build(v),
+            cmd = curl.build(v.request),
             after = v.after or nil,
             test = v.test or nil
         })
@@ -87,6 +87,8 @@ local function async_run(jobData)
             break
         end
 
+        print(j.cmd)
+
         vim.fn.jobstart(
             j.cmd,
             {
@@ -119,8 +121,9 @@ local function async_run(jobData)
 
                 end,
 
-                -- on_exit = function()
-                -- end,
+                on_exit = function()
+                    vim.notify("exit")
+                end,
             }
         )
     end
@@ -140,7 +143,5 @@ end
 function M.run_and_display(jobData)
     return async_run(jobData)
 end
-
-
 
 return M
