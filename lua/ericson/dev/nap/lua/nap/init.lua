@@ -1,32 +1,47 @@
 require("nap.commands")
 local utils = require("nap.utils")
-local job_handler = require("nap.job_handler")
+local buffer = require("nap.buffer")
+local request_handler = require("nap.request_handler")
 
 M = {}
 
--- todo:
+-- todo: setup? maybe?
 function M.setup()
 end
 
-function M.test()
-    local jobData = utils.get_visual_selection_as_lua()
-    job_handler.run_and_test(jobData)
+-- todo: we should do a progress notification so the user knows 
+--       its still running when we make async calls
+
+function M.test_and_show()
+    -- local requestJob = utils.get_visual_selection_as_lua()
+    -- request_handler.async(requestJob, function(responses)
+    --     local results = request_handler.run_tests(responses)
+    --     buffer.display_test_results(results)
+    -- end)
 end
 
+function M.request_and_show()
+    local requestJob = utils.get_visual_selection_as_lua()
 
-function M.display()
-    local jobData = utils.get_visual_selection_as_lua()
-    job_handler.run_and_display(jobData)
+    -- local responses = request_handler.sync(requestJob)
+    -- for _,v in pairs(responses) do
+    --     print(v.name)
+    --     buffer.display_response(v)
+    --     if(v.after) then
+    --         v.after(v.response)
+    --     end
+    -- end
 
-end
+    request_handler.async(requestJob, function(responses)
+        for _,v in pairs(responses) do
+            print(v.name)
+            buffer.display_response(v)
+            if(v.after) then
+                v.after(v.response)
+            end
+        end
+    end)
 
-
-function M.get(jobs)
-    if(utils.is_array(jobs) == false) then
-        return job_handler.run_and_get({ jobs })
-    end
-
-    return job_handler.run_and_get(jobs)
 end
 
 return M

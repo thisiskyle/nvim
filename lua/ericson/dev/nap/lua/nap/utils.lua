@@ -55,7 +55,6 @@ function M.get_visual_selection_as_lua()
 
     local data = dofile(path)
 
-    print(data[1].request.body)
     return data
 end
 

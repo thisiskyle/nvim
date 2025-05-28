@@ -16,11 +16,11 @@ local function find_buf_name(base, id)
     return find_buf_name(base, id + 1)
 end
 
-function M.write(bufn, data)
+local function write(bufn, data)
     vim.api.nvim_buf_set_lines(bufn, 0, -1, false, data)
 end
 
-function M.create(name)
+local function create(name)
     local n = name:gsub(" ", "_")
     vim.cmd(":new")
     vim.cmd(":file " .. find_buf_name(n .. "_", 1))
@@ -28,6 +28,18 @@ function M.create(name)
     vim.opt_local.filetype = "json"
     vim.opt_local.swapfile = false
     return vim.api.nvim_get_current_buf()
+end
+
+
+function M.display_response(response)
+    local bufn = create(response.name)
+    write(bufn, response.response)
+end
+
+
+function M.display_test_results(results)
+    local bufn = create('nap_test')
+    write(bufn, results)
 end
 
 return M

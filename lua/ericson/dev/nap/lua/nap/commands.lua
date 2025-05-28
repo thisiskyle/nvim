@@ -1,7 +1,7 @@
 vim.api.nvim_create_user_command(
     'Nap',
     function()
-        require("nap").display()
+        require("nap").request_and_show()
     end,
     {
         range = true
@@ -11,8 +11,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
     'NapTest',
     function()
-        -- todo: do something other than display here
-        require("nap").test()
+        require("nap").test_and_show()
     end,
     {
         range = true
