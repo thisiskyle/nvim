@@ -1,29 +1,19 @@
 
+---@class Job simplified job data used for creating the actual request job
+---@field name string
+---@field request HttpRequest
+---@field command? string[]
+---@field after? fun(data?: string[])
+---@field test? fun(data?: string[])
+
 ---@class Response
 ---@field name? string
 ---@field response? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
 
----@class Request data needed to make an http request
----@field type string
----@field url string
----@field curl_extras? string[]
----@field body? string
-
----@class RequestJob simplified job data used for creating the actual request job
----@field name string
----@field request Request
----@field after? fun(data?: string[])
----@field test? fun(data?: string[])
-
----@class CurlJob the request job that contains the curl command that will be used
----@field name string
----@field cmd string[] the curl command
----@field after? fun(data?: string[])
----@field test? fun(data?: string[])
-
 ---@class TestResults: string[]
+
 
 local curl = require("nap.curl")
 local running = {}
@@ -31,37 +21,17 @@ local complete = {}
 
 local M = {}
 
---- Convert a array of RequestJob into an array of RequestJobs
---- with a curl command
----@param data RequestJob[]
----@return CurlJob[]
----
-local function build_curl_jobs(data)
-    local jobs = {}
-    for _, v in ipairs(data) do
-        table.insert(jobs, {
-            name = v.name or "nap",
-            cmd = curl.build(v.request),
-            after = v.after or nil,
-            test = v.test or nil
-        })
-
-    end
-    return jobs
-end
-
-
 --- Run the tests (if provided) on the data in the Response
 ---@param responses Response[]
 ---@return TestResults
 ---
 function M.run_tests(responses)
     local results = {}
-    for _,job in pairs(responses) do
-        if(job.test) then
+    for _,res in pairs(responses) do
+        if(res.test) then
             local r = "fail"
-            local n = job.name or "nap"
-            if(job.test(job.response) == true) then
+            local n = res.name or "nap"
+            if(res.test(res.response) == true) then
                 r = "pass"
             end
             table.insert(results, r .. ": " .. n)
@@ -73,21 +43,24 @@ end
 
 
 --- Uses vim.fn.system and curl to make a syncronous http request. Blocking
----@param requestJobs RequestJob[]
+---@param jobs Job[]
 ---@return Response[]
 ---
-function M.sync(requestJobs)
-    local jobs = build_curl_jobs(requestJobs)
+function M.sync(jobs)
     local responses = {}
+
     for _,j in ipairs(jobs) do
 
-        if(j.cmd == "" or j.cmd == nil) then
+        local cmd = j.command or curl.build_curl_command(j.request)
+
+        if(cmd == "" or cmd == nil) then
             vim.notify("Job command was empty", vim.log.levels.ERROR)
             break
         end
+
         table.insert(responses, {
             name = j.name or "nap",
-            response = { vim.fn.system(j.cmd) },
+            response = { vim.fn.system(cmd) },
             after = j.after or nil,
             test = j.test or nil
         })
@@ -98,27 +71,27 @@ end
 
 
 --- Uses vim.fn.jobstart and curl to make an asyncronous http request. Non-blocking
----@param requestJobs RequestJob[]
+---@param jobs Job[]
 ---@param on_complete fun(data?: Response[]) on_complete callback handler
 ---
-function M.async(requestJobs, on_complete)
-    local jobs = build_curl_jobs(requestJobs)
+function M.async(jobs, on_complete)
 
     for _,j in ipairs(jobs) do
 
-        if(j.cmd == "" or j.cmd == nil) then
+        local cmd = j.command or curl.build_curl_command(j.request)
+
+        if(cmd == "" or cmd == nil) then
             vim.notify("Job command was empty", vim.log.levels.ERROR)
             break
         end
 
         local job_id = vim.fn.jobstart(
-            j.cmd,
+            cmd,
             {
                 stdout_buffered = true,
                 stderr_buffered = true,
 
                 on_stdout = function(id, data, _)
-                    -- add the response to the related job
                     running[id].response = data
                 end,
 
@@ -142,6 +115,7 @@ function M.async(requestJobs, on_complete)
             }
         )
 
+        -- add the job to the running buffer
         running[job_id] = {
             name = j.name or "nap",
             response = nil,
