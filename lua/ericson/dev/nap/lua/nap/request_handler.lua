@@ -15,11 +15,34 @@
 ---@class TestResults: string[]
 
 
+local ui = require("nap.ui")
 local curl = require("nap.curl")
 local running = {}
 local complete = {}
 
 local M = {}
+
+--- Get the progress counts and pass it along to the UI
+local function show_progress()
+    if(next(running) == nil) then
+        ui.show_progress(1, 1)
+        return
+    end
+
+    local run = 0
+    local done = 0
+
+    for _,_ in pairs(running) do
+        run = run + 1
+    end
+    for _,_ in pairs(complete) do
+        done = done + 1
+    end
+
+    ui.show_progress(run + done, done)
+    vim.defer_fn(show_progress, 100)
+end
+
 
 --- Run the tests (if provided) on the data in the Response
 ---@param responses Response[]
@@ -123,7 +146,9 @@ function M.async(jobs, on_complete)
             test = j.test or nil
         }
 
+
     end
+    show_progress()
 end
 
 return M

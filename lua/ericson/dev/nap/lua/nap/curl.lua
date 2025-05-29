@@ -1,4 +1,5 @@
 
+
 ---@class HttpRequest table with the data needed to make an http request
 ---@field type string
 ---@field url string
@@ -6,7 +7,6 @@
 ---@field params? string[]
 ---@field curl_extras? string[]
 ---@field body? string
-
 
 
 M = {}
@@ -61,7 +61,5 @@ function M.build_curl_command(request)
 
     return curl_command
 end
-
-
 
 return M

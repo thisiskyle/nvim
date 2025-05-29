@@ -64,4 +64,22 @@ function M.show_test_results(results)
     write(bufn, results)
 end
 
+
+
+function M.show_progress(target, completed)
+    local anims = require("nap.ui.progress_animations")
+    local done = (completed == target)
+    local message = (done) and "Done!" or completed .. "/" .. target
+    local icon = (done) and "" or anims.get_frame(anims.spinner)
+    vim.notify(message, "info", {
+        id = "http_progress",
+        title = "Http Progress",
+        opts = function(notif)
+            notif.icon = icon
+        end
+    })
+end
+
+
+
 return M
