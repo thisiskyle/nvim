@@ -66,12 +66,12 @@ end
 
 
 function M.show_progress(target, completed)
-    local anims = require("nap.ui.progress_animations")
+    local animator = require("nap.ui.progress_animations")
     local spinner = ""
     local message = "Done!"
 
     if(not (completed == target)) then
-        spinner = anims.get_frame(anims.catch)
+        spinner = animator.get_frame(animator.animations.pong)
         message = "Completed Requests: " .. completed .. "/" .. target
     end
 
@@ -83,6 +83,30 @@ function M.show_progress(target, completed)
         end
     })
 
+end
+
+local count = 0
+
+function M.test_animations()
+    if(count > 1000) then
+        return
+    end
+
+    local animator = require("nap.ui.progress_animations")
+    local message = ""
+
+    for k,v in pairs(animator.animations) do
+        message = message .. k .. ": " .. animator.get_frame(v) .. "\n"
+    end
+
+    vim.notify(message, "info", {
+        id = "nap_progress",
+        title = "NAP Progress",
+    })
+
+    count = count + 1
+
+    vim.defer_fn(M.test_animations, 50)
 end
 
 return M
