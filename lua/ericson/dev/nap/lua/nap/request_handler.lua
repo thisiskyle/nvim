@@ -24,6 +24,8 @@ local M = {}
 
 --- Get the progress counts and pass it along to the UI
 local function show_progress()
+    local animator = require("nap.ui.animator")
+
     if(next(running) == nil) then
         ui.show_progress(1, 1)
         return
@@ -39,8 +41,8 @@ local function show_progress()
         done = done + 1
     end
 
-    ui.show_progress(run + done, done)
-    vim.defer_fn(show_progress, 100)
+    ui.show_progress(run + done, done, animator.animations.worm)
+    vim.defer_fn(show_progress, 60)
 end
 
 

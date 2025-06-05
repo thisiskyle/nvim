@@ -65,13 +65,17 @@ function M.show_test_results(results)
 end
 
 
-function M.show_progress(target, completed)
-    local animator = require("nap.ui.progress_animations")
+---@param target number
+---@param completed number
+---@param anim? Animation
+---
+function M.show_progress(target, completed, anim)
+    local animator = require("nap.ui.animator")
     local spinner = ""
     local message = "Done!"
 
     if(not (completed == target)) then
-        spinner = animator.get_frame(animator.animations.pong)
+        spinner = animator.get_frame(anim)
         message = "Completed Requests: " .. completed .. "/" .. target
     end
 
@@ -92,7 +96,7 @@ function M.test_animations()
         return
     end
 
-    local animator = require("nap.ui.progress_animations")
+    local animator = require("nap.ui.animator")
     local message = ""
 
     for k,v in pairs(animator.animations) do
