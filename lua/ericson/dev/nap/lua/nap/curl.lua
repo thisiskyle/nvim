@@ -1,8 +1,6 @@
----@class BodyData
----@field url_encoded boolean
----@field data string
-
----@class RequestBody: BodyData[]
+---@class Data
+---@field urlencode? string
+---@field raw? string
 
 ---@class HttpRequest table with the data needed to make an http request
 ---@field type string
@@ -10,7 +8,7 @@
 ---@field headers? string[]
 ---@field query? string[]
 ---@field additional_args? string[]
----@field body? RequestBody
+---@field data? Data[]
 
 
 
@@ -50,14 +48,21 @@ function M.build_curl_command(request)
         end
     end
 
-    if(request.body) then
-        for _,v in ipairs(request.body) do
-            if(v.encode or type == "get") then
+    if(request.data) then
+        for _,v in ipairs(request.data) do
+            if(v.urlencode) then
                 table.insert(curl_command, "--data-urlencode")
+                table.insert(curl_command, v.urlencode)
+            elseif(v.raw) then
+                table.insert(curl_command, "--data")
+                table.insert(curl_command, v.raw)
+            elseif(type == "get") then
+                table.insert(curl_command, "--data-urlencode")
+                table.insert(curl_command, v[1])
             else
                 table.insert(curl_command, "--data")
+                table.insert(curl_command, v[1])
             end
-            table.insert(curl_command, v.data)
         end
     end
 
