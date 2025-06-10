@@ -9,10 +9,10 @@ vim.keymap.set(
 )
 
 vim.keymap.set(
-    { 'v' },
-    '<leader>nt',
-    ":NapTest<cr>",
-    { desc = 'nap: test' }
+    { 'n' },
+    '<leader>na',
+    ":NapAnimate<cr>",
+    { desc = 'nap: run animation test' }
 )
 
 vim.keymap.set(

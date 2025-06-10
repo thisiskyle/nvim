@@ -14,6 +14,7 @@ function M.get_visual_selection()
     return table.concat(lines, '\n')
 end
 
+-- todo: unused
 -- this isn't 100% accurate, but should work 
 -- for out purposes
 function M.is_array(t)
@@ -23,6 +24,7 @@ function M.is_array(t)
     return false
 end
 
+-- todo: unused
 -- Because we are using a visual selection as our input
 -- we are going to try and be flexible here. By default we wrap the 
 -- selected text in an array, but incase the user has already selected

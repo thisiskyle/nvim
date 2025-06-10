@@ -27,7 +27,7 @@ return {
                 },
             })
 
-            -- override config in lsp/ directories
+            -- merge/override config in lsp/ directories
             vim.lsp.config("lua_ls", {
                 settings = {
                     Lua = {

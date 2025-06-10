@@ -8,11 +8,14 @@
 
 ---@class Response
 ---@field name? string
----@field response? string[]
+---@field data? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
+---@field test_results? table
 
----@class TestResults: string[]
+---@class TestResult 
+---@field name string
+---@field result boolean
 
 
 local ui = require("nap.ui")
@@ -47,27 +50,20 @@ end
 
 
 --- Run the tests (if provided) on the data in the Response
+--- and insert the results to the response table
 ---@param responses Response[]
----@return TestResults
 ---
 function M.run_tests(responses)
-    local results = {}
-    for _,res in pairs(responses) do
-        if(res.test) then
-            local r = "fail"
-            local n = res.name or "nap"
-            if(res.test(res.response) == true) then
-                r = "pass"
-            end
-            table.insert(results, r .. ": " .. n)
+    for _,response in pairs(responses) do
+        if(response.test) then
+            response.test_results = response.test(response.data)
         end
     end
-    return results
 end
 
 
 
---- Uses vim.fn.system and curl to make a syncronous http request. Blocking
+--- Uses vim.fn.system and curl to make a syncronous http request
 ---@param jobs Job[]
 ---@return Response[]
 ---
@@ -76,7 +72,7 @@ function M.sync(jobs)
 
     for _,j in ipairs(jobs) do
 
-        local cmd = j.command or curl.build_curl_command(j.request)
+        local cmd = j.command or curl.build(j.request)
 
         if(cmd == "" or cmd == nil) then
             vim.notify("Job command was empty", vim.log.levels.ERROR)
@@ -85,7 +81,7 @@ function M.sync(jobs)
 
         table.insert(responses, {
             name = j.name or "nap",
-            response = { vim.fn.system(cmd) },
+            data = { vim.fn.system(cmd) },
             after = j.after or nil,
             test = j.test or nil
         })
@@ -95,7 +91,7 @@ function M.sync(jobs)
 end
 
 
---- Uses vim.fn.jobstart and curl to make an asyncronous http request. Non-blocking
+--- Uses vim.fn.jobstart and curl to make an asyncronous http request
 ---@param jobs Job[]
 ---@param on_complete fun(data?: Response[]) on_complete callback handler
 ---
@@ -103,7 +99,7 @@ function M.async(jobs, on_complete)
 
     for _,j in ipairs(jobs) do
 
-        local cmd = j.command or curl.build_curl_command(j.request)
+        local cmd = j.command or curl.build(j.request)
 
         if(cmd == "" or cmd == nil) then
             vim.notify("Job command was empty", vim.log.levels.ERROR)
@@ -117,7 +113,11 @@ function M.async(jobs, on_complete)
                 stderr_buffered = true,
 
                 on_stdout = function(id, data, _)
-                    running[id].response = data
+                    local resp = running[id]
+                    resp.data = data
+                    if(resp.test) then
+                        resp.test_results = resp.test(resp.data)
+                    end
                 end,
 
                 on_stderr = function (id, data, _)
@@ -143,9 +143,10 @@ function M.async(jobs, on_complete)
         -- add the job to the running buffer
         running[job_id] = {
             name = j.name or "nap",
-            response = nil,
+            data = nil,
             after = j.after or nil,
-            test = j.test or nil
+            test = j.test or nil,
+            test_results = nil
         }
 
 

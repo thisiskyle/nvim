@@ -23,7 +23,7 @@ local request_types = {
 ---@param request HttpRequest
 ---@return string[]
 ---
-function M.build_curl_command(request)
+function M.build(request)
 
     local curl_command = {}
     local type = string.lower(request.type)
