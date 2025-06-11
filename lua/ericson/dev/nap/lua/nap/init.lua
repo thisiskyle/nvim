@@ -14,7 +14,6 @@ end
 function M.use_selection()
     local jobs = utils.get_visual_selection_as_lua()
     job_handler.async(jobs, function(responses)
-        -- job_handler.run_tests(responses)
         ui.show(responses)
     end)
 end

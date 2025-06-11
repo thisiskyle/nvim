@@ -48,21 +48,6 @@ local function show_progress()
     vim.defer_fn(show_progress, 60)
 end
 
-
---- Run the tests (if provided) on the data in the Response
---- and insert the results to the response table
----@param responses Response[]
----
-function M.run_tests(responses)
-    for _,response in pairs(responses) do
-        if(response.test) then
-            response.test_results = response.test(response.data)
-        end
-    end
-end
-
-
-
 --- Uses vim.fn.system and curl to make a syncronous http request
 ---@param jobs Job[]
 ---@return Response[]
@@ -123,7 +108,7 @@ function M.async(jobs, on_complete)
                 on_stderr = function (id, data, _)
                     if(next(data) ~= nil and data[1] ~= "") then
                         -- overwrite the response with the error
-                        running[id].response = data
+                        running[id].data = data
                     end
                 end,
 
