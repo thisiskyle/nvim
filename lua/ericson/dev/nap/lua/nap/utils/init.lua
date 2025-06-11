@@ -29,7 +29,7 @@ end
 -- we are going to try and be flexible here. By default we wrap the 
 -- selected text in an array, but incase the user has already selected
 -- an array, we are going to dig into the table and try to correctly
--- extract the valid array
+-- extract the inner array
 function M.validate(t)
     if(M.is_array(t) == true) then
         if(M.is_array(t[1]) == true) then
@@ -43,10 +43,15 @@ function M.validate(t)
 end
 
 
--- todo: instead of using load here, we should put the string in a file
---       then use require to get the tables from it
+--- Get the visual selection block and inject it into a temp file
+--- this temp file will be loaded as lua with dofile
+---@return Job[]?
+---
 function M.get_visual_selection_as_lua()
     local selected = M.get_visual_selection()
+    if(selected == nil or selected == "") then
+        return nil
+    end
     local path = vim.fn.stdpath("cache") .. "/tmp.lua"
     local file = io.open(path, "w")
 

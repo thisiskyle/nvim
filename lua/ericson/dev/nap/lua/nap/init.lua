@@ -1,20 +1,21 @@
 
 require("nap.commands")
-local utils = require("nap.utils")
-local ui = require("nap.ui")
-local job_handler = require("nap.job.job_handler")
 
 M = {}
 
--- todo: setup? maybe?
+-- todo:
 function M.setup()
     M.config = {}
 end
 
 function M.use_selection()
-    local jobs = utils.get_visual_selection_as_lua()
-    job_handler.async(jobs, function(responses)
-        ui.show(responses)
+    local jobs = require("nap.utils").get_visual_selection_as_lua()
+    if(jobs == nil) then
+        vim.notify("Job list is nil", vim.log.levels.ERROR)
+        return
+    end
+    require("nap.job_handler").async(jobs, function(responses)
+        require("nap.ui").show(responses)
     end)
 end
 

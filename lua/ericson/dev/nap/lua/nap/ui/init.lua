@@ -82,14 +82,18 @@ end
 ---
 function M.show(responses)
     for _,r in pairs(responses) do
-        local bufn = create(r.name)
-        write(bufn, r.data)
-        if(r.after) then
-            r.after(r.data)
-        end
-
-        if(r.test_results) then
-            insert_at_top(bufn, format_test_results(r.test_results))
+        if(r.error) then
+            local bufn = create(r.name .. "_error")
+            write(bufn, r.error)
+        else
+            local bufn = create(r.name)
+            write(bufn, r.data)
+            if(r.after) then
+                r.after(r.data)
+            end
+            if(r.test_results) then
+                insert_at_top(bufn, format_test_results(r.test_results))
+            end
         end
     end
 end

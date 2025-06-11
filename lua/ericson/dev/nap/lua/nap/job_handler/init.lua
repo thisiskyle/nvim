@@ -9,6 +9,7 @@
 ---@class Response
 ---@field name? string
 ---@field data? string[]
+---@field error? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
 ---@field test_results? table
@@ -107,8 +108,7 @@ function M.async(jobs, on_complete)
 
                 on_stderr = function (id, data, _)
                     if(next(data) ~= nil and data[1] ~= "") then
-                        -- overwrite the response with the error
-                        running[id].data = data
+                        running[id].error = data
                     end
                 end,
 
@@ -129,11 +129,11 @@ function M.async(jobs, on_complete)
         running[job_id] = {
             name = j.name or "nap",
             data = nil,
+            error = nil,
             after = j.after or nil,
             test = j.test or nil,
             test_results = nil
         }
-
 
     end
     show_progress()
