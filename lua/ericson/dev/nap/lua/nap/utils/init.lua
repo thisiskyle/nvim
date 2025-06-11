@@ -14,6 +14,48 @@ function M.get_visual_selection()
     return table.concat(lines, '\n')
 end
 
+function M.remove_line_endings(data)
+    local output = {}
+    for _,v in ipairs(data) do
+        local s,_ = string.gsub(v, '\r\n?', '')
+        table.insert(output, s)
+    end
+    return output
+end
+
+
+-- todo: so this works for now, but only if the reponse
+--       is json
+--
+function M.parse_output(data)
+    local split_idx = 0
+    local split_data = { curl_header = {}, payload = {} }
+
+    for i,v in ipairs(data) do
+        if(v:match("^[%[%{]") ~= nil) then
+            split_idx = i
+        end
+    end
+
+    if(split_idx == 0) then
+        return { data }
+    end
+
+    for i = 1, split_idx - 1, 1 do
+        table.insert(split_data.curl_header, data[i])
+    end
+
+    for i = split_idx, #data, 1 do
+        table.insert(split_data.payload, data[i])
+    end
+
+    return split_data
+end
+
+
+
+
+
 -- todo: unused
 -- this isn't 100% accurate, but should work 
 -- for out purposes
@@ -41,7 +83,6 @@ function M.validate(t)
         return { t }
     end
 end
-
 
 --- Get the visual selection block and inject it into a temp file
 --- this temp file will be loaded as lua with dofile

@@ -1,6 +1,4 @@
-
 local M = {}
-
 
 
 --- Formats the test results into a string[] for buffer insertion
@@ -12,8 +10,6 @@ local function format_test_results(results)
     for _,v in pairs(results) do
         table.insert(content, "Test: " .. v.name .. " [" .. tostring(v.result) .. "]")
     end
-    table.insert(content, "")
-    table.insert(content, "-----------------------------------------------")
     table.insert(content, "")
     return content
 end
@@ -68,8 +64,9 @@ local function create(name)
     local n = name:gsub(" ", "_")
     vim.cmd(":new")
     vim.cmd(":file " .. find_buf_name(n .. "_", 1))
+    vim.cmd(":set fileformat=unix")
     vim.opt_local.buftype = "nofile"
-    vim.opt_local.filetype = "json"
+    vim.opt_local.filetype = "text"
     vim.opt_local.swapfile = false
     return vim.api.nvim_get_current_buf()
 end
@@ -82,19 +79,28 @@ end
 ---
 function M.show(responses)
     for _,r in pairs(responses) do
+
         if(r.error) then
             local bufn = create(r.name .. "_error")
             write(bufn, r.error)
+
         else
             local bufn = create(r.name)
-            write(bufn, r.data)
+            write(bufn, r.data.payload)
             if(r.after) then
                 r.after(r.data)
             end
+
+            if(r.data.curl_header) then
+                insert_at_top(bufn, r.data.curl_header)
+            end
+
             if(r.test_results) then
                 insert_at_top(bufn, format_test_results(r.test_results))
             end
+            vim.cmd(":norm gg")
         end
+
     end
 end
 

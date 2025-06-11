@@ -1,3 +1,6 @@
+---@class ResponseData
+---@field payload string[]
+---@field curl_header string[]
 
 ---@class Job simplified job data used for creating the actual request job
 ---@field name string
@@ -8,7 +11,7 @@
 
 ---@class Response
 ---@field name? string
----@field data? string[]
+---@field data? ResponseData
 ---@field error? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
@@ -19,6 +22,7 @@
 ---@field result boolean
 
 
+local utils = require("nap.utils")
 local ui = require("nap.ui")
 local curl = require("nap.curl")
 local running = {}
@@ -100,9 +104,12 @@ function M.async(jobs, on_complete)
 
                 on_stdout = function(id, data, _)
                     local resp = running[id]
-                    resp.data = data
+
+                    local norm = utils.remove_line_endings(data)
+                    resp.data = utils.parse_output(norm)
+
                     if(resp.test) then
-                        resp.test_results = resp.test(resp.data)
+                        resp.test_results = resp.test(resp.data.payload)
                     end
                 end,
 
