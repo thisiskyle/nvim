@@ -3,15 +3,15 @@ vim.g.mapleader = " "
 vim.keymap.set(
     { 'v' },
     '<leader>nn',
-    ":Nap<cr>",
-    { desc = 'nap: run' }
+    ":Sleepy<cr>",
+    { desc = 'sleepy: run' }
 )
 
 vim.keymap.set(
     { 'n' },
     '<leader>na',
-    ":NapAnimate<cr>",
-    { desc = 'nap: run animation test' }
+    ":SleepyAnimate<cr>",
+    { desc = 'sleepy: run animation test' }
 )
 
 vim.keymap.set(

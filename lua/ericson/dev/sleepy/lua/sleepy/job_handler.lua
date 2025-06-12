@@ -22,9 +22,9 @@
 ---@field result boolean
 
 
-local utils = require("nap.utils")
-local ui = require("nap.ui")
-local curl = require("nap.curl")
+local utils = require("sleepy.utils")
+local ui = require("sleepy.ui")
+local curl = require("sleepy.curl")
 local running = {}
 local complete = {}
 
@@ -32,7 +32,7 @@ local M = {}
 
 --- Get the progress counts and pass it along to the UI
 local function show_progress()
-    local animator = require("nap.ui.animator")
+    local cfg = require("sleepy.config")
 
     if(next(running) == nil) then
         ui.show_progress(1, 1)
@@ -49,7 +49,7 @@ local function show_progress()
         done = done + 1
     end
 
-    ui.show_progress(run + done, done, animator.animations.worm)
+    ui.show_progress(run + done, done, cfg.config.animation)
     vim.defer_fn(show_progress, 60)
 end
 
@@ -70,7 +70,7 @@ function M.sync(jobs)
         end
 
         table.insert(responses, {
-            name = j.name or "nap",
+            name = j.name or "sleepy",
             data = { vim.fn.system(cmd) },
             after = j.after or nil,
             test = j.test or nil
@@ -83,9 +83,10 @@ end
 
 --- Uses vim.fn.jobstart and curl to make an asyncronous http request
 ---@param jobs Job[]
+---@param config table
 ---@param on_complete fun(data?: Response[]) on_complete callback handler
 ---
-function M.async(jobs, on_complete)
+function M.async(jobs, config, on_complete)
 
     for _,j in ipairs(jobs) do
 
@@ -134,7 +135,7 @@ function M.async(jobs, on_complete)
 
         -- add the job to the running buffer
         running[job_id] = {
-            name = j.name or "nap",
+            name = j.name or "sleepy",
             data = nil,
             error = nil,
             after = j.after or nil,

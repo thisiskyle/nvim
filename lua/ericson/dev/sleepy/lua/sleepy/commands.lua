@@ -1,7 +1,7 @@
 vim.api.nvim_create_user_command(
-    'Nap',
+    'Sleepy',
     function()
-        require("nap").use_selection()
+        require("sleepy").use_selection()
     end,
     {
         range = true
@@ -9,9 +9,9 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
-    'NapAnimate',
+    'SleepyAnimate',
     function()
-        require("nap.ui").test_animations(500)
+        require("sleepy.ui").test_animations(500)
     end,
     {}
 )

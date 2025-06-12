@@ -108,21 +108,22 @@ end
 --- Diplays a notification of the current job progress
 ---@param target number
 ---@param completed number
----@param anim? Animation
+---@param anim? string
 ---
 function M.show_progress(target, completed, anim)
-    local animator = require("nap.ui.animator")
+    local animator = require("sleepy.ui.animator")
     local spinner = ""
     local message = "Done!"
 
     if(not (completed == target)) then
-        spinner = animator.get_frame(anim)
+        local animation = animator.animations[anim] or nil
+        spinner = animator.get_frame(animation)
         message = "Completed Requests: " .. completed .. "/" .. target
     end
 
     vim.notify(message, "info", {
-        id = "nap_progress",
-        title = "NAP Progress",
+        id = "sleepy_progress",
+        title = "Sleepy Progress",
         opts = function(notif)
             notif.icon = spinner
         end
@@ -139,7 +140,7 @@ function M.test_animations(count)
         return
     end
 
-    local animator = require("nap.ui.animator")
+    local animator = require("sleepy.ui.animator")
     local message = ""
 
     for k,v in pairs(animator.animations) do
@@ -147,8 +148,8 @@ function M.test_animations(count)
     end
 
     vim.notify(message, "info", {
-        id = "nap_progress",
-        title = "NAP Progress",
+        id = "sleepy_animate",
+        title = "Sleepy Animations",
     })
 
     count = count - 1

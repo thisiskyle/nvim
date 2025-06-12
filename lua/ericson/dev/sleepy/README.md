@@ -54,7 +54,7 @@ GET request:
         vim.cmd(":%!jq") -- formats the json
     end,
     test = function(data) 
-        local assert = require("nap.assert")
+        local assert = require("sleepy.assert")
         return {
             {
                 name = "has limber ability",
