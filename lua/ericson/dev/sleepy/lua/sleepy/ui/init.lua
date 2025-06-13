@@ -42,6 +42,9 @@ end
 ---@param data string[]
 ---
 local function write(bufn, data)
+    if(not data) then
+        return
+    end
     vim.api.nvim_buf_set_lines(bufn, 0, -1, false, data)
 end
 

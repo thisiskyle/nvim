@@ -7,6 +7,9 @@ local M = {}
 ---@return boolean
 ---
 function M.json_path_value(data, path, value)
+    if(not data) then
+        return false
+    end
     local json_tbl = vim.fn.json_decode(data)
     local current = json_tbl
     for _,k in pairs(path) do
@@ -26,6 +29,9 @@ end
 ---@return boolean
 ---
 function M.json_has_key(data, path)
+    if(not data) then
+        return false
+    end
     local json_tbl = vim.fn.json_decode(data)
     local current = json_tbl
     for _,k in pairs(path) do
@@ -46,6 +52,9 @@ end
 ---@return boolean
 ---
 function M.data_contains(data, str)
+    if(not data) then
+        return false
+    end
     for _,line in ipairs(data) do
         if(string.find(line, str)) then
             return true
