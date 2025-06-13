@@ -2,9 +2,12 @@
 ---@class Config
 ---@field animation string
 ---@field custom_animations table
----
+
+
+---@type Config
 local default = {
-    animation = "sleep"
+    animation = "sleepy",
+    custom_animations = {},
 }
 
 
@@ -27,11 +30,7 @@ function M.setup(opts)
     M.config = vim.tbl_deep_extend("force", default, opts or {})
 
     local animator = require("sleepy.ui.animator")
-
-    -- add any custom animations to the animations list
-    for key, value in pairs(M.config.custom_animations) do
-        animator.animations[key] = value
-    end
+    animator.animations = vim.tbl_deep_extend("force", animator.animations, M.config.custom_animations or {})
 end
 
 return M

@@ -1,23 +1,23 @@
----@class ResponseData
+---@class sleepy.ResponseData
 ---@field payload string[]
 ---@field curl_header string[]
 
----@class Job simplified job data used for creating the actual request job
+---@class sleepy.Job simplified job data used for creating the actual request job
 ---@field name string
----@field request HttpRequest
+---@field request sleepy.HttpRequest
 ---@field command? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
 
----@class Response
+---@class sleepy.Response
 ---@field name? string
----@field data? ResponseData
+---@field data? sleepy.ResponseData
 ---@field error? string[]
 ---@field after? fun(data?: string[])
 ---@field test? fun(data?: string[])
 ---@field test_results? table
 
----@class TestResult 
+---@class sleepy.TestResult 
 ---@field name string
 ---@field result boolean
 
@@ -27,8 +27,6 @@ local ui = require("sleepy.ui")
 local curl = require("sleepy.curl")
 local running = {}
 local complete = {}
-
-local M = {}
 
 --- Get the progress counts and pass it along to the UI
 local function show_progress()
@@ -53,9 +51,13 @@ local function show_progress()
     vim.defer_fn(show_progress, 60)
 end
 
+
+---@class sleepy.Job_Handler
+local M = {}
+
 --- Uses vim.fn.system and curl to make a syncronous http request
----@param jobs Job[]
----@return Response[]
+---@param jobs sleepy.Job[]
+---@return sleepy.Response[]
 ---
 function M.sync(jobs)
     local responses = {}
@@ -82,11 +84,10 @@ end
 
 
 --- Uses vim.fn.jobstart and curl to make an asyncronous http request
----@param jobs Job[]
----@param config table
----@param on_complete fun(data?: Response[]) on_complete callback handler
+---@param jobs sleepy.Job[]
+---@param on_complete fun(data?: sleepy.Response[]) on_complete callback handler
 ---
-function M.async(jobs, config, on_complete)
+function M.async(jobs, on_complete)
 
     for _,j in ipairs(jobs) do
 

@@ -1,26 +1,27 @@
----@class Data
+---@class sleepy.RequestData
 ---@field urlencode? string
 ---@field raw? string
 
----@class HttpRequest table with the data needed to make an http request
+---@class sleepy.HttpRequest table with the data needed to make an http request
 ---@field type string
 ---@field url string
 ---@field headers? string[]
 ---@field query? string[]
 ---@field additional_args? string[]
----@field data? Data[]
+---@field data? sleepy.RequestData[]
 
 
 
-M = {}
+---@class sleepy.Curl
+local M = {}
 
 local request_types = {
     get = { "-X", "GET", "--get" },
     post = { "-X", "POST" },
 }
 
---- Build the curl command string from a HttpRequest
----@param request HttpRequest
+--- Build the curl command string from a sleepy.HttpRequest
+---@param request sleepy.HttpRequest
 ---@return string[]
 ---
 function M.build(request)

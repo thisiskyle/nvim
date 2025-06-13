@@ -1,6 +1,6 @@
 local M = {}
 
---- Assumes a json payload is provided. Checks it for a key value pair.
+--- Assumes a json string is provided. Checks it for a key value pair.
 ---@param data string
 ---@param path string[]
 ---@param value string
@@ -9,20 +9,18 @@ local M = {}
 function M.json_path_value(data, path, value)
     local json_tbl = vim.fn.json_decode(data)
     local current = json_tbl
-
     for _,k in pairs(path) do
         if(type(current) == "table") then
             current = current[k]
         end
     end
-
     if(current == value) then
         return true
     end
     return false
 end
 
---- Assumes a json payload is provided. Checks it for a key.
+--- Assumes a json string is provided. Checks it for a key.
 ---@param data string
 ---@param path string[]
 ---@return boolean
@@ -30,13 +28,11 @@ end
 function M.json_has_key(data, path)
     local json_tbl = vim.fn.json_decode(data)
     local current = json_tbl
-
     for _,k in pairs(path) do
         if(type(current) == "table") then
             current = current[k]
         end
     end
-
     if(current) then
         return true
     end
@@ -44,7 +40,7 @@ function M.json_has_key(data, path)
 end
 
 
---- Assumes the payload is just a string[], checks it for a specific string
+--- Assumes string[] is provided, checks it for a specific sub string
 ---@param data string[]
 ---@param str string
 ---@return boolean

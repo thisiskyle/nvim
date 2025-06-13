@@ -1,5 +1,7 @@
 local M = {}
 
+--- Get the currently selected text from the buffer
+---
 function M.get_visual_selection()
     local s_start = vim.fn.getpos("'<")
     local s_end = vim.fn.getpos("'>")
@@ -24,10 +26,18 @@ function M.remove_line_endings(data)
 end
 
 
--- todo: so this works for now, but only if the reponse
---       is json
---
+--- This function is for parsing the output from curl.
+--- In some cases, curl will return more than just the request response.
+--- In these cases we want to be able to split the extra curl information
+--- from the actual response so we may run operations on them seperately
+--- todo: For now, this only works when the response is json, because thats all I use it for
+---@param data any
+---@return table
+---
 function M.parse_output(data)
+    -- todo: so this works for now, but only if the reponse
+    --       is json
+
     local split_idx = 0
     local split_data = { curl_header = {}, payload = {} }
 
@@ -56,9 +66,12 @@ end
 
 
 
--- todo: unused
--- this isn't 100% accurate, but should work 
--- for out purposes
+--- todo: unused
+--- this isn't 100% accurate, but should work 
+--- for out purposes
+---
+---@return boolean
+---
 function M.is_array(t)
     if(t[1]) then
         return true
@@ -66,12 +79,15 @@ function M.is_array(t)
     return false
 end
 
--- todo: unused
--- Because we are using a visual selection as our input
--- we are going to try and be flexible here. By default we wrap the 
--- selected text in an array, but incase the user has already selected
--- an array, we are going to dig into the table and try to correctly
--- extract the inner array
+--- todo: unused
+--- Because we are using a visual selection as our input
+--- we are going to try and be flexible here. By default we wrap the 
+--- selected text in an array, but incase the user has already selected
+--- an array, we are going to dig into the table and try to correctly
+--- extract the inner array
+---
+---@return table
+---
 function M.validate(t)
     if(M.is_array(t) == true) then
         if(M.is_array(t[1]) == true) then
@@ -86,6 +102,7 @@ end
 
 --- Get the visual selection block and inject it into a temp file
 --- this temp file will be loaded as lua with dofile
+---
 ---@return Job[]?
 ---
 function M.get_visual_selection_as_lua()

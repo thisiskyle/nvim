@@ -3,12 +3,15 @@
 ---@field frames string[]
 
 
+---@class Animator
+---@field animations Animation[]
+---@field get_frame fun(animation: Animation): string
+---
 local M = {}
 
 M.animations = {
-
-    sleep = {
-        speed = 500,
+    sleepy = {
+        speed = 800,
         frames = {
             "( -_-)    |",
             "( -_-).   |",
@@ -31,5 +34,6 @@ function M.get_frame(animation)
     end
     return animation.frames[math.floor(vim.uv.hrtime() / (1e6 * animation.speed)) % #animation.frames + 1]
 end
+
 
 return M
