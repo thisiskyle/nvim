@@ -1,53 +1,22 @@
 return {
     {
-        dir = vim.fn.stdpath("config") .. "/lua/ericson/dev/sleepy",
+        dir = "~/personal/sleepy",
         enabled = true,
         lazy = false,
         priority = 50,
         opts = {
-            -- animation = "worm",
+            global_after = function()
+                vim.cmd(":%!jq")
+            end,
+            animation = "default",
             custom_animations = {
                 spin = {
-                    speed = 80,
-                    frames = {
-                        "⠋",
-                        "⠙",
-                        "⠹",
-                        "⠸",
-                        "⠼",
-                        "⠴",
-                        "⠦",
-                        "⠧",
-                        "⠇",
-                        "⠏"
-                    }
+                    delta_time_ms = 50,
+                    frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
                 },
                 catch = {
-                    speed = 150,
-                    frames = {
-                        "--(o  )-",
-                        "-(  o )-",
-                        "-(   o)-",
-                        "-(    o)",
-                        "-(  o)--",
-                        "-( o  )-",
-                        "-(o   )-",
-                        "(o    )-",
-                    }
-                },
-
-                worm = {
-                    speed = 400,
-                    frames = {
-                        "|-  |",
-                        "|^  |",
-                        "| - |",
-                        "| ^ |",
-                        "|  -|",
-                        "|  ^|",
-                        "| - |",
-                        "| ^ |",
-                    }
+                    delta_time_ms = 125,
+                    frames = { "--(o  )-", "-(  o )-", "-(   o)-", "-(    o)", "-(  o)--", "-( o  )-", "-(o   )-", "(o    )-", }
                 },
             }
         }
