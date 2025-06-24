@@ -2,11 +2,36 @@ return {
     {
         'saghen/blink.cmp',
         dependencies = {
-            'rafamadriz/friendly-snippets'
+            'rafamadriz/friendly-snippets',
         },
+        enabled = true,
         lazy = false,
         priority = 51,
         opts = {
+
+            fuzzy = {
+                implementation = "lua"
+            },
+
+            sources = {
+                default = {
+                    'lsp',
+                    'path',
+                    'snippets',
+                    'buffer',
+                },
+                providers = {
+                    path = {
+                        opts = {
+                            get_cwd = function(_)
+                                return vim.fn.getcwd()
+                            end
+                        }
+                    }
+                }
+
+            },
+
             keymap = {
                 preset = 'default'
             },
@@ -49,24 +74,19 @@ return {
                     Method = 'method',
                     Function = 'function',
                     Constructor = 'constructor',
-
                     Field = 'field',
                     Variable = 'variable',
                     Property = 'property',
-
                     Class = 'class',
                     Interface = 'interface',
                     Struct = 'struct',
                     Module = 'module',
-
                     Unit = 'unit',
                     Value = 'value',
                     Enum = 'enum',
-                    EnumMember = 'enumMember',
-
+                    EnumMember = 'enum_member',
                     Keyword = 'keyword',
                     Constant = 'constant',
-
                     Snippet = 'snippet',
                     Color = 'color',
                     File = 'file',
@@ -74,25 +94,9 @@ return {
                     Folder = 'folder',
                     Event = 'event',
                     Operator = 'operator',
-                    TypeParameter = 'typeParameter',
+                    TypeParameter = 'type_parameter',
                 },
             },
-
-            sources = {
-                default = {
-                    'lsp',
-                    'path',
-                    'snippets',
-                    'buffer'
-                },
-            },
-
-            fuzzy = {
-                implementation = "lua"
-            }
-        },
-        opts_extend = {
-            "sources.default"
         },
     }
 }

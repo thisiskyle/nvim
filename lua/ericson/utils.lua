@@ -1,7 +1,6 @@
+local M = {}
 
-M = {}
-
-local function make_bg_transparent()
+function M.transparent_bg()
     vim.opt.background = "dark"
     vim.cmd.colorscheme(vim.g.colors_name)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -9,17 +8,9 @@ local function make_bg_transparent()
     vim.g.transparent = true
 end
 
-local function make_bg_solid()
+function M.solid_bg()
     vim.cmd.colorscheme(vim.g.colors_name)
     vim.g.transparent = false
-end
-
-function M.transparent_bg()
-    make_bg_transparent()
-end
-
-function M.solid_bg()
-    make_bg_solid()
 end
 
 function M.color_me(conf)
@@ -38,10 +29,10 @@ function M.color_me(conf)
     -- set
     vim.cmd.colorscheme(c)
     if(bg == "transparent") then
-        make_bg_transparent()
+        M.transparent_bg()
     else
         vim.opt.background = bg
-        make_bg_solid()
+        M.solid_bg()
     end
 end
 

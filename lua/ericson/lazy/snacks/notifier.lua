@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
       id = "lsp_progress",
       title = "LSP Progress",
       opts = function(notif)
-        notif.icon = ev.data.params.value.kind == "end" and " "
+        notif.icon = ev.data.params.value.kind == "end" and ""
           or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
       end,
     })
@@ -23,11 +23,11 @@ return {
     sort = { "level", "added" },
     level = vim.log.levels.TRACE,
     icons = {
-        error = "[Error]",
-        warn = "[Warn]",
-        info = "[Info]",
-        debug = "[Debug]",
-        trace = "[Trace]",
+        error = "[Error] ",
+        warn = "[Warn] ",
+        info = "[Info] ",
+        debug = "[Debug] ",
+        trace = "[Trace] ",
     },
     keep = function(notif)
         return vim.fn.getcmdpos() > 0
