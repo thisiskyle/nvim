@@ -1,6 +1,6 @@
 return {
     {
-        dir = "~/personal/sleepy",
+        "thisiskyle/sleepy-nvim",
         enabled = true,
         lazy = false,
         priority = 50,
