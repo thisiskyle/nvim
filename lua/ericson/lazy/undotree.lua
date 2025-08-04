@@ -1,7 +1,10 @@
 return {
     "mbbill/undotree",
     config = function()
-        vim.g.undotree_DiffCommand = "FC"
+        if(vim.loop.os_uname().sysname == "Windows") then
+            vim.g.undotree_DiffCommand = "FC"
+        end
+        vim.g.undotree_WindowLayout = 2
     end,
 
     keys = {
