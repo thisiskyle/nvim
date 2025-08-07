@@ -23,7 +23,5 @@ vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w L:%l C:%c "
 vim.opt.packpath:append(vim.fn.expand("$HOME/.local/share/nvim/site/"))
 
-require("ericson.utils").color_me({ color = "rose-pine", bg = "transparent" })
-
-
+-- require("ericson.utils").color_me({ color = "rose-pine", bg = "transparent" })
 
