@@ -6,7 +6,7 @@ return {
     },
     setup = function()
 
-        require("blink").setup({
+        require("blink.cmp").setup({
 
             fuzzy = {
                 implementation = "lua"
