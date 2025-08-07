@@ -1,8 +1,8 @@
 return {
+    enabled = true,
     sources = {
         "https://github.com/thisiskyle/sleepy-nvim"
     },
-    enabled = true,
     setup = function()
         require("sleepy").setup({
             global_after = function()
