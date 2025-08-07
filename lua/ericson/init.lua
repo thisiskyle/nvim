@@ -1,6 +1,7 @@
 require("ericson.keymaps")
 require("ericson.lazy_init")
 require("ericson.settings")
+require("ericson.pack")
 
 -- we add this to path so our lua/ericson folder can contain all my config instead of using the
 -- root nvim config folder

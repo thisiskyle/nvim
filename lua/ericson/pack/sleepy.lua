@@ -1,10 +1,9 @@
+
 return {
-    {
-        "thisiskyle/sleepy-nvim",
-        enabled = false,
-        lazy = false,
-        priority = 50,
-        opts = {
+    src = "https://github.com/thisiskyle/sleepy-nvim",
+    enabled = true,
+    setup = function()
+        require("sleepy").setup({
             global_after = function()
                 vim.cmd(":%!jq")
             end,
@@ -19,6 +18,6 @@ return {
                     frames = { "--(o  )-", "-(  o )-", "-(   o)-", "-(    o)", "-(  o)--", "-( o  )-", "-(o   )-", "(o    )-", }
                 },
             }
-        }
-    }
+        })
+    end
 }
