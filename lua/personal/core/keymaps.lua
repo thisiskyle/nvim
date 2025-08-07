@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 
 vim.keymap.set(
     { 'n' },
@@ -31,7 +30,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>1',
     function ()
-        require("personal.utils").Color_Me({ color = "rose-pine" })
+        require("personal.utils").color_me({ color = "rose-pine" })
     end,
     { desc = 'colorscheme: rose-pine' }
 )
@@ -40,7 +39,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>9',
     function ()
-        require("personal.utils").Color_Me({ color = vim.g.colors_name, transparent = false })
+        require("personal.utils").color_me({ color = vim.g.colors_name, transparent = false })
     end,
     { desc = 'colorscheme: transparency off' }
 )
@@ -49,7 +48,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>0',
     function ()
-        require("personal.utils").Color_Me({ color = vim.g.colors_name, transparent = true })
+        require("personal.utils").color_me({ color = vim.g.colors_name, transparent = true })
     end,
     { desc = 'colorscheme: transparency on' }
 )

@@ -1,4 +1,4 @@
-require("personal.utils").Color_Me({ color = "rose-pine", transparent = false })
+require("personal.utils").color_me({ color = "rose-pine", transparent = false })
 
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
@@ -23,17 +23,15 @@ vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
 
-vim.opt.statusline = require("personal.statusline").setup({
-        sections = {
-            { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
-            { label = "Buf", content = "%f" },
-            { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
-            { shift = true },
-            { label = "Git", content = "%{g:gitbranch}" },
-            { label = "Lsp", content = "%{v:lua.require('personal.statusline').lsp()}" }
-        }
-    })
-
+vim.opt.statusline = require("personal.utils.statusline").setup({
+    sections = {
+        { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
+        { label = "Buf", content = "%f" },
+        { label = "Git", content = "%{g:gitbranch}" },
+        { label = "Lsp", content = "%{v:lua.require('personal.utils.statusline').lsp()}" },
+        { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" }
+    },
+})
 
 -- add this to path so our lua/personal folder can contain all my config instead of using the root nvim config folder
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))

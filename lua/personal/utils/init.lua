@@ -1,6 +1,6 @@
 local M = {}
 
-function M.gitbranch()
+function M.set_global_gitbranch()
     vim.g.gitbranch = vim.fn.trim(vim.fn.system("git branch --show-current"))
     if(string.find(vim.g.gitbranch, "fatal", 1, true)) then
         vim.g.gitbranch = "[NONE]"
@@ -25,7 +25,7 @@ function M.open_scratchpad()
     vim.opt_local.swapfile = false
 end
 
-function M.Color_Me(conf)
+function M.color_me(conf)
     local c = conf.color or "default"
     vim.cmd.colorscheme(c)
 
@@ -46,6 +46,5 @@ function M.Color_Me(conf)
 
 
 end
-
 
 return M

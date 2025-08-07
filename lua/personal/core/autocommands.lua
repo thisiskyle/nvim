@@ -1,25 +1,7 @@
--- run a git command and show the output in a scratch buffer
-vim.api.nvim_create_user_command(
-    'Git',
-    function(opts)
-        require("personal.utils").git_run(opts)
-    end,
-    { nargs = 1 }
-)
-
--- run a git command and show the output in a scratch buffer
-vim.api.nvim_create_user_command(
-    'G',
-    function(opts)
-        require("personal.utils").git_run(opts)
-    end,
-    { nargs = 1 }
-)
-
 -- make sure the gitbranch is properly set when directory changes
 vim.api.nvim_create_autocmd("DirChanged", {
     callback = function()
-        require("personal.utils").gitbranch()
+        require("personal.utils").set_global_gitbranch()
     end
 })
 
@@ -34,7 +16,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()
-        vim.opt.statusline = require("personal.statusline").setup()
+        vim.opt.statusline = require("personal.utils.statusline").setup()
     end
 })
 
