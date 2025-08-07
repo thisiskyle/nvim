@@ -2,8 +2,8 @@ return {
     enabled = true,
     sources = {
         'https://github.com/neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim'
+        'https://github.com/williamboman/mason.nvim',
+        'https://github.com/williamboman/mason-lspconfig.nvim'
     },
     setup = function()
 
