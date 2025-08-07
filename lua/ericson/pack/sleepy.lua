@@ -1,5 +1,7 @@
 return {
-    src = "https://github.com/thisiskyle/sleepy-nvim",
+    sources = {
+        "https://github.com/thisiskyle/sleepy-nvim"
+    },
     enabled = true,
     setup = function()
         require("sleepy").setup({
@@ -18,5 +20,22 @@ return {
                 },
             }
         })
+
+
+        vim.keymap.set(
+            { 'v' },
+            '<leader>nn',
+            ":Sleepy<cr>",
+            { desc = 'sleepy: run' }
+        )
+
+
+        vim.keymap.set(
+            { 'n' },
+            '<leader>na',
+            ":SleepyAnimate<cr>",
+            { desc = 'sleepy: run animation test' }
+        )
+
     end
 }

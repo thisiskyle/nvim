@@ -1,21 +1,6 @@
 vim.g.mapleader = " "
 
 vim.keymap.set(
-    { 'v' },
-    '<leader>nn',
-    ":Sleepy<cr>",
-    { desc = 'sleepy: run' }
-)
-
-
-vim.keymap.set(
-    { 'n' },
-    '<leader>na',
-    ":SleepyAnimate<cr>",
-    { desc = 'sleepy: run animation test' }
-)
-
-vim.keymap.set(
     { 'n' },
     '<leader>cd',
     '<cmd>cd %:p:h<cr>',
