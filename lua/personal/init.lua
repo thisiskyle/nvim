@@ -1,5 +1,5 @@
 require("personal.keymaps")
-require("personal.lazy_init")
+require("personal.pack")
 require("personal.settings")
 
 -- we add this to path so our lua/personal folder can contain all my config instead of using the
