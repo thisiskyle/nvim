@@ -1,5 +1,5 @@
 require("personal.keymaps")
-require("personal.lazy_init")
+require("personal.pack")
 require("personal.settings")
 require("personal.autocommands")
 

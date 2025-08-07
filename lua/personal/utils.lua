@@ -1,6 +1,5 @@
 local M = {}
 
-
 function M.lsp_clients()
     local clients = vim.lsp.get_clients({ bufnr = 0 })
     if(#clients == 0) then
@@ -8,7 +7,6 @@ function M.lsp_clients()
     end
     return clients[1].name
 end
-
 
 function M.diag_count()
     if vim.fn.has('nvim-0.6') == 1 then
@@ -37,7 +35,5 @@ function M.diag_count()
 
     end
 end
-
-
 
 return M
