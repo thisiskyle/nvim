@@ -1,6 +1,7 @@
 *
 
 !.gitignore
+!.gitattributes
 !init.lua
 
 !lua/
