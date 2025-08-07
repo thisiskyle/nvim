@@ -1,4 +1,3 @@
-
 return {
     src = "https://github.com/thisiskyle/sleepy-nvim",
     enabled = true,
