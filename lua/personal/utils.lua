@@ -15,7 +15,6 @@ function M.lsp_clients()
     return clients[1].name
 end
 
-
 function M.diag_count()
     if vim.fn.has('nvim-0.6') == 1 then
       -- On nvim 0.6+ use vim.diagnostic to get lsp generated diagnostic count.
