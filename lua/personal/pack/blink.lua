@@ -1,13 +1,12 @@
 return {
-    {
-        'saghen/blink.cmp',
-        dependencies = {
-            'rafamadriz/friendly-snippets',
-        },
-        enabled = true,
-        lazy = false,
-        priority = 51,
-        opts = {
+    enabled = true,
+    sources = {
+        'https://github.com/saghen/blink.cmp',
+        'https://github.com/rafamadriz/friendly-snippets'
+    },
+    setup = function()
+
+        require("blink.cmp").setup({
 
             fuzzy = {
                 implementation = "lua"
@@ -111,6 +110,6 @@ return {
                     TypeParameter = 'type_parameter',
                 },
             },
-        },
-    }
+        })
+    end
 }
