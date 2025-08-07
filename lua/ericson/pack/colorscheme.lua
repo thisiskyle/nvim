@@ -2,7 +2,10 @@ local utils = require("ericson.utils")
 
 return {
     sources = {
-        "https://github.com/rose-pine/neovim"
+        {
+            src = "https://github.com/rose-pine/neovim",
+            name = "rose-pine"
+        }
     },
     setup = function()
 
