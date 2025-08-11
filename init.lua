@@ -1,1 +1,1 @@
-require("ericson")
+require("personal")

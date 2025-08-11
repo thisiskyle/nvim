@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup plugins
 require("lazy").setup({
-    spec = "ericson.lazy",
+    spec = "personal.lazy",
     change_detection = { notify = false }
 })
 

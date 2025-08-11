@@ -5,8 +5,8 @@
 !init.lua
 
 !lua/
-!lua/ericson/
-!lua/ericson/**
+!lua/personal/
+!lua/personal/**
 
 !syntax/
 !syntax/**

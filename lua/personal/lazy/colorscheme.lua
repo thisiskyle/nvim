@@ -1,4 +1,4 @@
-local utils = require("ericson.utils")
+local utils = require("personal.utils")
 
 return {
     {
