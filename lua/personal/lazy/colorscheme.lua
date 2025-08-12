@@ -1,4 +1,29 @@
-local utils = require("personal.utils")
+local function transparent_bg()
+    vim.opt.background = "dark"
+    vim.cmd.colorscheme(vim.g.colors_name)
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    vim.g.transparent = true
+end
+
+local function solid_bg()
+    vim.cmd.colorscheme(vim.g.colors_name)
+    vim.g.transparent = false
+end
+
+function Color_Me(conf)
+    local c = conf.color or "habamax"
+    local t = conf.transparent or false
+
+    vim.cmd.colorscheme(c)
+
+    if(t) then
+        transparent_bg()
+    else
+        solid_bg()
+    end
+
+end
 
 return {
     {
@@ -21,6 +46,9 @@ return {
                     Comment = { italic = true }
                 }
             })
+
+            Color_Me({ color = "rose-pine" })
+
         end,
         keys = {
             {
@@ -28,7 +56,7 @@ return {
                 mode = 'n',
                 desc = 'colorscheme: set rose-pine',
                 function()
-                    utils.color_me({ color = "rose-pine" })
+                    Color_Me({ color = "rose-pine" })
                 end,
             },
             {
@@ -36,7 +64,7 @@ return {
                 mode = 'n',
                 desc = 'colorscheme: set quiet',
                 function()
-                    utils.color_me({ color = "quiet" })
+                    Color_Me({ color = "quiet" })
                 end,
             },
             {
@@ -44,7 +72,7 @@ return {
                 mode = 'n',
                 desc = 'colorscheme: set bg solid',
                 function()
-                    utils.solid_bg()
+                    solid_bg()
                 end,
             },
             {
@@ -52,9 +80,9 @@ return {
                 mode = 'n',
                 desc = 'colorscheme: set bg tranparent',
                 function()
-                    utils.transparent_bg()
+                    transparent_bg()
                 end,
-            },
+           },
         }
     }
 }

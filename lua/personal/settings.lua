@@ -21,8 +21,3 @@ vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
 vim.opt.statusline = " %F %m%h%r%w L:%l C:%c "
-
-require("personal.utils").color_me({ color = "rose-pine", bg = "transparent" })
-
-
-
