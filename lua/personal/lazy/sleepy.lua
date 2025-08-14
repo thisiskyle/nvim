@@ -8,17 +8,15 @@ return {
             global_after = function()
                 vim.cmd(":%!jq")
             end,
-            animation = "default",
-            custom_animations = {
-                spin = {
-                    delta_time_ms = 50,
-                    frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-                },
-                catch = {
-                    delta_time_ms = 125,
-                    frames = { "--(o  )-", "-(  o )-", "-(   o)-", "-(    o)", "-(  o)--", "-( o  )-", "-(o   )-", "(o    )-", }
-                },
+        },
+        keys = {
+
+            {
+                '<leader>nn',
+                mode = 'v',
+                desc = 'sleepy: run',
+                ":Sleepy<cr>",
             }
-        }
+        },
     }
 }
