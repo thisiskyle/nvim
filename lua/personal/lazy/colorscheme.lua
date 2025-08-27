@@ -1,29 +1,24 @@
-local function transparent_bg()
-    vim.opt.background = "dark"
-    vim.cmd.colorscheme(vim.g.colors_name)
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-    vim.g.transparent = true
-end
-
-local function solid_bg()
-    vim.cmd.colorscheme(vim.g.colors_name)
-    vim.g.transparent = false
-end
-
 function Color_Me(conf)
-    local c = conf.color or "habamax"
-    local t = conf.transparent or false
-
+    local c = conf.color or "default"
     vim.cmd.colorscheme(c)
 
-    if(t) then
-        transparent_bg()
+    if(conf.transparent == nil) then
+        if(vim.g.transparentBg == nil) then
+            vim.g.transparentBg = false
+        end
     else
-        solid_bg()
+        vim.g.transparentBg = conf.transparent
+    end
+
+    if(vim.g.transparentBg) then
+        vim.opt.background = "dark"
+        vim.cmd.colorscheme(vim.g.colors_name)
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
     end
 
 end
+
 
 return {
     {
@@ -31,6 +26,7 @@ return {
         lazy = false,
         priority = 9999,
         config = function()
+
             require("rose-pine").setup({
                 variant = "moon",
                 enable = {
@@ -47,7 +43,7 @@ return {
                 }
             })
 
-            Color_Me({ color = "rose-pine" })
+            Color_Me({ color = "rose-pine", transparent = false })
 
         end,
         keys = {
@@ -72,15 +68,15 @@ return {
                 mode = 'n',
                 desc = 'colorscheme: set bg solid',
                 function()
-                    solid_bg()
+                    Color_Me({ color = vim.g.colors_name, transparent = false })
                 end,
             },
             {
                 '<leader>0',
                 mode = 'n',
-                desc = 'colorscheme: set bg tranparent',
+                desc = 'colorscheme: set bg transparent',
                 function()
-                    transparent_bg()
+                    Color_Me({ color = vim.g.colors_name, transparent = true })
                 end,
            },
         }

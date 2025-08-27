@@ -20,4 +20,18 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = " %F %m%h%r%w L:%l C:%c "
+vim.opt.statusline = ""
+    -- left
+    .. " "
+    .. "%F"
+    .. "    "
+    .. "L:%l C:%c"
+    .. "    "
+    .. "Lsp: %{%v:lua.require('personal.utils').lsp_clients()%}"
+    .. "    "
+    .. "%m%h%r%w"
+    -- midle
+    .. "%="
+    -- right
+    .. "%="
+    .. " "

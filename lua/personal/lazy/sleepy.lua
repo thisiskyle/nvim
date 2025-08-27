@@ -10,12 +10,17 @@ return {
             end,
         },
         keys = {
-
             {
-                '<leader>nn',
+                '<leader>ss',
                 mode = 'v',
                 desc = 'sleepy: run',
                 ":Sleepy<cr>",
+            },
+            {
+                '<leader>st',
+                mode = 'n',
+                desc = 'sleepy: insert template',
+                ":SleepyTemplate<cr>",
             }
         },
     }
