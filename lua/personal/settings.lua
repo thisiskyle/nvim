@@ -23,15 +23,20 @@ vim.opt.laststatus = 2
 vim.opt.statusline = ""
     -- left
     .. " "
-    .. "%F"
+    .. "Cwd: %{fnamemodify(getcwd(), ':t')}"
     .. "    "
-    .. "L:%l C:%c"
+    .. "Buf: %f"
     .. "    "
-    .. "Lsp: %{%v:lua.require('personal.utils').lsp_clients()%}"
-    .. "    "
+    -- .. "Line: %l"
+    -- .. "    "
+    -- .. "Col: %c"
+    -- .. "    "
     .. "%m%h%r%w"
-    -- midle
+    .. "%{&buftype=='' ? '' : '['.&buftype.']'}"
+
+    -- mid
     .. "%="
+
     -- right
     .. "%="
     .. " "

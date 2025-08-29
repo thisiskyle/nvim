@@ -32,13 +32,13 @@ vim.keymap.set(
         if(vim.fn.bufexists(name) == 0) then
             vim.cmd(":enew")
             vim.cmd(":file " .. name)
-            vim.opt_local.buftype = "nofile"
-            vim.opt_local.bufhidden = "hide"
-            vim.opt_local.filetype = "markdown"
-            vim.opt_local.swapfile = false
         else
             vim.cmd(":b " .. name)
         end
+        vim.opt_local.buftype = "nofile"
+        vim.opt_local.bufhidden = "hide"
+        vim.opt_local.filetype = "markdown"
+        vim.opt_local.swapfile = false
     end,
     { desc = 'open: scratch buffer' }
 )
@@ -54,8 +54,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>/',
     function ()
-        local path = "$HOME/.notes/"
-        vim.cmd(":Ex " .. path)
+        vim.cmd(":Ex $HOME/.notes/")
     end,
     { desc = 'open: notes' }
 )
@@ -64,8 +63,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>.',
     function ()
-        local path = vim.fn.stdpath("config")
-        vim.cmd(":Ex " .. path)
+        vim.cmd(":Ex " .. vim.fn.stdpath("config"))
     end,
     { desc = 'open: config' }
 )
