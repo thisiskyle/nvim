@@ -1,3 +1,5 @@
+require("personal.utils").gitbranch()
+
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
@@ -24,13 +26,13 @@ vim.opt.statusline = ""
     -- left
     .. " "
     .. "Cwd: %{fnamemodify(getcwd(), ':t')}"
-    .. "    "
-    .. "Buf: %f"
-    .. "    "
-    -- .. "Line: %l"
-    -- .. "    "
-    -- .. "Col: %c"
-    -- .. "    "
+    .. "   "
+    .. "Buf: %t"
+    .. "   "
+    .. "Git: %{g:gitbranch}"
+    .. "   "
+    .. "Pos: %c,%l"
+    .. "   "
     .. "%m%h%r%w"
     .. "%{&buftype=='' ? '' : '['.&buftype.']'}"
 

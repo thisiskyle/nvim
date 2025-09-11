@@ -1,5 +1,11 @@
 local M = {}
 
+function M.gitbranch()
+    vim.g.gitbranch = vim.fn.trim(vim.fn.system("git branch --show-current"))
+    if(string.find(vim.g.gitbranch, "fatal", 1, true)) then
+        vim.g.gitbranch = "[NONE]"
+    end
+end
 
 function M.lsp_clients()
     local clients = vim.lsp.get_clients({ bufnr = 0 })
