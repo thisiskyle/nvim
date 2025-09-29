@@ -1,5 +1,6 @@
-vim.api.nvim_create_autocmd("DirChanged", {
+-- this fixes the buffer name so its not a full path
+vim.api.nvim_create_autocmd("BufRead", {
   callback = function()
-        require("personal.utils").gitbranch()
+        vim.cmd("cd .")
   end
 })
