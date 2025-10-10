@@ -70,7 +70,7 @@ return {
                 mode = { 'n' },
                 desc = 'lsp: open float',
                 function()
-                    vim.lsp.buf.hover()
+                    vim.lsp.buf.hover({ border = 'single' })
                 end,
             },
 
