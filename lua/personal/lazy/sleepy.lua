@@ -11,15 +11,22 @@ return {
         },
         keys = {
             {
+                '<leader>sr',
+                mode = 'n',
+                desc = 'sleepy: repeat last',
+                ":SleepyRepeat<cr>",
+            },
+            {
                 '<leader>ss',
                 mode = 'v',
-                desc = 'sleepy: run',
+                desc = 'sleepy: run on visual selection',
                 ":Sleepy<cr>",
             },
+
             {
                 '<leader>sc',
                 mode = 'v',
-                desc = 'sleepy: insert template',
+                desc = 'sleepy: show curl command',
                 ":SleepyShowCurlCommands<cr>",
             },
             {

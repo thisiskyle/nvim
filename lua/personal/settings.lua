@@ -39,8 +39,3 @@ vim.opt.statusline = ""
     -- right
     .. "%="
     .. " "
-
-
-
-
-

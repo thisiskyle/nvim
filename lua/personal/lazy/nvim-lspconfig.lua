@@ -27,24 +27,6 @@ return {
                 },
             })
 
-            -- merge/override config in lsp/ directories
-            vim.lsp.config("lua_ls", {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {
-                                "vim",
-                                "it",
-                                "describe",
-                                "before_each",
-                                "Snacks",
-                                "after_each"
-                            },
-                        }
-                    }
-                }
-            })
-
         end,
         keys = {
             {
