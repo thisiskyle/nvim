@@ -11,40 +11,40 @@ return {
         },
         keys = {
             {
-                '<leader>sr',
+                '<leader>ar',
                 mode = 'n',
                 desc = 'anrcy: repeat last',
-                ":ANRCYRepeat<cr>",
+                ":AnrcyRepeat<cr>",
             },
             {
-                '<leader>ss',
+                '<leader>aa',
                 mode = 'v',
                 desc = 'anrcy: run on visual selection',
-                ":ANRCY<cr>",
+                ":Anrcy<cr>",
             },
             {
-                '<leader>sc',
+                '<leader>ac',
                 mode = 'v',
                 desc = 'anrcy: show curl command',
-                ":ANRCYShowCurlCommands<cr>",
+                ":AnrcyShowCurl<cr>",
             },
             {
-                '<leader>sbr',
+                '<leader>abb',
                 mode = 'n',
                 desc = 'anrcy: run the bookmarked job list',
-                ":ANRCYBookmarkRun<cr>",
+                ":AnrcyBookmarkRun<cr>",
             },
             {
-                '<leader>sbs',
+                '<leader>abm',
                 mode = 'v',
                 desc = 'anrcy: bookmark the visual selection',
-                ":ANRCYBookmark<cr>",
+                ":AnrcyBookmark<cr>",
             },
             {
-                '<leader>st',
+                '<leader>at',
                 mode = 'n',
                 desc = 'anrcy: insert template',
-                ":ANRCYTemplate<cr>",
+                ":AnrcyTemplate<cr>",
             }
         },
     }
