@@ -1,6 +1,7 @@
 return {
     {
-        "thisiskyle/anrcy",
+        -- "thisiskyle/anrcy",
+        dir = "C:/Users/kyle.ericson/personal/dev/anrcy/",
         enabled = true,
         lazy = false,
         priority = 50,
