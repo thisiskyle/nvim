@@ -30,9 +30,9 @@ return {
             nowait = ""
         },
         indent = {
-            vertical    = "│ ",
-            middle = "├╴",
-            last   = "└╴",
+            vertical = "",
+            middle   = "",
+            last     = "",
         },
         undo = {
             saved   = "",

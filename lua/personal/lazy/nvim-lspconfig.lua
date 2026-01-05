@@ -57,6 +57,15 @@ return {
             },
 
             {
+                '<leader>la',
+                mode = { 'n' },
+                desc = 'lsp: code action',
+                function()
+                    vim.lsp.buf.code_action()
+                end,
+            },
+
+            {
                 '<leader>df',
                 mode = { 'n' },
                 desc = 'diagnostic: open float',

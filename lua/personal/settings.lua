@@ -2,13 +2,14 @@ require("personal.utils").gitbranch()
 
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
-vim.opt.wildignore = ".git/*,node_modules/*,*.meta"
+vim.opt.wildignore = ".git/*,node_modules/*,*.meta,tags"
 vim.opt.incsearch  = true
 vim.opt.hlsearch  = true
 vim.opt.wrapscan = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
+vim.opt.shadafile = "NONE"
 vim.opt.ruler = false
 vim.opt.termguicolors = true
 vim.opt.number = false
