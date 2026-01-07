@@ -44,6 +44,40 @@ function M.diag_count()
     end
 end
 
+function M.statusline(l, s)
+    local style = s or {
+        labelHl = "%#Visual#",
+        contentHl = "%#StatusLine#",
+        minorSeparator = " ",
+        majorSeparator = "   ",
+        labelStartChar = " ",
+        labelEndChar = " ",
+    }
 
+    M.gitbranch()
+
+    local ret = {}
+    local list = l or {}
+
+    for _,v in ipairs(list) do
+        if(v.shift) then
+            table.insert(ret, "%=")
+        end
+        if(v.content) then
+            if(v.label) then
+                table.insert(ret, style.labelHl)
+                table.insert(ret, style.labelStartChar)
+                table.insert(ret, v.label)
+                table.insert(ret, style.labelEndChar)
+            end
+            table.insert(ret, style.contentHl)
+            table.insert(ret, style.minorSeparator)
+            table.insert(ret, v.content)
+            table.insert(ret, style.majorSeparator)
+        end
+    end
+
+    return ret
+end
 
 return M

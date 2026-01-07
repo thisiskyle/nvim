@@ -1,5 +1,3 @@
-require("personal.utils").gitbranch()
-
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta,tags"
@@ -23,20 +21,13 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = ""
-    -- left
-    .. " "
-    .. "Cwd: %{fnamemodify(getcwd(), ':t')}"
-    .. "   "
-    .. "Buf: %f"
-    .. "   "
-    .. "Git: %{g:gitbranch}"
-    .. "   "
-    .. "%{&buftype=='' ? '' : '['.&buftype.']'}"
-    .. "   "
-    .. "%m%h%r%w"
-    -- mid
-    .. "%="
-    -- right
-    .. "%="
-    .. " "
+vim.opt.statusline = table.concat(require("personal.utils").statusline(
+    {
+        { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
+        { label = "Buf", content = "%f" },
+        { label = "Git", content = "%{g:gitbranch}" },
+        { label = "Lsp", content = "%{v:lua.require('personal.utils').lsp_clients()}" },
+        { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
+        -- { content = "%{v:lua.require('personal.utils').diag_count()}" },
+    }
+))
