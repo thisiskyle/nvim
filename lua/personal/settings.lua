@@ -28,6 +28,5 @@ vim.opt.statusline = table.concat(require("personal.utils").statusline(
         { label = "Git", content = "%{g:gitbranch}" },
         { label = "Lsp", content = "%{v:lua.require('personal.utils').lsp_clients()}" },
         { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
-        -- { content = "%{v:lua.require('personal.utils').diag_count()}" },
     }
 ))

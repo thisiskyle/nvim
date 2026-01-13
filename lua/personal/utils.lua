@@ -80,4 +80,29 @@ function M.statusline(l, s)
     return ret
 end
 
+
+
+function M.Color_Me(conf)
+    local c = conf.color or "default"
+    vim.cmd.colorscheme(c)
+
+    if(conf.transparent == nil) then
+        if(vim.g.transparentBg == nil) then
+            vim.g.transparentBg = false
+        end
+    else
+        vim.g.transparentBg = conf.transparent
+    end
+
+    if(vim.g.transparentBg) then
+        vim.opt.background = "dark"
+        vim.cmd.colorscheme(vim.g.colors_name)
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    end
+
+end
+
+
+
 return M

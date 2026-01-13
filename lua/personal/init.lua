@@ -7,3 +7,5 @@ require("personal.autocommands")
 -- root nvim config folder
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
+
+require("personal.utils").Color_Me({ color = "rose-pine", transparent = false })
