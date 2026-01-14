@@ -30,3 +30,9 @@ vim.opt.statusline = table.concat(require("personal.utils").statusline(
         { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
     }
 ))
+
+-- add this to path so our lua/personal folder can contain all my config instead of using the root nvim config folder
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
+vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
+
+require("personal.utils").Color_Me({ color = "rose-pine", transparent = true })
