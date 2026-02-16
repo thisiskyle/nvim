@@ -1,2 +1,2 @@
-set cursorline
-set nowrap
+setlocal cursorline
+setlocal nowrap

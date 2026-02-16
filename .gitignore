@@ -7,13 +7,3 @@
 !lua/
 !lua/personal/
 !lua/personal/**
-
-!syntax/
-!syntax/**
-
-!after/
-!after/ftplugin/
-!after/ftplugin/**
-
-!lsp/
-!lsp/**

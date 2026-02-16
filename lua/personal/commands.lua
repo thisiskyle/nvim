@@ -1,0 +1,46 @@
+-- run a git command and show the output in a scratch buffer
+vim.api.nvim_create_user_command(
+    'Git',
+    function(opts)
+        require("personal.utils").git_run(opts)
+    end,
+    { nargs = 1 }
+)
+
+-- run a git command and show the output in a scratch buffer
+vim.api.nvim_create_user_command(
+    'G',
+    function(opts)
+        require("personal.utils").git_run(opts)
+    end,
+    { nargs = 1 }
+)
+
+-- make sure the gitbranch is properly set when directory changes
+vim.api.nvim_create_autocmd("DirChanged", {
+    callback = function()
+        require("personal.utils").gitbranch()
+    end
+})
+
+-- this fixes the buffer name so its not a full path
+vim.api.nvim_create_autocmd("BufRead", {
+    callback = function()
+        vim.cmd("cd .")
+    end
+})
+
+-- add a spinner to lsp progress notification
+vim.api.nvim_create_autocmd("LspProgress", {
+    callback = function(ev)
+        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+        vim.notify(vim.lsp.status(), "info", {
+            id = "lsp_progress",
+            title = "LSP Progress",
+            opts = function(notif)
+                notif.icon = ev.data.params.value.kind == "end" and ""
+                or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+            end,
+        })
+    end,
+})
