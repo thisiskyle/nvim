@@ -16,12 +16,19 @@ return {
             sources = {
                 default = {
                     'lsp',
-                    'path',
                     'snippets',
+                    'path',
                     'buffer',
                 },
                 providers = {
+                    lsp = {
+                        fallbacks = {}
+                    },
+                    snippets = {
+                        fallbacks = {}
+                    },
                     path = {
+                        fallbacks = {},
                         opts = {
                             get_cwd = function(_)
                                 return vim.fn.getcwd()
@@ -29,19 +36,14 @@ return {
                         }
                     },
                     buffer = {
+                        fallbacks = {},
                         opts = {
-                            get_bufnrs = function()
-                                local allOpenBuffers = vim.fn.getbufinfo { buflisted = 1, bufloaded = 1 }
-                                local allBufs = vim.iter(allOpenBuffers)
-                                    :filter(function(buf) return vim.bo[buf.bufnr].buftype == "" end)
-                                    :map(function(buf) return buf.bufnr end)
-                                    :totable()
-                                return allBufs
+                            get_bufnrs = function(_)
+                                return vim.api.nvim_list_bufs()
                             end
                         }
                     }
                 }
-
             },
 
             keymap = {
