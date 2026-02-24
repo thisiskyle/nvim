@@ -1,31 +1,26 @@
 local requirePath = 'personal.pack.'
 
-local spec = vim.fn.stdpath('config') .. '/lua/' .. requirePath:gsub('%.', '/')
-local files = vim.fn.readdir(spec)
+local specDir = vim.fn.stdpath('config') .. '/lua/' .. requirePath:gsub('%.', '/')
+local files = vim.fn.readdir(specDir)
 
-local sources = {}
-local setups = {}
+local specs = {}
 
--- sort all the sources and setups into their own arrays
+-- sort all the specs
 for _, file in ipairs(files) do
-    local pack = require(requirePath .. file:gsub('%.lua$', ''))
-    if(pack.enabled ~= false) then
-        for _,v in ipairs(pack.sources) do
-            table.insert(sources, v)
-        end
-        if(pack.setup) then
-            table.insert(setups, pack.setup)
+    local config = require(requirePath .. file:gsub('%.lua$', ''))
+    if(config.enabled ~= false) then
+        for _,v in ipairs(config.specs) do
+            table.insert(specs, v)
         end
     end
 end
 
 -- install all sources
-vim.pack.add(sources)
+vim.pack.add(specs)
 
 -- run all setups
-for _,v in ipairs(setups) do
-    v()
+for _,v in ipairs(vim.pack.get()) do
+    if(v.spec.data and type(v.spec.data.setup) == "function") then
+        v.spec.data.setup()
+    end
 end
-
-
-
