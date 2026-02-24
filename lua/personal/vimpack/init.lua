@@ -1,15 +1,15 @@
-local requirePath = 'personal.pack.'
+local specPath = 'personal.vimpack.specs.'
 
-local specDir = vim.fn.stdpath('config') .. '/lua/' .. requirePath:gsub('%.', '/')
+local specDir = vim.fn.stdpath('config') .. '/lua/' .. specPath:gsub('%.', '/')
 local files = vim.fn.readdir(specDir)
 
 local specs = {}
 
 -- sort all the specs
 for _, file in ipairs(files) do
-    local config = require(requirePath .. file:gsub('%.lua$', ''))
-    if(config.enabled ~= false) then
-        for _,v in ipairs(config.specs) do
+    local spec = require(specPath .. file:gsub('%.lua$', ''))
+    if(spec.enabled ~= false) then
+        for _,v in ipairs(spec.specs) do
             table.insert(specs, v)
         end
     end

@@ -5,6 +5,7 @@ return {
             src = "https://github.com/folke/snacks.nvim",
             data = {
                 setup = function()
+
                     require("snacks").setup({
 
                         notifier = {

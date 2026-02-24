@@ -4,20 +4,9 @@ M.config = nil
 
 M.default = {
     sections = {
-        { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
         { label = "Buf", content = "%f" },
-        { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
-        { shift = true },
-        { label = "Git", content = "%{g:gitbranch}" },
-        { label = "Lsp", content = "%{v:lua.require('personal.statusline').lsp()}" }
     },
     style = {
-        highlights = {
-            label = "StatusLineLabel",
-            content = "StatusLineContent",
-            left = "StatusLineLeft",
-            right = "StatusLineRight",
-        },
         special_chars = {
             minorSeparator = " ",
             majorSeparator = "   ",
@@ -69,7 +58,7 @@ function M.diagnostics()
 end
 
 
-local function hl_string(s)
+local function hl(s)
     return "%#" .. s .. "#"
 end
 
@@ -97,16 +86,16 @@ local function build(opts)
         end
         if(v.content) then
             if(v.label) then
-                table.insert(ret, hl_string(style.highlights.left))
+                table.insert(ret, hl("StatusLineLeft"))
                 table.insert(ret, style.special_chars.left)
-                table.insert(ret, hl_string(style.highlights.label))
+                table.insert(ret, hl("StatusLineLabel"))
                 table.insert(ret, style.special_chars.leftPadding)
                 table.insert(ret, v.label)
                 table.insert(ret, style.special_chars.rightPadding)
-                table.insert(ret, hl_string(style.highlights.right))
+                table.insert(ret, hl("StatusLineRight"))
                 table.insert(ret, style.special_chars.right)
             end
-            table.insert(ret, hl_string(style.highlights.content))
+            table.insert(ret, hl("StatusLineContent"))
             table.insert(ret, style.special_chars.minorSeparator)
             table.insert(ret, v.content)
             table.insert(ret, style.special_chars.majorSeparator)
@@ -119,7 +108,7 @@ end
 
 function M.setup(opts)
 
-    require("personal.utils").gitbranch()
+    require("personal.utils").set_global_gitbranch()
 
     if(opts == nil) then
         if(M.config == nil) then

@@ -1,4 +1,7 @@
-require("personal.keymaps")
-require("personal.pack")
-require("personal.settings")
-require("personal.commands")
+vim.g.mapleader = " "
+
+require("personal.vimpack")
+require("personal.core.keymaps")
+require("personal.core.settings")
+require("personal.core.usercommands")
+require("personal.core.autocommands")

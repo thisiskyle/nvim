@@ -20,6 +20,7 @@ return {
                             Comment = { italic = true }
                         }
                     })
+
                 end
             }
         }
