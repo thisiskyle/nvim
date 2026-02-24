@@ -20,14 +20,14 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-vim.opt.statusline = table.concat(require("personal.statusline").build(
+vim.opt.statusline = table.concat(require("personal.utils.statusline").build(
     {
         { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
         { label = "Buf", content = "%f" },
         { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
         { shift = true },
         { label = "Git", content = "%{g:gitbranch}" },
-        { label = "Lsp", content = "%{v:lua.require('personal.statusline').lsp()}" },
+        { label = "Lsp", content = "%{v:lua.require('personal.utils.statusline').lsp()}" },
     }
 ))
 
@@ -35,4 +35,3 @@ vim.opt.statusline = table.concat(require("personal.statusline").build(
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
 
-require("personal.utils").Color_Me({ color = "rose-pine", transparent = false })

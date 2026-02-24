@@ -46,7 +46,7 @@ function M.build(l, s)
         labelEndChar = " ",
     }
 
-    require("personal.utils").gitbranch()
+    require("personal.utils").set_global_gitbranch()
 
     local ret = {}
     local list = l or {}
