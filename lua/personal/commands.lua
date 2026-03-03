@@ -30,6 +30,14 @@ vim.api.nvim_create_autocmd("BufRead", {
     end
 })
 
+-- 
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.opt.statusline = require("personal.statusline").setup()
+    end
+})
+
 -- add a spinner to lsp progress notification
 vim.api.nvim_create_autocmd("LspProgress", {
     callback = function(ev)

@@ -1,5 +1,36 @@
 local M = {}
 
+M.config = nil
+
+M.default = {
+    sections = {
+        { label = "Cwd", content = "%{fnamemodify(getcwd(), ':t')}" },
+        { label = "Buf", content = "%f" },
+        { content = "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}" },
+        { shift = true },
+        { label = "Git", content = "%{g:gitbranch}" },
+        { label = "Lsp", content = "%{v:lua.require('personal.statusline').lsp()}" }
+    },
+    style = {
+        highlights = {
+            label = "StatusLineLabel",
+            content = "StatusLineContent",
+            left = "StatusLineLeft",
+            right = "StatusLineRight",
+        },
+        special_chars = {
+            minorSeparator = " ",
+            majorSeparator = "   ",
+            left = "",
+            right = "",
+            leftPadding = " ",
+            rightPadding = " ",
+        }
+    }
+}
+
+
+
 function M.lsp()
     local clients = vim.lsp.get_clients({ bufnr = 0 })
     if(#clients == 0) then
@@ -7,6 +38,7 @@ function M.lsp()
     end
     return clients[1].name
 end
+
 
 function M.diagnostics()
     if vim.fn.has('nvim-0.6') == 1 then
@@ -36,40 +68,70 @@ function M.diagnostics()
     end
 end
 
-function M.build(l, s)
-    local style = s or {
-        labelHl = "%#Visual#",
-        contentHl = "%#StatusLine#",
-        minorSeparator = " ",
-        majorSeparator = "   ",
-        labelStartChar = " ",
-        labelEndChar = " ",
-    }
 
-    require("personal.utils").gitbranch()
+local function hl_string(s)
+    return "%#" .. s .. "#"
+end
+
+
+
+local function build(opts)
+
+    local statusline = vim.api.nvim_get_hl(0, { name = "StatusLine", link = true })
+    local visual = vim.api.nvim_get_hl(0, { name = "Visual", link = true })
+
+    vim.api.nvim_set_hl(0, "StatusLineContent", statusline)
+    vim.api.nvim_set_hl(0, "StatusLineLabel", visual)
+
+    vim.api.nvim_set_hl(0, "StatusLineLeft", { fg = visual.bg, bg = statusline.bg })
+    vim.api.nvim_set_hl(0, "StatusLineRight", { fg = visual.bg, bg = statusline.bg })
 
     local ret = {}
-    local list = l or {}
+    local style = opts.style or M.default.style
+    local sections = opts.sections or M.default.sections
 
-    for _,v in ipairs(list) do
+
+    for _,v in ipairs(sections) do
         if(v.shift) then
             table.insert(ret, "%=")
         end
         if(v.content) then
             if(v.label) then
-                table.insert(ret, style.labelHl)
-                table.insert(ret, style.labelStartChar)
+                table.insert(ret, hl_string(style.highlights.left))
+                table.insert(ret, style.special_chars.left)
+                table.insert(ret, hl_string(style.highlights.label))
+                table.insert(ret, style.special_chars.leftPadding)
                 table.insert(ret, v.label)
-                table.insert(ret, style.labelEndChar)
+                table.insert(ret, style.special_chars.rightPadding)
+                table.insert(ret, hl_string(style.highlights.right))
+                table.insert(ret, style.special_chars.right)
             end
-            table.insert(ret, style.contentHl)
-            table.insert(ret, style.minorSeparator)
+            table.insert(ret, hl_string(style.highlights.content))
+            table.insert(ret, style.special_chars.minorSeparator)
             table.insert(ret, v.content)
-            table.insert(ret, style.majorSeparator)
+            table.insert(ret, style.special_chars.majorSeparator)
         end
     end
 
     return ret
+end
+
+
+function M.setup(opts)
+
+    require("personal.utils").gitbranch()
+
+    if(opts == nil) then
+        if(M.config == nil) then
+            M.config = M.default
+        end
+
+        return table.concat(build(M.config))
+    end
+
+    M.config = opts
+    return table.concat(build(M.config))
+
 end
 
 return M
