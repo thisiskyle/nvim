@@ -23,19 +23,25 @@ return {
                 ":Anrcy<cr>",
             },
             {
+                '<leader>ah',
+                mode = 'n',
+                desc = 'anrcy: show request history',
+                ":AnrcyHistory<cr>",
+            },
+            {
                 '<leader>ac',
                 mode = 'v',
                 desc = 'anrcy: show curl command',
                 ":AnrcyShowCurl<cr>",
             },
             {
-                '<leader>abb',
+                '<leader>ab',
                 mode = 'n',
                 desc = 'anrcy: run the bookmarked job list',
                 ":AnrcyBookmarkRun<cr>",
             },
             {
-                '<leader>abm',
+                '<leader>ab',
                 mode = 'v',
                 desc = 'anrcy: bookmark the visual selection',
                 ":AnrcyBookmark<cr>",
