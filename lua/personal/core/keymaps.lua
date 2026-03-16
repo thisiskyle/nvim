@@ -26,14 +26,27 @@ vim.keymap.set(
     { desc = 'open: config' }
 )
 
-vim.keymap.set(
-    { 'n' },
-    '<leader>1',
-    function ()
-        require("personal.utils").color_me({ color = "rose-pine" })
-    end,
-    { desc = 'colorscheme: rose-pine' }
-)
+
+local themes = {
+    [1] = { color = "rose-pine-main" },
+    [2] = { color = "rose-pine-moon" },
+    [3] = { color = "quiet" },
+    [9] = nil,
+    [0] = nil
+}
+
+for i,_ in ipairs(themes) do
+    if(themes[i] ~= nil) then
+        vim.keymap.set(
+            { 'n' },
+            '<leader>' .. i,
+            function ()
+                require("personal.utils").color_me(themes[i])
+            end,
+            { desc = 'colorscheme: ' .. themes[i].color }
+        )
+    end
+end
 
 vim.keymap.set(
     { 'n' },

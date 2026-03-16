@@ -6,7 +6,7 @@ return {
             data = {
                 setup = function()
                     require("rose-pine").setup({
-                        variant = "moon",
+                        variant = "main",
                         enable = {
                             terminal = true
                         },

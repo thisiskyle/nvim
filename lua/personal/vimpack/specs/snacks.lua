@@ -1,7 +1,7 @@
 return {
     enabled = true,
     specs = {
-        { 
+        {
             src = "https://github.com/folke/snacks.nvim",
             data = {
                 setup = function()
