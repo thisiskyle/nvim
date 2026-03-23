@@ -28,11 +28,8 @@ vim.keymap.set(
 
 
 local themes = {
-    [1] = { color = "rose-pine-main" },
-    [2] = { color = "rose-pine-moon" },
-    [3] = { color = "quiet" },
-    [9] = nil,
-    [0] = nil
+    [1] = { color = "rose-pine-moon" },
+    [2] = { color = "quiet" },
 }
 
 for i,_ in ipairs(themes) do
