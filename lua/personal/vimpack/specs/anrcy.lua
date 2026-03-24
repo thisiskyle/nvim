@@ -1,17 +1,20 @@
+local _opts = {
+    global_after = function()
+        vim.cmd(":%!jq")
+    end
+}
+
+
 return {
     enabled = true,
     specs = {
         {
             src = "https://github.com/thisiskyle/anrcy",
-            data = {
-                global_after = function()
-                    vim.cmd(":%!jq")
-                end
-            }
+            data = _opts
         }
     },
     setup = function()
-        require("anrcy").setup(vim.pack.get({'anrcy'})[1].spec.data)
+        require("anrcy").setup(_opts)
 
         vim.keymap.set({ 'v' }, '<leader>aa', ":Anrcy<cr>", { desc = 'anrcy: run' })
         vim.keymap.set({ 'v' }, '<leader>ac', ":AnrcyShowCurlCommands<cr>", { desc = 'anrcy: show curl commands' })
