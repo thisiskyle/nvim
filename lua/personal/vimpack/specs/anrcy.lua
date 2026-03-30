@@ -1,9 +1,9 @@
 local _opts = {
-    global_after = function()
-        vim.cmd(":%!jq")
-    end
+    global_after = function(payload)
+        local out = vim.fn.system({ "jq", "." }, table.concat(payload))
+        return vim.split(out, "\n", { pain = true })
+    end,
 }
-
 
 return {
     enabled = true,
@@ -23,5 +23,6 @@ return {
         vim.keymap.set({ 'n' }, '<leader>ar', ":AnrcyRepeat<cr>", { desc = 'anrcy: repeat last' })
         vim.keymap.set({ 'v' }, '<leader>ab', ":AnrcyBookmark<cr>", { desc = 'anrcy: bookmark selected jobs' })
         vim.keymap.set({ 'n' }, '<leader>ab', ":AnrcyBookmarkRun<cr>", { desc = 'anrcy: run bookmarked jobs' })
+
     end
 }
