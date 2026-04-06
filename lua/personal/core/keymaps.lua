@@ -40,6 +40,7 @@ vim.keymap.set(
 
 local themes = {
     { color = "rose-pine" },
+    { color = "default" },
     { color = "quiet" },
 }
 
