@@ -44,7 +44,6 @@ function M.color_me(conf)
         vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
     end
 
-
 end
 
 return M

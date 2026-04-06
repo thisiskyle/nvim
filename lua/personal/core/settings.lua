@@ -1,5 +1,3 @@
-require("personal.utils").color_me({ color = "rose-pine", transparent = true })
-
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
 vim.opt.wildignore = ".git/*,node_modules/*,*.meta,tags"
@@ -27,3 +25,5 @@ vim.opt.statusline = " %F   %m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}"
 
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
+
+require("personal.utils").color_me({ color = "rose-pine", transparent = false })

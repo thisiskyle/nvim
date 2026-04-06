@@ -1,7 +1,6 @@
 local _mason_lspconfig = { automatic_enable = true }
 
 
-
 return {
     enabled = true,
     specs = {

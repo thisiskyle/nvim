@@ -39,8 +39,8 @@ vim.keymap.set(
 
 
 local themes = {
-    [1] = { color = "rose-pine-moon" },
-    [2] = { color = "default" },
+    { color = "rose-pine" },
+    { color = "quiet" },
 }
 
 for i,_ in ipairs(themes) do
