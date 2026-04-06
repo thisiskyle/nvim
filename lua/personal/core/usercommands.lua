@@ -1,4 +1,3 @@
--- run a git command and show the output in a scratch buffer
 vim.api.nvim_create_user_command(
     'Git',
     function(opts)
@@ -7,7 +6,6 @@ vim.api.nvim_create_user_command(
     { nargs = 1 }
 )
 
--- run a git command and show the output in a scratch buffer
 vim.api.nvim_create_user_command(
     'G',
     function(opts)

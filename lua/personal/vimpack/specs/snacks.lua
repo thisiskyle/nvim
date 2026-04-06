@@ -1,6 +1,6 @@
 local _opts = {
     notifier = {
-        enabled = true,
+        enabled = false,
         timeout = 3000,
         width = { min = 40, max = 0.4 },
         height = { min = 1, max = 0.6 },
@@ -132,21 +132,20 @@ return {
     specs = {
         {
             src = "https://github.com/folke/snacks.nvim",
-            data = _opts
         }
     },
 
     setup = function()
         require("snacks").setup(_opts)
-        vim.keymap.set({ 'n' }, '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'notification: show history' })
-        vim.keymap.set({ 'n' }, '<leader>ff', function() Snacks.picker.files() end, { desc = 'picker: files' })
-        vim.keymap.set({ 'n' }, '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'picker: keymaps' })
-        vim.keymap.set({ 'n' }, '<leader>fg', function() Snacks.picker.grep() end, { desc = 'picker: grep' })
-        vim.keymap.set({ 'n' }, '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'picker: word under cursor' })
-        vim.keymap.set({ 'n' }, '<leader>fh', function() Snacks.picker.help() end, { desc = 'picker: help' })
-        vim.keymap.set({ 'n' }, '<leader>fd', function() Snacks.picker.lsp_definitions() end, { desc = 'picker: lsp definitions' })
-        vim.keymap.set({ 'n' }, '<leader>fr', function() Snacks.picker.lsp_references() end, { desc = 'picker: lsp references' })
-        vim.keymap.set({ 'n' }, '<leader>fi', function() Snacks.picker.lsp_implementations() end, { desc = 'picker: lsp implementations' })
-        vim.keymap.set({ 'n' }, '<leader>fs', function() Snacks.picker.lsp_symbols() end, { desc = 'picker: lsp symbols' })
+        vim.keymap.set({ 'n' }, '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'snacks.notifier: show history' })
+        vim.keymap.set({ 'n' }, '<leader>ff', function() Snacks.picker.files() end, { desc = 'snacks.picker: files' })
+        vim.keymap.set({ 'n' }, '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'snacks.picker: keymaps' })
+        vim.keymap.set({ 'n' }, '<leader>fg', function() Snacks.picker.grep() end, { desc = 'snacks.picker: grep' })
+        vim.keymap.set({ 'n' }, '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'snacks.picker: word under cursor' })
+        vim.keymap.set({ 'n' }, '<leader>fh', function() Snacks.picker.help() end, { desc = 'snacks.picker: help' })
+        vim.keymap.set({ 'n' }, '<leader>fd', function() Snacks.picker.lsp_definitions() end, { desc = 'snacks.picker: lsp definitions' })
+        vim.keymap.set({ 'n' }, '<leader>fr', function() Snacks.picker.lsp_references() end, { desc = 'snacks.picker: lsp references' })
+        vim.keymap.set({ 'n' }, '<leader>fi', function() Snacks.picker.lsp_implementations() end, { desc = 'snacks.picker: lsp implementations' })
+        vim.keymap.set({ 'n' }, '<leader>fs', function() Snacks.picker.lsp_symbols() end, { desc = 'snacks.picker: lsp symbols' })
     end
 }

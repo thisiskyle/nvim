@@ -9,7 +9,7 @@ end
 
 function M.git_run(opts)
     M.open_scratchpad()
-    vim.cmd("read !git " .. table.concat(opts.fargs, " "))
+    vim.cmd("%!git " .. table.concat(opts.fargs, " "))
 end
 
 function M.open_scratchpad()

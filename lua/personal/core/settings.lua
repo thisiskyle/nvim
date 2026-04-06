@@ -1,4 +1,4 @@
-require("personal.utils").color_me({ color = "rose-pine", transparent = false })
+require("personal.utils").color_me({ color = "rose-pine", transparent = true })
 
 vim.opt.wildmenu = true
 vim.opt.wildoptions = 'pum'
@@ -23,14 +23,7 @@ vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
 
-vim.opt.statusline = " "
-    .. "Cwd: "
-    .. "%{fnamemodify(getcwd(), ':t')}"
-    .. "      "
-    .. "Buf: "
-    .. "%f"
-    .. "      "
-    .. "%m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}"
+vim.opt.statusline = " %F   %m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}"
 
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
