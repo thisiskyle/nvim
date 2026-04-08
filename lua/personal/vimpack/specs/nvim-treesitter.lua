@@ -1,10 +1,11 @@
 local _opts = {
 	languages = { 'lua', 'typescript', 'bash' },
-	compilers = { "gcc", "zig" }
 }
 
+local on_windows = vim.fn.has("win32") == 1
+
 return {
-    enabled = false,
+    enabled = not on_windows,
     specs = {
         {
             src = "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -12,7 +13,6 @@ return {
         },
     },
     setup = function()
-        require('nvim-treesitter.install').compilers = _opts.compilers
         require('nvim-treesitter').install(_opts.languages)
     end
 }
