@@ -1,15 +1,11 @@
-local _mason_lspconfig = { automatic_enable = true }
-
-
 return {
     enabled = true,
-    specs = {
+    pack_specs = {
         {
             src = "https://github.com/williamboman/mason.nvim"
         },
         {
             src = "https://github.com/williamboman/mason-lspconfig.nvim",
-            data = _mason_lspconfig
         },
         {
             src = "https://github.com/neovim/nvim-lspconfig"
@@ -18,7 +14,7 @@ return {
     setup = function()
 
         require('mason').setup()
-        require('mason-lspconfig').setup(_mason_lspconfig)
+        require('mason-lspconfig').setup({ automatic_enable = true })
 
         vim.diagnostic.config({
             virtual_text = true,

@@ -1,6 +1,6 @@
 return {
     enabled = true,
-    specs = {
+    pack_specs = {
         {
             name = "nvim.undotree",
         }
