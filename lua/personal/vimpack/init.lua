@@ -1,19 +1,32 @@
 pcall(vim.loader.enable)
 
+local function load()
+    local path = vim.fn.stdpath('config') .. "/lua/personal/vimpack/plugins/"
 
-local function load_all()
-    local spec_dir = vim.fn.stdpath('config') .. '/lua/personal/vimpack/plugins/'
-    local files = vim.fn.readdir(spec_dir)
-    for _,file in ipairs(files) do
-        dofile(spec_dir .. file)
+    local enabled = {
+        "anrcy",
+        "blink",
+        "nvim-lspconfig",
+        "nvim-treesitter",
+        "nvim-undotree",
+        "rose-pine",
+        "snacks",
+    }
+
+    for _,v in ipairs(enabled) do
+        local _path = path .. v .. ".lua"
+        if(vim.fn.filereadable(_path) == 1) then
+            dofile(_path)
+        end
     end
+
 end
 
 
 local function delete_all()
-    local plugins = vim.pack.get()
+    local installed = vim.pack.get()
     local names = {}
-    for _,v in ipairs(plugins) do
+    for _,v in ipairs(installed) do
         names[#names + 1] = v.spec.name
     end
     vim.pack.del(names, { force = true })
@@ -21,16 +34,41 @@ end
 
 
 -- startup
-load_all()
+load()
 
 
 -- extra stuff
 
+
 vim.api.nvim_create_user_command(
-    'PackClean',
-    function()
-        delete_all()
-        load_all()
+    'Pack',
+    function(opts)
+        local arg = opts.args
+
+        if(arg == 'update') then
+            vim.pack.update()
+
+        elseif(arg == 'clean') then
+            delete_all()
+            load()
+
+        elseif(arg == 'purge') then
+            delete_all()
+
+        else
+            vim.notify(
+                'Invalid command: Pack ' .. arg,
+                vim.log.levels.ERROR
+            )
+        end
     end,
-    {}
+    {
+        nargs = 1,
+        complete = function(arglead)
+            local cmds = { 'update', 'clean', 'purge' }
+            return vim.tbl_filter(function(cmd)
+                return cmd:find(arglead, 1, true) == 1
+            end, cmds)
+        end,
+    }
 )

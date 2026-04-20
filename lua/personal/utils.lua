@@ -7,11 +7,6 @@ function M.set_global_gitbranch()
     end
 end
 
-function M.git_run(opts)
-    M.open_scratchpad()
-    vim.cmd("%!git " .. table.concat(opts.fargs, " "))
-end
-
 function M.open_scratchpad()
     local name = "scratch_pad"
     if(vim.fn.bufexists(name) == 0) then
