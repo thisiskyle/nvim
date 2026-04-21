@@ -37,26 +37,6 @@ vim.keymap.set(
     { desc = 'undotree toggle' }
 )
 
-
-local themes = {
-    { color = "rose-pine" },
-    { color = "default" },
-    { color = "quiet" },
-}
-
-for i,_ in ipairs(themes) do
-    if(themes[i] ~= nil) then
-        vim.keymap.set(
-            { 'n' },
-            '<leader>' .. i,
-            function()
-                require("personal.utils").color_me(themes[i])
-            end,
-            { desc = 'colorscheme: ' .. themes[i].color }
-        )
-    end
-end
-
 vim.keymap.set(
     { 'n' },
     '<leader>9',

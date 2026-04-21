@@ -1,6 +1,14 @@
+local _pack_id = "blink"
+
 vim.pack.add({
-    { src = 'https://github.com/rafamadriz/friendly-snippets' },
-    { src = 'https://github.com/saghen/blink.cmp' },
+    {
+        src = 'https://github.com/rafamadriz/friendly-snippets',
+        data = { pack_id = _pack_id }
+    },
+    {
+        src = 'https://github.com/saghen/blink.cmp',
+        data = { pack_id = _pack_id }
+    },
 }, { confirm = false })
 
 

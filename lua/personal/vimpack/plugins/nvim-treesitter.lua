@@ -1,5 +1,6 @@
 local ts = "https://github.com/nvim-treesitter/nvim-treesitter"
 local ts_to = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+local _pack_id = "nvim-treesitter"
 
 local parsers = {
     'bash',
@@ -18,8 +19,14 @@ local parsers = {
 if(vim.fn.has("win32") == 1) then
 
 	vim.pack.add({
-		{ src = ts, version = "master" },
-		{ src = ts_to },
+		{
+            src = ts,
+            version = "master",
+        },
+		{
+            src = ts_to,
+            data = { pack_id = _pack_id }
+        }
 	}, { confirm = false })
 
 	require('nvim-treesitter.install').compilers = { "zig" }
@@ -38,8 +45,13 @@ if(vim.fn.has("win32") == 1) then
 else
 
 	vim.pack.add({
-		{ src = ts },
-		{ src = ts_to },
+		{
+            src = ts,
+        },
+		{
+            src = ts_to,
+            data = { pack_id = _pack_id }
+        }
 	}, { confirm = false })
 
 	require('nvim-treesitter').install(parsers)

@@ -1,7 +1,18 @@
+local _pack_id = "nvim-lspconfig"
+
 vim.pack.add({
-    { src = "https://github.com/williamboman/mason.nvim" },
-    { src = "https://github.com/williamboman/mason-lspconfig.nvim", },
-    { src = "https://github.com/neovim/nvim-lspconfig" }
+    {
+        src = "https://github.com/williamboman/mason.nvim",
+        data = { pack_id = _pack_id }
+    },
+    {
+        src = "https://github.com/williamboman/mason-lspconfig.nvim",
+        data = { pack_id = _pack_id }
+    },
+    {
+        src = "https://github.com/neovim/nvim-lspconfig",
+        data = { pack_id = _pack_id }
+    }
 }, { confirm = false })
 
 

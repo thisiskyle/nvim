@@ -1,5 +1,8 @@
 vim.pack.add({
-    { src = "https://github.com/thisiskyle/anrcy.nvim", }
+    {
+        src = "https://github.com/thisiskyle/anrcy.nvim",
+        data = { pack_id = "anrcy" }
+    }
 }, { confirm = false })
 
 -- vim.cmd.packadd("anrcy-dev")

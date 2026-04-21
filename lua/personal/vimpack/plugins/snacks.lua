@@ -1,7 +1,9 @@
 vim.pack.add({
-    { src = "https://github.com/folke/snacks.nvim", }
+    {
+        src = "https://github.com/folke/snacks.nvim",
+        data = { pack_id = "snacks" }
+    }
 }, { confirm = false })
-
 
 
 require("snacks").setup({
