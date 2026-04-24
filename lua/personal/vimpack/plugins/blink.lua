@@ -6,6 +6,10 @@ vim.pack.add({
         data = { pack_id = _pack_id }
     },
     {
+        src = 'https://github.com/saghen/blink.lib',
+        data = { pack_id = _pack_id }
+    },
+    {
         src = 'https://github.com/saghen/blink.cmp',
         data = { pack_id = _pack_id }
     },

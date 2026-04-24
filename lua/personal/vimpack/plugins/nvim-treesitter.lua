@@ -15,7 +15,6 @@ local parsers = {
     'vim',
 }
 
-
 if(vim.fn.has("win32") == 1) then
 
 	vim.pack.add({
@@ -55,12 +54,6 @@ else
 	}, { confirm = false })
 
 	require('nvim-treesitter').install(parsers)
-	require("nvim-treesitter-textobjects").setup({
-		select = {
-			enable = true,
-			lookahead = true,
-		},
-	})
 
     vim.api.nvim_create_autocmd('FileType', {
         pattern = { '*' },
@@ -70,6 +63,14 @@ else
     })
 
 end
+
+
+require("nvim-treesitter-textobjects").setup({
+    select = {
+        enable = true,
+        lookahead = true,
+    },
+})
 
 
 vim.keymap.set(
