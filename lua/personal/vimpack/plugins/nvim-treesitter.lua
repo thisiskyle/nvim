@@ -11,6 +11,7 @@ local parsers = {
     'gitignore',
     'lua',
     'markdown',
+    'markdown_inline',
     'typescript',
     'vim',
 }
@@ -30,6 +31,7 @@ if(vim.fn.has("win32") == 1) then
 
 	require('nvim-treesitter.install').compilers = { "zig" }
 	require('nvim-treesitter.configs').setup({
+        parser_install_dir = vim.fn.stdpath("data") .. "/site",
 		ensure_installed = parsers,
 		auto_install = true,
 		highlight = {
