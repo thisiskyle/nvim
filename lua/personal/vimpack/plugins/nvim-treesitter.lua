@@ -1,61 +1,30 @@
-local ts = "https://github.com/nvim-treesitter/nvim-treesitter"
-local ts_to = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-local _pack_id = "nvim-treesitter"
+if(vim.fn.has("win32") ~= 1) then
 
-local parsers = {
-    'bash',
-    'c_sharp',
-    'cpp',
-    'git_config',
-    'gitcommit',
-    'gitignore',
-    'lua',
-    'markdown',
-    'markdown_inline',
-    'typescript',
-    'vim',
-}
-
-if(vim.fn.has("win32") == 1) then
-
-	vim.pack.add({
-		{
-            src = ts,
-            version = "master",
+    vim.pack.add({
+        {
+            src = "https://github.com/nvim-treesitter/nvim-treesitter",
         },
-		{
-            src = ts_to,
-            data = { pack_id = _pack_id }
+        {
+            src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+            data = { pack_id = "nvim-treesitter" }
         }
-	}, { confirm = false })
+    }, { confirm = false })
 
-	require('nvim-treesitter.install').compilers = { "zig" }
-	require('nvim-treesitter.configs').setup({
-        parser_install_dir = vim.fn.stdpath("data") .. "/site",
-		ensure_installed = parsers,
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
-		indent = {
-			enable = true
-		},
-	})
 
-else
+    require('nvim-treesitter').install({
+        'bash',
+        'c_sharp',
+        'cpp',
+        'git_config',
+        'gitcommit',
+        'gitignore',
+        'lua',
+        'markdown',
+        'markdown_inline',
+        'typescript',
+        'vim',
+    })
 
-	vim.pack.add({
-		{
-            src = ts,
-        },
-		{
-            src = ts_to,
-            data = { pack_id = _pack_id }
-        }
-	}, { confirm = false })
-
-	require('nvim-treesitter').install(parsers)
 
     vim.api.nvim_create_autocmd('FileType', {
         pattern = { '*' },
@@ -64,30 +33,30 @@ else
         end
     })
 
+
+    require("nvim-treesitter-textobjects").setup({
+        select = {
+            enable = true,
+            lookahead = true,
+        },
+    })
+
+
+    vim.keymap.set(
+        { "x", "o" },
+        "af",
+        function()
+            require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+        end
+    )
+
+    vim.keymap.set(
+        { "x", "o" },
+        "if",
+        function()
+            require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+        end
+    )
+
+
 end
-
-
-require("nvim-treesitter-textobjects").setup({
-    select = {
-        enable = true,
-        lookahead = true,
-    },
-})
-
-
-vim.keymap.set(
-    { "x", "o" },
-    "af",
-    function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
-    end
-)
-
-vim.keymap.set(
-    { "x", "o" },
-    "if",
-    function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
-    end
-)
-

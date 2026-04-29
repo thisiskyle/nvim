@@ -4,12 +4,13 @@ local config = {
         "anrcy",
         "blink",
         "nvim-lspconfig",
-        "nvim-treesitter",
         "nvim-undotree",
+        "nvim-treesitter",
         "rose-pine",
         "snacks",
     }
 }
+
 
 local function install(opts)
     for _,v in ipairs(opts.enabled) do
