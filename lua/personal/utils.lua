@@ -1,5 +1,9 @@
 local M = {}
 
+function M.get_file_name(file)
+    return file:match("([^@/\\]+)%.lua$")
+end
+
 function M.set_global_gitbranch()
     vim.g.gitbranch = vim.fn.trim(vim.fn.system("git branch --show-current"))
     if(string.find(vim.g.gitbranch, "fatal", 1, true)) then

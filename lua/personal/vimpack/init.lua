@@ -1,6 +1,7 @@
-local config = {
-    dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/plugins/",
-    enabled = {
+
+local pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/"
+
+local pack_list = {
         "anrcy",
         "blink",
         "nvim-lspconfig",
@@ -9,12 +10,13 @@ local config = {
         "rose-pine",
         "snacks",
     }
-}
 
 
-local function install(opts)
-    for _,v in ipairs(opts.enabled) do
-        local _path = opts.dir .. v .. ".lua"
+
+
+local function install()
+    for _,v in ipairs(pack_list) do
+        local _path = pack_dir .. v .. ".lua"
         if(vim.fn.filereadable(_path) == 1) then
             dofile(_path)
         end
@@ -38,7 +40,7 @@ local function delete_disabled()
     local delete = {}
 
     for _,p in ipairs(installed) do
-        for _,f in ipairs(config.enabled) do
+        for _,f in ipairs(pack_list) do
             if(p.spec.name == f or (p.spec.data and p.spec.data.pack_id == f)) then
                 goto continue
             end
@@ -60,14 +62,14 @@ vim.api.nvim_create_user_command(
         if(arg == 'update') then
             vim.pack.update()
         elseif(arg == 'install') then
-            install(config)
+            install()
         elseif(arg == 'clean') then
             delete_disabled()
         elseif(arg == 'purge') then
             delete_all()
         elseif(arg == 'sync') then
             delete_disabled()
-            install(config)
+            install()
             vim.pack.update()
         else
             vim.notify(
@@ -94,4 +96,4 @@ vim.api.nvim_create_user_command(
 )
 
 -- startup
-install(config)
+install()

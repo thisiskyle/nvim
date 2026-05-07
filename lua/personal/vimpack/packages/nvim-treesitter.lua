@@ -1,12 +1,15 @@
 if(vim.fn.has("win32") ~= 1) then
 
+    local _pack_id = require("personal.utils").get_file_name(debug.getinfo(1, "S").source)
+
     vim.pack.add({
         {
             src = "https://github.com/nvim-treesitter/nvim-treesitter",
+            data = { pack_id = _pack_id }
         },
         {
             src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-            data = { pack_id = "nvim-treesitter" }
+            data = { pack_id = _pack_id }
         }
     }, { confirm = false })
 
