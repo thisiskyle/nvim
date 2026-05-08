@@ -1,4 +1,3 @@
-
 local pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/"
 
 local pack_list = {
@@ -107,31 +106,31 @@ vim.api.nvim_create_user_command(
             )
         end
     end, {
-        nargs = '+',
-        complete = function(arglead, cmdline)
+    nargs = '+',
+    complete = function(arglead, cmdline)
 
-            local parts = vim.split(cmdline, '%s+')
+        local parts = vim.split(cmdline, '%s+')
 
-            if(#parts <= 2) then
-                return vim.tbl_filter(
-                    function(cmd)
-                        return cmd:find(arglead, 1, true) == 1
-                    end, {
-                        'clean',
-                        'install',
-                        'purge',
-                        'sync',
-                        'delete',
-                        'update',
-                    }
-                )
-            end
+        if(#parts <= 2) then
+            return vim.tbl_filter(
+                function(cmd)
+                    return cmd:find(arglead, 1, true) == 1
+                end, {
+                'clean',
+                'install',
+                'purge',
+                'sync',
+                'delete',
+                'update',
+            }
+        )
+    end
 
-            if(parts[2] == 'delete') then
-                return pack_list
-            end
+    if(parts[2] == 'delete') then
+        return pack_list
+    end
 
-        end,
+end,
     }
 )
 

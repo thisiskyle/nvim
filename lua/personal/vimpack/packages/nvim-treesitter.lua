@@ -7,28 +7,19 @@ if(vim.fn.has("win32") ~= 1) then
             src = "https://github.com/nvim-treesitter/nvim-treesitter",
             data = { pack_id = _pack_id }
         },
-        {
-            src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-            data = { pack_id = _pack_id }
-        }
     }, { confirm = false })
 
 
-    require('nvim-treesitter').install({
-        'bash',
-        'c_sharp',
-        'cpp',
-        'git_config',
-        'gitcommit',
-        'gitignore',
+    local ts = require("nvim-treesitter")
+
+    ts.install({
         'lua',
-        'markdown',
-        'markdown_inline',
-        'typescript',
         'vim',
+        'angular'
     })
 
 
+    -- auto install
     vim.api.nvim_create_autocmd('FileType', {
         pattern = { '*' },
         callback = function(e)
@@ -36,30 +27,14 @@ if(vim.fn.has("win32") ~= 1) then
         end
     })
 
-
-    require("nvim-treesitter-textobjects").setup({
-        select = {
-            enable = true,
-            lookahead = true,
-        },
+    -- start treesitter
+    vim.api.nvim_create_autocmd('FileType', {
+        pattern = vim.tbl_deep_extend("force", ts.get_installed(), {
+            "htmlangular"
+        }),
+        callback = function()
+            vim.treesitter.start()
+        end
     })
-
-
-    vim.keymap.set(
-        { "x", "o" },
-        "af",
-        function()
-            require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
-        end
-    )
-
-    vim.keymap.set(
-        { "x", "o" },
-        "if",
-        function()
-            require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
-        end
-    )
-
 
 end
