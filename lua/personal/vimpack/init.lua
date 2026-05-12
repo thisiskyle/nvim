@@ -11,7 +11,7 @@ local pack_list = {
 }
 
 
-local function install()
+local function install_all()
     for _,v in ipairs(pack_list) do
         local _path = pack_dir .. v .. ".lua"
         if(vim.fn.filereadable(_path) == 1) then
@@ -75,8 +75,8 @@ vim.api.nvim_create_user_command(
         if(arg == 'update') then
             vim.pack.update()
 
-        elseif(arg == 'install') then
-            install()
+        elseif(arg == 'install_all') then
+            install_all()
 
         elseif(arg == 'clean') then
             delete_disabled()
@@ -86,7 +86,7 @@ vim.api.nvim_create_user_command(
 
         elseif(arg == 'sync') then
             delete_disabled()
-            install()
+            install_all()
             vim.pack.update()
 
         elseif(arg == 'delete') then
@@ -117,7 +117,7 @@ vim.api.nvim_create_user_command(
                     return cmd:find(arglead, 1, true) == 1
                 end, {
                 'clean',
-                'install',
+                'install_all',
                 'purge',
                 'sync',
                 'delete',
@@ -136,4 +136,5 @@ end,
 
 
 -- startup
-install()
+install_all()
+

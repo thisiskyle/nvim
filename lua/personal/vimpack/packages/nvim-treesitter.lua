@@ -1,6 +1,6 @@
 if(vim.fn.has("win32") ~= 1) then
 
-    local _pack_id = require("personal.utils").get_file_name(debug.getinfo(1, "S").source)
+    local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
     vim.pack.add({
         {
