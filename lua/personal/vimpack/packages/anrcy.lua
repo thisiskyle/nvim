@@ -13,7 +13,7 @@ require("anrcy").setup({
     global_after = function(payload)
         local out = vim.fn.system({ "jq", "." }, table.concat(payload))
         return vim.split(out, "\n", { plain = true })
-    end,
+    end
 })
 
 vim.keymap.set({ 'x' }, '<leader>aa', function() require("anrcy").run_highlighted_jobs() end, { desc = 'anrcy: run highlighted jobs' })

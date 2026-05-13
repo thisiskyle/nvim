@@ -1,22 +1,21 @@
+
 vim.keymap.set(
     { 'n' },
     '<leader>\'',
     function()
-        require("personal.utils").open_scratchpad()
+	    require("personal.utils").open_scratchpad()
     end,
     { desc = 'open: scratch buffer' }
 )
-
 
 vim.keymap.set(
     { 'n' },
     '<leader>/',
     function()
-        vim.cmd(":Ex $HOME/.notes/")
+	    vim.cmd(":Ex $HOME/.notes/")
     end,
     { desc = 'open: notes' }
 )
-
 
 vim.keymap.set(
     { 'n' },
@@ -25,16 +24,6 @@ vim.keymap.set(
         vim.cmd(":Ex " .. vim.fn.stdpath("config"))
     end,
     { desc = 'open: config' }
-)
-
-
-vim.keymap.set(
-    { 'n' },
-    '<leader>u',
-    function()
-        vim.cmd(":Undotree")
-    end,
-    { desc = 'undotree toggle' }
 )
 
 vim.keymap.set(
@@ -54,3 +43,4 @@ vim.keymap.set(
     end,
     { desc = 'colorscheme: transparency on' }
 )
+

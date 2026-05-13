@@ -10,7 +10,8 @@ vim.pack.add({
 
 require("snacks").setup({
     notifier = {
-        enabled = false,
+        markdown = false,
+        enabled = true,
         timeout = 3000,
         width = { min = 40, max = 0.4 },
         height = { min = 1, max = 0.6 },

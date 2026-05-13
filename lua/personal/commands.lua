@@ -1,3 +1,4 @@
+
 for _,value in ipairs({ "Git", "G" }) do
     vim.api.nvim_create_user_command(
         value,
@@ -9,3 +10,4 @@ for _,value in ipairs({ "Git", "G" }) do
     )
 
 end
+

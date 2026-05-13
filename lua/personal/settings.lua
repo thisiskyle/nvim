@@ -20,9 +20,7 @@ vim.opt.belloff = 'all'
 vim.opt.signcolumn = "no"
 vim.opt.mouse = ""
 vim.opt.laststatus = 2
-
 vim.opt.statusline = " %F   %m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}"
-
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
 

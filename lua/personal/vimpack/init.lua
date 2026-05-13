@@ -1,4 +1,5 @@
-local pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/"
+pcall(vim.loader.enable)
+
 
 local pack_list = {
     "anrcy",
@@ -12,6 +13,7 @@ local pack_list = {
 
 
 local function install_all()
+    local pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/"
     for _,v in ipairs(pack_list) do
         local _path = pack_dir .. v .. ".lua"
         if(vim.fn.filereadable(_path) == 1) then
@@ -133,7 +135,6 @@ vim.api.nvim_create_user_command(
 end,
     }
 )
-
 
 -- startup
 install_all()
