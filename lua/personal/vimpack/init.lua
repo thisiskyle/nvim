@@ -70,9 +70,6 @@ vim.api.nvim_create_user_command(
         if(arg == 'update') then
             vim.pack.update()
 
-        elseif(arg == 'install_all') then
-            install_all()
-
         elseif(arg == 'clean') then
             delete_inactive()
 
@@ -114,7 +111,6 @@ vim.api.nvim_create_user_command(
                     end,
                     {
                         'clean',
-                        'install_all',
                         'purge',
                         'sync',
                         'delete',
