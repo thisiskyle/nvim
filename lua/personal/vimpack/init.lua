@@ -48,25 +48,18 @@ local function delete_package(id)
 end
 
 
-
-local function delete_disabled()
+local function delete_inactive()
     local installed = vim.pack.get()
     local delete = {}
 
-    for _,p in ipairs(installed) do
-        for _,f in ipairs(pack_list) do
-            if(p.spec.name == f or (p.spec.data and p.spec.data.pack_id == f)) then
-                goto continue
-            end
+    for _,i in ipairs(installed) do
+        if(not i.active) then
+            delete[#delete + 1] = i.spec.name
         end
-
-        delete[#delete + 1] = p.spec.name
-        ::continue::
     end
 
     vim.pack.del(delete, { force = true })
 end
-
 
 
 vim.api.nvim_create_user_command(
@@ -81,13 +74,13 @@ vim.api.nvim_create_user_command(
             install_all()
 
         elseif(arg == 'clean') then
-            delete_disabled()
+            delete_inactive()
 
         elseif(arg == 'purge') then
             delete_all()
 
         elseif(arg == 'sync') then
-            delete_disabled()
+            delete_inactive()
             install_all()
             vim.pack.update()
 
@@ -107,35 +100,35 @@ vim.api.nvim_create_user_command(
                 vim.log.levels.ERROR
             )
         end
-    end, {
-    nargs = '+',
-    complete = function(arglead, cmdline)
+    end,
+    {
+        nargs = '+',
+        complete = function(arglead, cmdline)
 
-        local parts = vim.split(cmdline, '%s+')
+            local parts = vim.split(cmdline, '%s+')
 
-        if(#parts <= 2) then
-            return vim.tbl_filter(
-                function(cmd)
-                    return cmd:find(arglead, 1, true) == 1
-                end, {
-                'clean',
-                'install_all',
-                'purge',
-                'sync',
-                'delete',
-                'update',
-            }
-        )
-    end
+            if(#parts <= 2) then
+                return vim.tbl_filter(
+                    function(cmd)
+                        return cmd:find(arglead, 1, true) == 1
+                    end,
+                    {
+                        'clean',
+                        'install_all',
+                        'purge',
+                        'sync',
+                        'delete',
+                        'update',
+                    }
+                )
+            end
 
-    if(parts[2] == 'delete') then
-        return pack_list
-    end
-
-end,
+            if(parts[2] == 'delete') then
+                return pack_list
+            end
+        end,
     }
 )
 
 -- startup
 install_all()
-
