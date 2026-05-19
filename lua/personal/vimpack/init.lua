@@ -1,21 +1,33 @@
 pcall(vim.loader.enable)
 
-
-local pack_list = {
-    "anrcy",
-    "blink",
-    "nvim-lspconfig",
-    "nvim-undotree",
-    "nvim-treesitter",
-    "rose-pine",
-    "snacks",
+local config = {
+    pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/",
+    pack_list = {
+        "anrcy",
+        "blink",
+        "nvim-lspconfig",
+        "nvim-treesitter",
+        "rose-pine",
+        "snacks",
+    }
 }
 
 
-local function install_all()
-    local pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/"
-    for _,v in ipairs(pack_list) do
-        local _path = pack_dir .. v .. ".lua"
+local function get_package_list()
+    local files = vim.fn.readdir(config.pack_dir)
+    local packages = {}
+    for _, file in ipairs(files) do
+        local pack = file:gsub('%.lua$', '')
+        packages[#packages + 1] = pack
+    end
+    return packages
+end
+
+
+local function install()
+    local plist = config.pack_list or get_package_list()
+    for _,v in ipairs(plist) do
+        local _path = config.pack_dir .. v .. ".lua"
         if(vim.fn.filereadable(_path) == 1) then
             dofile(_path)
         end
@@ -33,13 +45,12 @@ local function delete_all()
 end
 
 
-
 local function delete_package(id)
     local installed = vim.pack.get()
     local delete = {}
 
     for _,p in ipairs(installed) do
-        if((p.spec.data and p.spec.data.pack_id == id)) then
+        if((p.spec.data and p.spec.data.pack_id == id) or p.spec.name == id) then
             delete[#delete + 1] = p.spec.name
         end
     end
@@ -62,6 +73,14 @@ local function delete_inactive()
 end
 
 
+local function startup()
+    if(not config.pack_list) then
+        config.pack_list = get_package_list()
+    end
+    install()
+end
+
+
 vim.api.nvim_create_user_command(
     'Pack',
     function(opts)
@@ -78,7 +97,7 @@ vim.api.nvim_create_user_command(
 
         elseif(arg == 'sync') then
             delete_inactive()
-            install_all()
+            install()
             vim.pack.update()
 
         elseif(arg == 'delete') then
@@ -120,11 +139,23 @@ vim.api.nvim_create_user_command(
             end
 
             if(parts[2] == 'delete') then
-                return pack_list
+                local installed = vim.pack.get()
+                local tmp = {}
+                for _,v in ipairs(installed) do
+                    local pack = v.spec.name
+                    if(v.spec.data and v.spec.data.pack_id) then
+                        pack = v.spec.data.pack_id
+                    end
+                    tmp[pack] = true
+                end
+                local list = {}
+                for k,_ in pairs(tmp) do
+                    list[#list + 1] = k
+                end
+                return list
             end
         end,
     }
 )
 
--- startup
-install_all()
+startup()
