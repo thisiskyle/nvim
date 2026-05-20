@@ -1,7 +1,12 @@
 pcall(vim.loader.enable)
 
 local config = {
+
+    -- location of package setup files
     pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/",
+
+    -- nil this to load dynamically from pack_dir
+    -- a bit slower sorting through the files, but less to manage
     pack_list = {
         "anrcy",
         "blink",
@@ -158,4 +163,6 @@ vim.api.nvim_create_user_command(
     }
 )
 
+
 startup()
+

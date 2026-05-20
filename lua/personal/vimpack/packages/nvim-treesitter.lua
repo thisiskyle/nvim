@@ -18,12 +18,13 @@ if(vim.fn.has("win32") ~= 1) then
         'angular'
     })
 
+    local available = ts.get_available()
 
     -- auto install
     vim.api.nvim_create_autocmd('FileType', {
-        pattern = { '*' },
+        pattern = available,
         callback = function(e)
-            require('nvim-treesitter').install(e.match)
+            ts.install(e.match)
         end
     })
 
