@@ -1,5 +1,6 @@
 local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
+
 vim.pack.add({
     {
         src = 'https://github.com/rafamadriz/friendly-snippets',
@@ -16,7 +17,9 @@ vim.pack.add({
 }, { confirm = false })
 
 
+
 require("blink.cmp").setup({
+    enabled = function() return true end,
     fuzzy = {
         implementation = "lua"
     },
@@ -29,13 +32,16 @@ require("blink.cmp").setup({
         },
         providers = {
             lsp = {
-                fallbacks = {}
+                fallbacks = {},
+                score_offset = 500,
             },
             snippets = {
-                fallbacks = {}
+                fallbacks = {},
+                score_offset = 0,
             },
             path = {
                 fallbacks = {},
+                score_offset = 0,
                 opts = {
                     get_cwd = function(_)
                         return vim.fn.getcwd()
@@ -44,6 +50,7 @@ require("blink.cmp").setup({
             },
             buffer = {
                 fallbacks = {},
+                score_offset = 0,
                 opts = {
                     get_bufnrs = function(_)
                         return vim.api.nvim_list_bufs()
@@ -77,45 +84,22 @@ require("blink.cmp").setup({
         },
         menu = {
             border = "single",
-            auto_show = true
+            auto_show = true,
+            draw = {
+                columns = {
+                    { "source_name" },
+                    { "kind" },
+                    { "label" }
+                },
+            }
         },
         documentation = {
             window = {
                 border = "single",
             },
-            auto_show = true
+            auto_show = true,
+            auto_show_delay_ms = 0
         },
 
-    },
-
-    appearance = {
-        nerd_font_variant = 'mono',
-        kind_icons = {
-            Text = 'text',
-            Method = 'method',
-            Function = 'function',
-            Constructor = 'constructor',
-            Field = 'field',
-            Variable = 'variable',
-            Property = 'property',
-            Class = 'class',
-            Interface = 'interface',
-            Struct = 'struct',
-            Module = 'module',
-            Unit = 'unit',
-            Value = 'value',
-            Enum = 'enum',
-            EnumMember = 'enum_member',
-            Keyword = 'keyword',
-            Constant = 'constant',
-            Snippet = 'snippet',
-            Color = 'color',
-            File = 'file',
-            Reference = 'reference',
-            Folder = 'folder',
-            Event = 'event',
-            Operator = 'operator',
-            TypeParameter = 'type_parameter',
-        },
     },
 })
