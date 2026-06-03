@@ -1,5 +1,6 @@
 local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
+
 vim.pack.add({
     {
         src = "https://github.com/thisiskyle/anrcy.nvim",
@@ -7,7 +8,9 @@ vim.pack.add({
     }
 }, { confirm = false })
 
+
 -- vim.cmd.packadd("anrcy-dev")
+
 
 require("anrcy").setup({
     global_after = function(payload)
@@ -15,6 +18,7 @@ require("anrcy").setup({
         return vim.split(out, "\n", { plain = true })
     end
 })
+
 
 vim.keymap.set({ 'x' }, '<leader>aa', function() require("anrcy").run_highlighted_jobs() end, { desc = 'anrcy: run highlighted jobs' })
 vim.keymap.set({ 'x' }, '<leader>ag', function() require("anrcy").get_highlighted_url() end, { desc = 'anrcy: basic get request for highlighted url' })

@@ -33,7 +33,7 @@ require("blink.cmp").setup({
         providers = {
             lsp = {
                 fallbacks = {},
-                score_offset = 500,
+                score_offset = 0,
             },
             snippets = {
                 fallbacks = {},

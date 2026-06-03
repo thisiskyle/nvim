@@ -53,13 +53,11 @@ end
 local function delete_package(id)
     local installed = vim.pack.get()
     local delete = {}
-
     for _,p in ipairs(installed) do
         if((p.spec.data and p.spec.data.pack_id == id) or p.spec.name == id) then
             delete[#delete + 1] = p.spec.name
         end
     end
-
     vim.pack.del(delete, { force = true })
 end
 
@@ -67,13 +65,11 @@ end
 local function delete_inactive()
     local installed = vim.pack.get()
     local delete = {}
-
     for _,i in ipairs(installed) do
         if(not i.active) then
             delete[#delete + 1] = i.spec.name
         end
     end
-
     vim.pack.del(delete, { force = true })
 end
 
@@ -165,4 +161,3 @@ vim.api.nvim_create_user_command(
 
 
 startup()
-
