@@ -15,7 +15,6 @@ vim.pack.add({
     }
 }, { confirm = false })
 
-
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_enable = true })
 
@@ -34,9 +33,16 @@ vim.diagnostic.config({
     },
 })
 
+-- lsp
 vim.keymap.set({ 'n' }, '<leader>ld', function() vim.lsp.buf.definition() end, { desc = 'lsp: go to definition' })
 vim.keymap.set({ 'n' }, '<leader>lt', function() vim.lsp.buf.type_definition() end, { desc = 'lsp: go to type definition' })
-vim.keymap.set({ 'n' }, '<leader>lf', function() vim.lsp.buf.hover({ border = "single" }) end, { desc = 'lsp: open float' })
+vim.keymap.set({ 'n' }, '<leader>lh', function() vim.lsp.buf.hover({ border = "single" }) end, { desc = 'lsp: open float' })
+vim.keymap.set({ 'n' }, '<leader>lf', function() vim.lsp.buf.format() end, { desc = 'lsp: format' })
+vim.keymap.set({ 'n' }, '<leader>lr', function() vim.lsp.buf.references() end, { desc = 'lsp: references' })
+vim.keymap.set({ 'n' }, '<leader>li', function() vim.lsp.buf.implementation() end, { desc = 'lsp: implementation' })
+vim.keymap.set({ 'n' }, '<leader>lS', function() vim.lsp.buf.workspace_symbol() end, { desc = 'lsp: workspace symbols' })
+vim.keymap.set({ 'n' }, '<leader>ls', function() vim.lsp.buf.document_symbol() end, { desc = 'lsp: local symbol' })
+-- diagnostics
 vim.keymap.set({ 'n' }, '<leader>df', function() vim.diagnostic.open_float() end, { desc = 'diagnostic: open float' })
 vim.keymap.set({ 'n' }, '<leader>dq', function() vim.diagnostic.setqflist() end, { desc = 'diagnostic: quickfix' })
 vim.keymap.set({ 'n' }, '<leader>dl', function() vim.diagnostic.setloclist() end, { desc = 'diagnostic: local list' })

@@ -24,6 +24,4 @@ vim.opt.statusline = " %F   %m%r%w%{&buftype=='' ? '' : '['.&buftype.']'}"
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal"))
 vim.opt.rtp:append(vim.fn.expand(vim.fn.stdpath("config") .. "/lua/personal/after"))
 
-vim.cmd.packadd("nvim.undotree")
-
 require("personal.utils").color_me({ color = "rose-pine", transparent = false })

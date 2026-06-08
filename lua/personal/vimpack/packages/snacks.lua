@@ -20,11 +20,11 @@ require("snacks").setup({
         sort = { "level", "added" },
         level = vim.log.levels.TRACE,
         icons = {
-            error = "[Error] ",
-            warn = "[Warn] ",
-            info = "[Info] ",
-            debug = "[Debug] ",
-            trace = "[Trace] ",
+            error = "[E] ",
+            warn = "[W] ",
+            info = "[I] ",
+            debug = "[D] ",
+            trace = "[T] ",
         },
         style = "compact",
         top_down = true,
@@ -65,85 +65,83 @@ require("snacks").setup({
             files = {
                 enabled = false,
             },
-            keymaps = {
-                nowait = ""
-            },
-            indent = {
-                vertical = "",
-                middle   = "",
-                last     = "",
-            },
             undo = {
-                saved   = "",
-            },
-            ui = {
-                live        = "",
-                hidden      = "",
-                ignored     = "",
-                follow      = "",
-                selected    = "+",
-                unselected  = "  ",
+                saved = "S ",
             },
             git = {
-                commit = "",
+                enabled = false,
+            },
+            ui = {
+                live        = "L ",
+                hidden      = "h",
+                ignored     = "i",
+                follow      = "f",
+                selected    = "+ ",
+                unselected  = "  ",
             },
             diagnostics = {
-                Error = "",
-                Warn  = "",
-                Hint  = "",
-                Info  = "",
+                Error = "E ",
+                Warn = "W ",
+                Hint = "H ",
+                Info = "I ",
             },
             kinds = {
-                Array         = "",
-                Boolean       = "",
-                Class         = "",
-                Color         = "",
-                Control       = "",
-                Collapsed     = "",
-                Constant      = "",
-                Constructor   = "",
-                Copilot       = "",
-                Enum          = "",
-                EnumMember    = "",
-                Event         = "",
-                Field         = "",
-                File          = "",
-                Folder        = "",
-                Function      = "",
-                Interface     = "",
-                Key           = "",
-                Keyword       = "",
-                Method        = "",
-                Module        = "",
-                Namespace     = "",
-                Null          = "",
-                Number        = "",
-                Object        = "",
-                Operator      = "",
-                Package       = "",
-                Property      = "",
-                Reference     = "",
-                Snippet       = "",
-                String        = "",
-                Struct        = "",
-                Text          = "",
-                TypeParameter = "",
-                Unit          = "",
-                Unknown        = "",
-                Value         = "",
-                Variable      = "",
+                Array = "Array ",
+                Boolean = "Boolean ",
+                Class = "Class ",
+                Color = "Color ",
+                Control = "Control ",
+                Collapsed = "Collapsed ",
+                Constant = "Constant ",
+                Constructor = "Constructor ",
+                Copilot = "Copilot ",
+                Enum = "Enum ",
+                EnumMember = "EnumMember ",
+                Event = "Event ",
+                Field = "Field ",
+                File = "File ",
+                Folder = "Folder ",
+                Function = "Function ",
+                Interface = "Interface ",
+                Key = "Key ",
+                Keyword = "Keyword ",
+                Method = "Method ",
+                Module = "Module ",
+                Namespace = "Namespace ",
+                Null = "Null ",
+                Number = "Number ",
+                Object = "Object ",
+                Operator = "Operator ",
+                Package = "Package ",
+                Property = "Property ",
+                Reference = "Reference ",
+                Snippet = "Snippet ",
+                String = "String ",
+                Struct = "Struct ",
+                Text = "Text ",
+                TypeParameter = "TypeParameter ",
+                Unit = "Unit ",
+                Unknown = "Unknown ",
+                Value = "Value ",
+                Variable = "Variable ",
             },
         },
     }
 })
 
-vim.keymap.set({ 'n' }, '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'snacks.notifier: show history' })
-vim.keymap.set({ 'n' }, '<leader>ff', function() Snacks.picker.files() end, { desc = 'snacks.picker: files' })
-vim.keymap.set({ 'n' }, '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'snacks.picker: keymaps' })
-vim.keymap.set({ 'n' }, '<leader>fg', function() Snacks.picker.grep() end, { desc = 'snacks.picker: grep' })
-vim.keymap.set({ 'n' }, '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'snacks.picker: word under cursor' })
-vim.keymap.set({ 'n' }, '<leader>fh', function() Snacks.picker.help() end, { desc = 'snacks.picker: help' })
-vim.keymap.set({ 'n' }, '<leader>fd', function() Snacks.picker.lsp_definitions() end, { desc = 'snacks.picker: lsp definitions' })
-vim.keymap.set({ 'n' }, '<leader>fr', function() Snacks.picker.lsp_references() end, { desc = 'snacks.picker: lsp references' })
-vim.keymap.set({ 'n' }, '<leader>fi', function() Snacks.picker.lsp_implementations() end, { desc = 'snacks.picker: lsp implementations' })
-vim.keymap.set({ 'n' }, '<leader>fs', function() Snacks.picker.lsp_symbols() end, { desc = 'snacks.picker: lsp symbols' })
+-- notifier
+vim.keymap.set({ 'n' }, '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'notifier: show history' })
+-- find
+vim.keymap.set({ 'n' }, '<leader>pf', function() Snacks.picker.files() end, { desc = 'picker: files' })
+vim.keymap.set({ 'n' }, '<leader>pk', function() Snacks.picker.keymaps() end, { desc = 'picker: keymaps' })
+vim.keymap.set({ 'n' }, '<leader>pG', function() Snacks.picker.grep() end, { desc = 'picker: grep' })
+vim.keymap.set({ 'n' }, '<leader>pg', function() Snacks.picker.grep_word() end, { desc = 'picker: word under cursor' })
+vim.keymap.set({ 'n' }, '<leader>ph', function() Snacks.picker.help() end, { desc = 'picker: help' })
+vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo() end, { desc = 'picker: undo' })
+-- lsp
+-- vim.keymap.set({ 'n' }, '<leader>pd', function() Snacks.picker.lsp_definitions() end, { desc = 'picker: lsp definitions' })
+-- vim.keymap.set({ 'n' }, '<leader>pr', function() Snacks.picker.lsp_references() end, { desc = 'picker: lsp references' })
+-- vim.keymap.set({ 'n' }, '<leader>pi', function() Snacks.picker.lsp_implementations() end, { desc = 'picker: lsp implementations' })
+-- vim.keymap.set({ 'n' }, '<leader>ps', function() Snacks.picker.lsp_symbols() end, { desc = 'picker: lsp symbols' })
+-- vim.keymap.set({ 'n' }, '<leader>pS', function() Snacks.picker.lsp_workspace_symbols() end, { desc = 'picker: lsp workspace symbols' })
+
