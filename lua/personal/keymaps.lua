@@ -36,19 +36,11 @@ vim.keymap.set(
 
 vim.keymap.set(
     { 'n' },
-    '<leader>9',
-    function()
-        require("personal.utils").color_me({ color = vim.g.colors_name, transparent = false })
-    end,
-    { desc = 'colorscheme: transparency off' }
-)
-
-vim.keymap.set(
-    { 'n' },
     '<leader>0',
     function()
-        require("personal.utils").color_me({ color = vim.g.colors_name, transparent = true })
+        vim.g.transparent_bg = not vim.g.transparent_bg
+        vim.cmd.colorscheme(vim.g.colors_name)
     end,
-    { desc = 'colorscheme: transparency on' }
+    { desc = 'colorscheme: transparency toggle' }
 )
 
