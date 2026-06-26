@@ -1,14 +1,5 @@
 vim.keymap.set(
     { 'n' },
-    '<leader>u',
-    function()
-        vim.cmd(":Undotree")
-    end,
-    { desc = 'undotree toggle' }
-)
-
-vim.keymap.set(
-    { 'n' },
     '<leader>\'',
     function()
 	    require("personal.utils").open_scratchpad()
@@ -43,4 +34,3 @@ vim.keymap.set(
     end,
     { desc = 'colorscheme: transparency toggle' }
 )
-

@@ -6,7 +6,6 @@ for _, value in ipairs({ "Git", "G" }) do
     end, { nargs = 1 })
 end
 
-
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     group = vim.api.nvim_create_augroup("personal", { clear = true }),
     pattern = { "*" },
