@@ -137,11 +137,9 @@ vim.keymap.set({ 'n' }, '<leader>pk', function() Snacks.picker.keymaps() end, { 
 vim.keymap.set({ 'n' }, '<leader>pG', function() Snacks.picker.grep() end, { desc = 'picker: grep' })
 vim.keymap.set({ 'n' }, '<leader>pg', function() Snacks.picker.grep_word() end, { desc = 'picker: word under cursor' })
 vim.keymap.set({ 'n' }, '<leader>ph', function() Snacks.picker.help() end, { desc = 'picker: help' })
-vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo() end, { desc = 'picker: undo' })
--- lsp
--- vim.keymap.set({ 'n' }, '<leader>pd', function() Snacks.picker.lsp_definitions() end, { desc = 'picker: lsp definitions' })
--- vim.keymap.set({ 'n' }, '<leader>pr', function() Snacks.picker.lsp_references() end, { desc = 'picker: lsp references' })
--- vim.keymap.set({ 'n' }, '<leader>pi', function() Snacks.picker.lsp_implementations() end, { desc = 'picker: lsp implementations' })
--- vim.keymap.set({ 'n' }, '<leader>ps', function() Snacks.picker.lsp_symbols() end, { desc = 'picker: lsp symbols' })
--- vim.keymap.set({ 'n' }, '<leader>pS', function() Snacks.picker.lsp_workspace_symbols() end, { desc = 'picker: lsp workspace symbols' })
+vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo({
+    diff = {
+        ctxlen = 9999
+    },
+}) end, { desc = 'picker: undo' })
 

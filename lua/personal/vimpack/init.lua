@@ -7,14 +7,7 @@ local config = {
 
     -- nil this to load dynamically from pack_dir
     -- a bit slower sorting through the files, but less to manage
-    pack_list = {
-        "anrcy",
-        "blink",
-        "nvim-lspconfig",
-        "nvim-treesitter",
-        "rose-pine",
-        "snacks",
-    }
+    pack_list = nil
 }
 
 
