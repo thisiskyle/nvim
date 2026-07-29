@@ -1,5 +1,6 @@
 local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
+
 vim.pack.add({
     {
         src = "https://github.com/folke/snacks.nvim",
@@ -64,6 +65,9 @@ require("snacks").setup({
         icons = {
             files = {
                 enabled = false,
+                dir = "Dir ",
+                dir_open = "Dir ",
+                file = "File "
             },
             undo = {
                 saved = "S ",
@@ -137,9 +141,5 @@ vim.keymap.set({ 'n' }, '<leader>pk', function() Snacks.picker.keymaps() end, { 
 vim.keymap.set({ 'n' }, '<leader>pG', function() Snacks.picker.grep() end, { desc = 'picker: grep' })
 vim.keymap.set({ 'n' }, '<leader>pg', function() Snacks.picker.grep_word() end, { desc = 'picker: word under cursor' })
 vim.keymap.set({ 'n' }, '<leader>ph', function() Snacks.picker.help() end, { desc = 'picker: help' })
-vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo({
-    diff = {
-        ctxlen = 9999
-    },
-}) end, { desc = 'picker: undo' })
+vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo() end, { desc = 'picker: undo' })
 
