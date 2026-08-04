@@ -1,13 +1,14 @@
 local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
 
-vim.pack.add({
-    {
-        src = "https://github.com/folke/snacks.nvim",
-        data = { pack_id = _pack_id }
-    }
-}, { confirm = false })
+-- vim.pack.add({
+--     {
+--         src = "https://github.com/folke/snacks.nvim",
+--         data = { pack_id = _pack_id }
+--     }
+-- }, { confirm = false })
 
+vim.cmd.packadd("snacks.nvim-dev")
 
 require("snacks").setup({
     notifier = {
@@ -71,6 +72,10 @@ require("snacks").setup({
             },
             undo = {
                 saved = "S ",
+                current = "C ",
+            },
+            diff = {
+                special = "? "
             },
             git = {
                 enabled = false,

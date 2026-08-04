@@ -5,11 +5,10 @@ local config = {
     -- location of package setup files
     pack_dir = vim.fn.stdpath('config') .. "/lua/personal/vimpack/packages/",
 
-    -- nil this to load dynamically from pack_dir
-    -- a bit slower sorting through the files, but less to manage
+    -- array of file names that you want to load from pack_dir
+    -- nil this to load dynamically from pack_dir (slower, but simple)
     pack_list = nil
 }
-
 
 local function get_package_list()
     local files = vim.fn.readdir(config.pack_dir)
