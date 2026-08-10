@@ -8,15 +8,25 @@ local config = {
     -- array of file names that you want to load from pack_dir
     -- nil this to load dynamically from pack_dir (slower, but simple)
     pack_list = nil
+
 }
 
+
 local function get_package_list()
-    local files = vim.fn.readdir(config.pack_dir)
     local packages = {}
-    for _, file in ipairs(files) do
-        local pack = file:gsub('%.lua$', '')
-        packages[#packages + 1] = pack
+    local function scan_dir(dir, prefix)
+        local files = vim.fn.readdir(dir)
+        for _, file in ipairs(files) do
+            local full_path = dir .. file
+            if vim.fn.isdirectory(full_path) == 1 then
+                scan_dir(full_path .. '/', prefix .. file .. '/')
+            elseif file:match('%.lua$') then
+                local pack = prefix .. file:gsub('%.lua$', '')
+                packages[#packages + 1] = pack
+            end
+        end
     end
+    scan_dir(config.pack_dir, '')
     return packages
 end
 
@@ -65,13 +75,6 @@ local function delete_inactive()
     vim.pack.del(delete, { force = true })
 end
 
-
-local function startup()
-    if(not config.pack_list) then
-        config.pack_list = get_package_list()
-    end
-    install()
-end
 
 
 vim.api.nvim_create_user_command(
@@ -152,4 +155,4 @@ vim.api.nvim_create_user_command(
 )
 
 
-startup()
+install()

@@ -9,3 +9,5 @@
 !lua/
 !lua/personal/
 !lua/personal/**
+
+lua/personal/vimpack/packages/dev/

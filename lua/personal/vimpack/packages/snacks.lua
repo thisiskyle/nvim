@@ -1,14 +1,13 @@
 local _pack_id = (debug.getinfo(1, "S").source):match("([^@/\\]+)%.lua$")
 
 
--- vim.pack.add({
---     {
---         src = "https://github.com/folke/snacks.nvim",
---         data = { pack_id = _pack_id }
---     }
--- }, { confirm = false })
+vim.pack.add({
+    {
+        src = "https://github.com/folke/snacks.nvim",
+        data = { pack_id = _pack_id }
+    }
+}, { confirm = false })
 
-vim.cmd.packadd("snacks.nvim-dev")
 
 require("snacks").setup({
     notifier = {
@@ -22,11 +21,11 @@ require("snacks").setup({
         sort = { "level", "added" },
         level = vim.log.levels.TRACE,
         icons = {
-            error = "[E] ",
-            warn = "[W] ",
-            info = "[I] ",
-            debug = "[D] ",
-            trace = "[T] ",
+            error = "[Error] ",
+            warn = "[Warn] ",
+            info = "[Info] ",
+            debug = "[Debug] ",
+            trace = "[Trace] ",
         },
         style = "compact",
         top_down = true,
@@ -45,9 +44,9 @@ require("snacks").setup({
         layout = {
             layout = {
                 box = "horizontal",
-                width = 0.8,
+                width = 0.95,
                 min_width = 120,
-                height = 0.8,
+                height = 0.95,
                 [1] = {
                     box = "vertical",
                     border = "single",
@@ -59,7 +58,7 @@ require("snacks").setup({
                     win = "preview",
                     title = "{preview}",
                     border = "single",
-                    width = 0.5
+                    width = 0.65
                 },
             }
         },
@@ -67,18 +66,21 @@ require("snacks").setup({
             files = {
                 enabled = false,
                 dir = "Dir ",
-                dir_open = "Dir ",
+                dir_open = "OpDir ",
                 file = "File "
             },
             undo = {
                 saved = "S ",
-                current = "C ",
+                current = "> "
             },
             diff = {
-                special = "? "
+                hunk_header = {
+                    special = "  "
+                }
             },
             git = {
                 enabled = false,
+                current = "> "
             },
             ui = {
                 live        = "L ",
@@ -140,11 +142,10 @@ require("snacks").setup({
 
 -- notifier
 vim.keymap.set({ 'n' }, '<leader>nh', function() Snacks.notifier.show_history() end, { desc = 'notifier: show history' })
--- find
+
+-- picker
 vim.keymap.set({ 'n' }, '<leader>pf', function() Snacks.picker.files() end, { desc = 'picker: files' })
 vim.keymap.set({ 'n' }, '<leader>pk', function() Snacks.picker.keymaps() end, { desc = 'picker: keymaps' })
 vim.keymap.set({ 'n' }, '<leader>pG', function() Snacks.picker.grep() end, { desc = 'picker: grep' })
 vim.keymap.set({ 'n' }, '<leader>pg', function() Snacks.picker.grep_word() end, { desc = 'picker: word under cursor' })
 vim.keymap.set({ 'n' }, '<leader>ph', function() Snacks.picker.help() end, { desc = 'picker: help' })
-vim.keymap.set({ 'n' }, '<leader>pu', function() Snacks.picker.undo() end, { desc = 'picker: undo' })
-
