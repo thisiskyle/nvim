@@ -11,7 +11,7 @@ vim.keymap.set(
     { 'n' },
     '<leader>/',
     function()
-	    vim.cmd(":Ex $HOME/.notes/")
+	    vim.cmd(":Ex $HOME/.junk_drawer/")
     end,
     { desc = 'open: notes' }
 )
