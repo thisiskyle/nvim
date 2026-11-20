@@ -1,3 +1,4 @@
+
 vim.keymap.set(
     { 'n' },
     '<leader>\'',
@@ -34,3 +35,4 @@ vim.keymap.set(
     end,
     { desc = 'colorscheme: transparency toggle' }
 )
+
